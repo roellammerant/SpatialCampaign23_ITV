@@ -322,7 +322,7 @@ Cstock_all_mean_shallow$MacrophyteCategory <- factor(Cstock_all_mean_shallow$Mac
 boxplot(Cstock_gm2 ~ MacrophyteCategory, data = Cstock_all_mean_shallow,
         boxwex = 0.5, col = c("bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "g C quadrat-1", ylim = c(0, 200),at = c(1, 2, 4, 5, 7, 8, 10, 11),
+        xlab = NA, ylab = "g C m-2 (1-2m)", ylim = c(0, 200),at = c(1, 2, 4, 5, 7, 8, 10, 11),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(Cstock_gm2 ~ MacrophyteCategory,
@@ -352,7 +352,7 @@ Cstock_all_mean_deep$MacrophyteCategory <- factor(Cstock_all_mean_deep$Macrophyt
 boxplot(Cstock_gm2 ~ MacrophyteCategory, data = Cstock_all_mean_deep,
         boxwex = 0.5, col = c("bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "g C quadrat-1", ylim = c(0, 100),at = c(1, 2, 4, 5, 7, 8, 10, 11),
+        xlab = NA, ylab = "g C m-2 (3-4m)", ylim = c(0, 100),at = c(1, 2, 4, 5, 7, 8, 10, 11),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(Cstock_gm2 ~ MacrophyteCategory,

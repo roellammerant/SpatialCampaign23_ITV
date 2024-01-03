@@ -7,7 +7,7 @@
 Abundance_exp_quad <- aggregate(x=Exposed_data$`Individual count`,
                                 by=list(Exposed_data$Site,Exposed_data$`Site number`), FUN=sum)
 colnames(Abundance_exp_quad) <- c("Site","Site number","Individual count")
-Abundance_exp_quad$Individual_count_m2 <- Abundance_exp_quad$`Individual count`/(0.2*0.2)
+Abundance_exp_quad$Individual_count_m2 <- Abundance_exp_quad$`Individual count`/(0.27*0.27)
 Abundance_exp_quad_Deep <- Abundance_exp_quad[-c(9:16,23:27,34:39,46:57),]
 Abundance_exp_quad_Shallow <-Abundance_exp_quad[c(9:16,23:27,34:39,46:57),]
 
@@ -16,7 +16,7 @@ Abundance_exp_quad_Shallow <-Abundance_exp_quad[c(9:16,23:27,34:39,46:57),]
 Abundance_semi_quad <- aggregate(x=Semi_data$`Individual count`,
                                  by=list(Semi_data$Site,Semi_data$`Site number`), FUN=sum)
 colnames(Abundance_semi_quad) <- c("Site","Site number","Individual count")
-Abundance_semi_quad$Individual_count_m2 <- Abundance_semi_quad$`Individual count`/(0.2*0.2)
+Abundance_semi_quad$Individual_count_m2 <- Abundance_semi_quad$`Individual count`/(0.27*0.27)
 Abundance_semi_quad_Deep <- Abundance_semi_quad[-c(7:12,19:24,31:36,43:48,55:60),]
 Abundance_semi_quad_Shallow <-Abundance_semi_quad[c(7:12,19:24,31:36,43:48,55:60),]
 
@@ -25,7 +25,7 @@ Individual_Shel_data <-na.omit(Individual_Shel_data)
 Abundance_shel_quad_Shallow <- aggregate(x=Individual_Shel_data$`Individual count`,
                                          by=list(Individual_Shel_data$Site,Individual_Shel_data$`Site number`), FUN=sum)
 colnames(Abundance_shel_quad_Shallow) <- c("Site","Site number","Individual count")
-Abundance_shel_quad_Shallow$Individual_count_m2 <- Abundance_shel_quad_Shallow$`Individual count`/(0.2*0.2)
+Abundance_shel_quad_Shallow$Individual_count_m2 <- Abundance_shel_quad_Shallow$`Individual count`/(0.27*0.27)
 
 
 Individual_Pojo_data <- Pojo_data[,c(1:4,6)]
@@ -33,7 +33,7 @@ Individual_Pojo_data <-na.omit(Individual_Pojo_data)
 Abundance_pojo_quad <- aggregate(x=Individual_Pojo_data$`Individual count`,
                                  by=list(Individual_Pojo_data$Site,Individual_Pojo_data$`Site number`), FUN=sum)
 colnames(Abundance_pojo_quad) <- c("Site","Site number","Individual count")
-Abundance_pojo_quad$Individual_count_m2 <- Abundance_pojo_quad$`Individual count`/(0.2*0.2)
+Abundance_pojo_quad$Individual_count_m2 <- Abundance_pojo_quad$`Individual count`/(0.27*0.27)
 Abundance_pojo_quad_Deep <- Abundance_pojo_quad[-c(1:6,9,14:29),]
 Abundance_pojo_quad_Shallow <-Abundance_pojo_quad[c(1:6,9,14:29),]
 
