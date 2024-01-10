@@ -425,7 +425,7 @@ Indices_leaf_Allsites$Exposure_Depth <- factor(paste(Indices_leaf_Allsites$Expos
                                                      Indices_leaf_Allsites$Depth, sep = "_"),
                                                  levels = c(
                                                    "Exposed_Shallow", "Exposed_Deep",
-                                                   "Semi_Shallow", "Semi_Deep",
+                                                   "semi_Shallow", "semi_Deep",
                                                    "Pojo_Shallow", "Pojo_Deep",
                                                    "Sheltered_Shallow"
                                                  ))
@@ -435,7 +435,7 @@ Indices_leaf_Allsites$Site_Exposure <- factor(paste(Indices_leaf_Allsites$Site_n
                                                     Indices_leaf_Allsites$Exposure, sep = "_"),
                                                 levels = c(
                                                   "1S_Exposed", "2S_Exposed", "3S_Exposed", "4S_Exposed", "5S_Exposed", "1D_Exposed", "2D_Exposed", "3D_Exposed", "4D_Exposed",
-                                                  "1S_Semi", "2S_Semi", "3S_Semi", "4S_Semi", "5S_Semi", "1D_Semi", "2D_Semi", "3D_Semi", "4D_Semi", "5D_Semi",
+                                                  "1S_semi", "2S_semi", "3S_semi", "4S_semi", "5S_semi", "1D_semi", "2D_semi", "3D_semi", "4D_semi", "5D_semi",
                                                   "1S_Pojo", "2S_Pojo", "3S_Pojo", "4S_Pojo", "5S_Pojo", "2D_Pojo", "3D_Pojo",
                                                   "1S_Sheltered", "2S_Sheltered", "3S_Sheltered", "4S_Sheltered", "5S_Sheltered"
                                                 ))
