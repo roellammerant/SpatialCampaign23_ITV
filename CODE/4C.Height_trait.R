@@ -61,8 +61,7 @@ fligner.test(Indices_height_Allsites$FDis_Height ~ Indices_height_Allsites$Expos
 ##%######################################################%##
 
 library(tidyverse)
-library(rstatix)
-library(ggpubr)
+library(vegan)
 
 ##%######################################################%##
 #                                                          #
@@ -70,44 +69,67 @@ library(ggpubr)
 ####                                                    ####
 #                                                          #
 ##%######################################################%##
+
+# Permanova can´t handle zero`s
+Indices_height_Allsites$FDis_Height[Indices_height_Allsites$FDis_Height == 0] <- 0.00001 
 Shallow_Height <- Indices_height_Allsites[ which(Indices_height_Allsites$Depth=='Shallow'), ]
 Deep_Height <- Indices_height_Allsites[ which(Indices_height_Allsites$Depth=='Deep'), ]
-
 ######### Shallow sites #########
-library(lme4)
-library(predictmeans)
 # https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/permanova/
 # Doesn´t assume normality or homogeneity of variance
 
-fm <- lmer(FDis_Height ~ Exposure +(1|Site_Exposure), data=Shallow_Height)
-permanova.lmer(fm) # non-significant
+CWMHeight_S <- adonis2(Shallow_Height$CWM_Height ~ Exposure + Site_Exposure, data=Shallow_Height, perm=999)
+CWMHeight_S # significant difference at exposure and site level
 
-fm2 <- lmer(CWM_Height ~ Exposure +(1|Site_Exposure), data=Shallow_Height)
-permanova.lmer(fm2) # significant
+FDisHeight_S <- adonis2(Shallow_Height$FDis_Height ~ Exposure + Site_Exposure , data=Shallow_Height, perm=999)
+FDisHeight_S # significant difference at exposure and site level
 
 ######### Deep sites #########
 
-fmD <- lmer(FDis_Height ~ Exposure +(1|Site_Exposure), data=Deep_Height)
-permanova.lmer(fmD) # non-significant
+CWMHeight_D <- adonis2(Deep_Height$CWM_Height ~ Exposure + Site_Exposure, data=Deep_Height, perm=999)
+CWMHeight_D # significant difference at exposure and site level
 
-fmD2 <- lmer(CWM_Height ~ Exposure +(1|Site_Exposure), data=Deep_Height)
-permanova.lmer(fmD2) # significant
-
+FDisHeight_D <- adonis2(Deep_Height$FDis_Height ~ Exposure + Site_Exposure , data=Deep_Height, perm=999)
+FDisHeight_D # significant difference at exposure and site level
 
 ##%######################################################%##
 #                                                          #
-####                 Mann-Whitney U test                ####   
+####                 Post-hoc adonis test               ####   
 #                                                          #
 ##%######################################################%##
+library(devtools)
+install_github("pmartinezarbizu/pairwiseAdonis/pairwiseAdonis")
+library(pairwiseAdonis)
 
 ######### Shallow sites #########
 
 Shallow_HeightA <- Shallow_Height[c(1:31, 32:61),] #Exposed and Semi
 Shallow_HeightB <- Shallow_Height[c(32:61, 92:121),] #Semi and sheltered
 Shallow_HeightC <- Shallow_Height[c(92:121,62:91),] #Sheltered and Pojo
-Shallow_HeightD <- Shallow_Height[c(1:31, 92:121),] 
-Shallow_HeightE <- Shallow_Height[c(11:30),]
+Shallow_HeightD <- Shallow_Height[c(1:31, 92:121),] #Exposed and sheltered
 
-library(coin)
-library(rcompanion)
-rcompanion::pairwisePermutationTest(CWM_Height ~ Exposure +(1|Site_Exposure), data=Deep_Height)
+dist_matrixA=vegdist(Shallow_HeightA$CWM_Height,method="bray")
+pairwise.adonis2(dist_matrixA ~ Exposure + Site_Exposure, data = Shallow_HeightA)
+
+dist_matrixB=vegdist(Shallow_HeightB$CWM_Height,method="bray")
+pairwise.adonis2(dist_matrixB ~ Exposure + Site_Exposure, data = Shallow_HeightB)
+
+dist_matrixC=vegdist(Shallow_HeightC $CWM_Height,method="bray")
+pairwise.adonis2(dist_matrixC ~ Exposure + Site_Exposure, data = Shallow_HeightC)
+
+
+dist_matrixA2=vegdist(Shallow_HeightA$FDis_Height,method="bray")
+pairwise.adonis2(dist_matrixA2 ~ Exposure + Site_Exposure, data = Shallow_HeightA)
+
+dist_matrixB2=vegdist(Shallow_HeightB$FDis_Height,method="bray")
+pairwise.adonis2(dist_matrixB2 ~ Exposure + Site_Exposure, data = Shallow_HeightB)
+
+dist_matrixC2=vegdist(Shallow_HeightC $FDis_Height,method="bray")
+pairwise.adonis2(dist_matrixC2 ~ Exposure + Site_Exposure, data = Shallow_HeightC)
+
+
+
+
+
+
+
