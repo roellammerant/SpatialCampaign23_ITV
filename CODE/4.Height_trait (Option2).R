@@ -317,13 +317,13 @@ Indices_height_Pojosites <- as.data.frame(Indices_height_Pojosites)
 Indices_height_Semisites <- as.data.frame(Indices_height_Semisites)
 Indices_height_Shelsites <- as.data.frame(Indices_height_Shelsites)
 
-Indices_height_Allsites<- rbind.data.frame(Indices_height_Expsites,Indices_height_Semisites,Indices_height_Pojosites,Indices_height_Shelsites)
-Indices_height_Allsites$Site_number<- c(rep("1S",8),rep("2S",5),rep("3S",6),rep("4S",6),rep("5S",6),rep("1D",8),rep("2D",6),rep("3D",6),rep("4D",6),
+Indices_height_AllsitesB<- rbind.data.frame(Indices_height_Expsites,Indices_height_Semisites,Indices_height_Pojosites,Indices_height_Shelsites)
+Indices_height_AllsitesB$Site_number<- c(rep("1S",8),rep("2S",5),rep("3S",6),rep("4S",6),rep("5S",6),rep("1D",8),rep("2D",6),rep("3D",6),rep("4D",6),
                                         rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6),rep("1D",6),rep("2D",6),rep("3D",6),rep("4D",6),rep("5D",6),
                                         rep("2D",2),rep("3D",6),rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6),
                                         rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6))
 
-Indices_height_Allsites$Exposure_Depth <- factor(paste(Indices_height_Allsites$Exposure, 
+Indices_height_AllsitesB$Exposure_Depth <- factor(paste(Indices_height_Allsites$Exposure, 
                                                        Indices_height_Allsites$Depth, sep = "_"),
                                                  levels = c(
                                                    "Exposed_Shallow", "Exposed_Deep",
@@ -333,7 +333,7 @@ Indices_height_Allsites$Exposure_Depth <- factor(paste(Indices_height_Allsites$E
                                                  ))
 
 
-Indices_height_Allsites$Site_Exposure <- factor(paste(Indices_height_Allsites$Site_number, 
+Indices_height_AllsitesB$Site_Exposure <- factor(paste(Indices_height_Allsites$Site_number, 
                                                       Indices_height_Allsites$Exposure, sep = "_"),
                                                 levels = c(
                                                   "1S_Exposed", "2S_Exposed", "3S_Exposed", "4S_Exposed", "5S_Exposed", "1D_Exposed", "2D_Exposed", "3D_Exposed", "4D_Exposed",

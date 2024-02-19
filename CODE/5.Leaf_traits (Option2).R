@@ -1,6 +1,6 @@
 ##%######################################################%##
 #                                                          #
-####            Community indices height                ####
+####            Community indices leaves                ####
 #                                                          #
 ##%######################################################%##
 
@@ -160,7 +160,7 @@ rownames(Site5_exp_LAPSB) <- Site5_exp_LAPS$Species
 names(Site5_exp_LAPSB)[1]<-paste(c("LAP"))
 
 ########################################################
-### Community weighted mean value for height trait######
+### Community weighted mean value for leaf traits ######
 ########################################################
 
 ############ SLA  ############ 
@@ -474,7 +474,7 @@ rownames(Site5_semi_LAPSB) <- Site5_semi_LAPS$Species
 names(Site5_semi_LAPSB)[1]<-paste(c("LAP"))
 
 ########################################################
-### Community weighted mean value for height trait######
+### Community weighted mean value for leaf traits ######
 ########################################################
 
 ############ SLA  ############ 
@@ -512,7 +512,7 @@ Indices_semi5_LAPS <- FD::dbFD(Site5_semi_LAPSB,Plot_Abun_semi5_shallow, w.abun 
 
 
 ########################################################
-###           Combine exposed site indices        ######
+###           Combine semi site indices           ######
 ########################################################
 
 ###### Community weighted mean
@@ -667,14 +667,14 @@ rownames(Sites_shel_LAPB) <- Sites_shel_LAP$Species
 names(Sites_shel_LAPB)[1]<-paste(c("LAP"))
 
 ########################################################
-### Community weighted mean value for height trait######
+### Community weighted mean value for leaf traits ######
 ########################################################
 
 Indices_shel_SLA <- FD::dbFD(Sites_shel_SLAB,Plot_Abun_shel, w.abun = TRUE)
 Indices_shel_LAP <- FD::dbFD(Sites_shel_LAPB,Plot_Abun_shel, w.abun = TRUE)
 
 ########################################################
-###         Combine exposed site indices        ######
+###         Combine sheltered site indices        ######
 ########################################################
 
 ###### Community weighted mean
@@ -765,7 +765,7 @@ names(Site_pojo_LAP_SB)[1]<-paste(c("LAP"))
 
 
 ########################################################
-### Community weighted mean value for height trait######
+### Community weighted mean value for leaf traits ######
 ########################################################
 
 Indices_pojo_SLA_D <- FD::dbFD(Site_pojo_SLA_DB,Plot_Abun_pojo_deep, w.abun = TRUE)
@@ -774,7 +774,7 @@ Indices_pojo_LAP_D <- FD::dbFD(Site_pojo_LAP_DB,Plot_Abun_pojo_deep, w.abun = TR
 Indices_pojo_LAP_S <- FD::dbFD(Site_pojo_LAP_SB,Plot_Abun_pojo_shallow, w.abun = TRUE)
 
 ########################################################
-###         Combine exposed site indices        ######
+###           Combine pojo site indices           ######
 ########################################################
 
 ###### Community weighted mean
@@ -819,15 +819,15 @@ Indices_Leaf_pojosites <- as.data.frame(Indices_Leaf_pojosites)
 Indices_leaf_Semisites <- as.data.frame(Indices_leaf_Semisites)
 Indices_Leaf_shelsites <- as.data.frame(Indices_Leaf_shelsites)
 
-Indices_leaf_Allsites<- rbind.data.frame(Indices_leaf_Expsites,Indices_leaf_Semisites,Indices_Leaf_pojosites,Indices_Leaf_shelsites)
+Indices_leaf_AllsitesB<- rbind.data.frame(Indices_leaf_Expsites,Indices_leaf_Semisites,Indices_Leaf_pojosites,Indices_Leaf_shelsites)
 
-Indices_leaf_Allsites$Site_number<- c(rep("1S",8),rep("2S",5),rep("3S",6),rep("4S",6),rep("5S",6),rep("1D",8),rep("2D",6),rep("3D",6),rep("4D",6),
+Indices_leaf_AllsitesB$Site_number<- c(rep("1S",8),rep("2S",5),rep("3S",6),rep("4S",6),rep("5S",6),rep("1D",8),rep("2D",6),rep("3D",6),rep("4D",6),
                                       rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6),rep("1D",6),rep("2D",6),rep("3D",6),rep("4D",6),rep("5D",6),
                                       rep("2D",2),rep("3D",6),rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6),
                                       rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6))
 
-Indices_leaf_Allsites$Exposure_Depth <- factor(paste(Indices_leaf_Allsites$Exposure, 
-                                                     Indices_leaf_Allsites$Depth, sep = "_"),
+Indices_leaf_AllsitesB$Exposure_Depth <- factor(paste(Indices_leaf_AllsitesB$Exposure, 
+                                                     Indices_leaf_AllsitesB$Depth, sep = "_"),
                                                levels = c(
                                                  "Exposed_Shallow", "Exposed_Deep",
                                                  "Semi_Shallow", "Semi_Deep",
@@ -836,8 +836,8 @@ Indices_leaf_Allsites$Exposure_Depth <- factor(paste(Indices_leaf_Allsites$Expos
                                                ))
 
 
-Indices_leaf_Allsites$Site_Exposure <- factor(paste(Indices_leaf_Allsites$Site_number, 
-                                                    Indices_leaf_Allsites$Exposure, sep = "_"),
+Indices_leaf_AllsitesB$Site_Exposure <- factor(paste(Indices_leaf_AllsitesB$Site_number, 
+                                                    Indices_leaf_AllsitesB$Exposure, sep = "_"),
                                               levels = c(
                                                 "1S_Exposed", "2S_Exposed", "3S_Exposed", "4S_Exposed", "5S_Exposed", "1D_Exposed", "2D_Exposed", "3D_Exposed", "4D_Exposed",
                                                 "1S_Semi", "2S_Semi", "3S_Semi", "4S_Semi", "5S_Semi", "1D_Semi", "2D_Semi", "3D_Semi", "4D_Semi", "5D_Semi",
