@@ -105,9 +105,9 @@ Site5_exp_shallowB <- as.data.frame(Site5_exp_shallow[,c(4)])
 rownames(Site5_exp_shallowB) <- Site5_exp_shallow$Species
 names(Site5_exp_shallowB)[1]<-paste(c("RootDepth"))
 
-########################################################
-### Community weighted mean value for Ratio trait ######
-########################################################
+#############################################################
+### Community weighted mean value for Root depth trait ######
+#############################################################
 
 Indices_exp1_deep <- FD::dbFD(Site1_exp_deepB,Plot_Abun_exp1_deep, w.abun = TRUE)
 Indices_exp1_shallow <- FD::dbFD(Site1_exp_shallowB,Plot_Abun_exp1_shallow, w.abun = TRUE)
@@ -293,9 +293,9 @@ Site5_semi_shallowB <- as.data.frame(Site5_semi_shallow[,c(4)])
 rownames(Site5_semi_shallowB) <- Site5_semi_shallow$Species
 names(Site5_semi_shallowB)[1]<-paste(c("RootDepth"))
 
-########################################################
-### Community weighted mean value for height trait######
-########################################################
+#############################################################
+### Community weighted mean value for root depth trait ######
+#############################################################
 
 Indices_semi1_deep <- FD::dbFD(Site1_semi_deepB,Plot_Abun_semi1_deep, w.abun = TRUE)
 Indices_semi1_shallow <- FD::dbFD(Site1_semi_shallowB,Plot_Abun_semi1_shallow, w.abun = TRUE)
@@ -313,7 +313,7 @@ Indices_semi5_deep <- FD::dbFD(Site5_semi_deepB,Plot_Abun_semi5_deep, w.abun = T
 Indices_semi5_shallow <- FD::dbFD(Site5_semi_shallowB,Plot_Abun_semi5_shallow, w.abun = TRUE)
 
 ########################################################
-###         Combibine exposed site indices        ######
+###            Combine semi site indices          ######
 ########################################################
 ###### Community weighted mean
 CWMSemi1S <-as.data.frame(Indices_semi1_shallow$CWM)
@@ -405,14 +405,14 @@ Sites_shel_RootDepthB <- as.data.frame(Sites_shel_RootDepth[,c(3)])
 rownames(Sites_shel_RootDepthB) <- Sites_shel_RootDepth$Species
 names(Sites_shel_RootDepthB)[1]<-paste(c("RootDepth"))
 
-########################################################
-### Community weighted mean value for height trait######
-########################################################
+#############################################################
+### Community weighted mean value for root depth trait ######
+#############################################################
 
 Indices_shel_RootDepth <- FD::dbFD(Sites_shel_RootDepthB,Plot_Abun_shel, w.abun = TRUE)
 
 ########################################################
-###         Combine exposed site indices        ######
+###         Combine sheltered site indices        ######
 ########################################################
 
 ###### Community weighted mean
@@ -479,15 +479,15 @@ Sites_pojo_RootDepth_SB <- as.data.frame(Sites_pojo_RootDepth_S[,c(3)])
 rownames(Sites_pojo_RootDepth_SB) <- Sites_pojo_RootDepth_S$Species
 names(Sites_pojo_RootDepth_SB)[1]<-paste(c("RootDepth"))
 
-########################################################
-### Community weighted mean value for height trait######
-########################################################
+#############################################################
+### Community weighted mean value for root depth trait ######
+#############################################################
 
 Indices_pojo_RootDepth_D <- FD::dbFD(Sites_pojo_RootDepth_DB,Plot_Abun_pojo_deep, w.abun = TRUE)
 Indices_pojo_RootDepth_S <- FD::dbFD(Sites_pojo_RootDepth_SB,Plot_Abun_pojo_shallow, w.abun = TRUE)
 
 ########################################################
-###         Combine exposed site indices        ######
+###            Combine pojo site indices          ######
 ########################################################
 
 ###### Community weighted mean
@@ -526,15 +526,28 @@ Indices_RootDepth_pojosites <- as.data.frame(Indices_RootDepth_pojosites)
 Indices_RootDepth_Semisites <- as.data.frame(Indices_RootDepth_Semisites)
 Indices_RootDepth_shelsites <- as.data.frame(Indices_RootDepth_shelsites)
 
-Indices_RootDepth_Allsites<- rbind.data.frame(Indices_RootDepth_Expsites,Indices_RootDepth_Semisites,Indices_RootDepth_pojosites,Indices_RootDepth_shelsites)
+Indices_RootDepth_AllsitesB<- rbind.data.frame(Indices_RootDepth_Expsites,Indices_RootDepth_Semisites,Indices_RootDepth_pojosites,Indices_RootDepth_shelsites)
 
 
-Indices_RootDepth_Allsites$Exposure_Depth <- factor(paste(Indices_RootDepth_Allsites$Exposure, 
-                                                          Indices_RootDepth_Allsites$Depth, sep = "_"),
+Indices_RootDepth_AllsitesB$Exposure_Depth <- factor(paste(Indices_RootDepth_AllsitesB$Exposure, 
+                                                          Indices_RootDepth_AllsitesB$Depth, sep = "_"),
                                                     levels = c(
                                                       "Exposed_Shallow", "Exposed_Deep",
                                                       "Semi_Shallow", "Semi_Deep",
                                                       "Pojo_Shallow", "Pojo_Deep",
                                                       "Sheltered_Shallow"
                                                     ))
+Indices_RootDepth_AllsitesB$Site_number<- c(rep("1S",8),rep("2S",5),rep("3S",6),rep("4S",6),rep("5S",6),rep("1D",8),rep("2D",6),rep("3D",6),rep("4D",6),
+                                        rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6),rep("1D",6),rep("2D",6),rep("3D",6),rep("4D",6),rep("5D",6),
+                                        rep("2D",2),rep("3D",6),rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6),
+                                        rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6))
+
+Indices_RootDepth_AllsitesB$Site_Exposure <- factor(paste(Indices_RootDepth_AllsitesB$Site_number, 
+                                                          Indices_RootDepth_AllsitesB$Exposure, sep = "_"),
+                                                levels = c(
+                                                  "1S_Exposed", "2S_Exposed", "3S_Exposed", "4S_Exposed", "5S_Exposed", "1D_Exposed", "2D_Exposed", "3D_Exposed", "4D_Exposed",
+                                                  "1S_Semi", "2S_Semi", "3S_Semi", "4S_Semi", "5S_Semi", "1D_Semi", "2D_Semi", "3D_Semi", "4D_Semi", "5D_Semi",
+                                                  "1S_Pojo", "2S_Pojo", "3S_Pojo", "4S_Pojo", "5S_Pojo", "2D_Pojo", "3D_Pojo",
+                                                  "1S_Sheltered", "2S_Sheltered", "3S_Sheltered", "4S_Sheltered", "5S_Sheltered"
+                                                ))
 

@@ -1,6 +1,6 @@
 ##%######################################################%##
 #                                                          #
-####            Community indices height                ####
+####    Community indices Above-Belowground ratio       ####
 #                                                          #
 ##%######################################################%##
 
@@ -293,7 +293,7 @@ rownames(Site5_semi_shallowB) <- Site5_semi_shallow$Species
 names(Site5_semi_shallowB)[1]<-paste(c("Ratio"))
 
 ########################################################
-### Community weighted mean value for height trait######
+### Community weighted mean value for ratio trait ######
 ########################################################
 
 Indices_semi1_deep <- FD::dbFD(Site1_semi_deepB,Plot_Abun_semi1_deep, w.abun = TRUE)
@@ -312,7 +312,7 @@ Indices_semi5_deep <- FD::dbFD(Site5_semi_deepB,Plot_Abun_semi5_deep, w.abun = T
 Indices_semi5_shallow <- FD::dbFD(Site5_semi_shallowB,Plot_Abun_semi5_shallow, w.abun = TRUE)
 
 ########################################################
-###         Combibine exposed site indices        ######
+###           Combine semi site indices           ######
 ########################################################
 ###### Community weighted mean
 CWMSemi1S <-as.data.frame(Indices_semi1_shallow$CWM)
@@ -405,13 +405,13 @@ rownames(Sites_shel_RatioB) <- Sites_shel_Ratio$Species
 names(Sites_shel_RatioB)[1]<-paste(c("Ratio"))
 
 ########################################################
-### Community weighted mean value for height trait######
+### Community weighted mean value for ratio trait ######
 ########################################################
 
 Indices_shel_Ratio <- FD::dbFD(Sites_shel_RatioB,Plot_Abun_shel, w.abun = TRUE)
 
 ########################################################
-###         Combine exposed site indices        ######
+###         Combine sheltered site indices        ######
 ########################################################
 
 ###### Community weighted mean
@@ -479,14 +479,14 @@ rownames(Sites_pojo_Ratio_SB) <- Sites_pojo_Ratio_S$Species
 names(Sites_pojo_Ratio_SB)[1]<-paste(c("Ratio"))
 
 ########################################################
-### Community weighted mean value for height trait######
+### Community weighted mean value for ratio trait ######
 ########################################################
 
 Indices_pojo_Ratio_D <- FD::dbFD(Sites_pojo_Ratio_DB,Plot_Abun_pojo_deep, w.abun = TRUE)
 Indices_pojo_Ratio_S <- FD::dbFD(Sites_pojo_Ratio_SB,Plot_Abun_pojo_shallow, w.abun = TRUE)
 
 ########################################################
-###         Combine exposed site indices        ######
+###          Combine pojo site indices            ######
 ########################################################
 
 ###### Community weighted mean
@@ -537,5 +537,18 @@ Indices_Ratio_AllsitesB$Exposure_Depth <- factor(paste(Indices_Ratio_AllsitesB$E
                                                   "Pojo_Shallow", "Pojo_Deep",
                                                   "Sheltered_Shallow"
                                                 ))
+Indices_Ratio_AllsitesB$Site_number<- c(rep("1S",8),rep("2S",5),rep("3S",6),rep("4S",6),rep("5S",6),rep("1D",8),rep("2D",6),rep("3D",6),rep("4D",6),
+                                         rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6),rep("1D",6),rep("2D",6),rep("3D",6),rep("4D",6),rep("5D",6),
+                                         rep("2D",2),rep("3D",6),rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6),
+                                         rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6))
+
+Indices_Ratio_AllsitesB$Site_Exposure <- factor(paste(Indices_Ratio_AllsitesB$Site_number, 
+                                                      Indices_Ratio_AllsitesB$Exposure, sep = "_"),
+                                                 levels = c(
+                                                   "1S_Exposed", "2S_Exposed", "3S_Exposed", "4S_Exposed", "5S_Exposed", "1D_Exposed", "2D_Exposed", "3D_Exposed", "4D_Exposed",
+                                                   "1S_Semi", "2S_Semi", "3S_Semi", "4S_Semi", "5S_Semi", "1D_Semi", "2D_Semi", "3D_Semi", "4D_Semi", "5D_Semi",
+                                                   "1S_Pojo", "2S_Pojo", "3S_Pojo", "4S_Pojo", "5S_Pojo", "2D_Pojo", "3D_Pojo",
+                                                   "1S_Sheltered", "2S_Sheltered", "3S_Sheltered", "4S_Sheltered", "5S_Sheltered"
+                                                 ))
 
 
