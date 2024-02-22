@@ -341,7 +341,7 @@ Indices_semi5_deep <- FD::dbFD(Site5_semi_deepB,Plot_Abun_semi5_deep, w.abun = T
 Indices_semi5_shallow <- FD::dbFD(Site5_semi_shallowB,Plot_Abun_semi5_shallow, w.abun = TRUE)
 
 ########################################################
-###         Combibine exposed site indices        ######
+###         Combine exposed site indices        ######
 ########################################################
 
 ###### SpeciesRichness

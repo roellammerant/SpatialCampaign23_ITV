@@ -86,10 +86,10 @@ CWMexp_SLA_S <-as.data.frame(Indices_exp_SLA_S$CWM)
 CWMexp_LAP_D <-as.data.frame(Indices_exp_LAP_D$CWM)
 CWMexp_LAP_S <-as.data.frame(Indices_exp_LAP_S$CWM)
 
-Indices_Leaf_expsites <- rbind(CWMexp_SLA_D,CWMexp_SLA_S)
+Indices_Leaf_expsites <- rbind(CWMexp_SLA_S,CWMexp_SLA_D)
 colnames(Indices_Leaf_expsites) <- c("CWM_SLA")
-Indices_Leaf_expsites$CWM_LAP <- rbind(CWMexp_LAP_D,CWMexp_LAP_S)
-Indices_Leaf_expsites$Depth <- c(rep("Deep",26),rep("Shallow",31))
+Indices_Leaf_expsites$CWM_LAP <- rbind(CWMexp_LAP_S, CWMexp_LAP_D)
+Indices_Leaf_expsites$Depth <- c(rep("Shallow",31),rep("Deep",26))
 Indices_Leaf_expsites$Exposure <- c(rep("Exposed",57))
 
 ###### Functional Dispersion
@@ -102,8 +102,8 @@ colnames(FDisexp_LAP_D) <- c("FDis")
 FDisexp_LAP_S <-as.data.frame(Indices_exp_LAP_S$FDis)
 colnames(FDisexp_LAP_S) <- c("FDis")
 
-Indices_Leaf_expsites$FDis_SLA <- rbind(FDisexp_SLA_D,FDisexp_SLA_S)
-Indices_Leaf_expsites$FDis_LAP <- rbind(FDisexp_LAP_D,FDisexp_LAP_S)
+Indices_Leaf_expsites$FDis_SLA <- rbind(FDisexp_SLA_S, FDisexp_SLA_D)
+Indices_Leaf_expsites$FDis_LAP <- rbind(FDisexp_LAP_S, FDisexp_LAP_D)
 
 Indices_Leaf_expsites <- tibble::rownames_to_column(Indices_Leaf_expsites,"Site")
 rownames(Indices_Leaf_expsites)<-c(1:57)
@@ -193,10 +193,10 @@ CWMsemi_SLA_S <-as.data.frame(Indices_semi_SLA_S$CWM)
 CWMsemi_LAP_D <-as.data.frame(Indices_semi_LAP_D$CWM)
 CWMsemi_LAP_S <-as.data.frame(Indices_semi_LAP_S$CWM)
 
-Indices_Leaf_semisites <- rbind(CWMsemi_SLA_D,CWMsemi_SLA_S)
+Indices_Leaf_semisites <- rbind(CWMsemi_SLA_S,CWMsemi_SLA_D)
 colnames(Indices_Leaf_semisites) <- c("CWM_SLA")
-Indices_Leaf_semisites$CWM_LAP <- rbind(CWMsemi_LAP_D,CWMsemi_LAP_S)
-Indices_Leaf_semisites$Depth <- c(rep("Deep",30),rep("Shallow",30))
+Indices_Leaf_semisites$CWM_LAP <- rbind(CWMsemi_LAP_S,CWMsemi_LAP_D)
+Indices_Leaf_semisites$Depth <- c(rep("Shallow",30),rep("Deep",30))
 Indices_Leaf_semisites$Exposure <- c(rep("semi",60))
 
 ###### Functional Dispersion
@@ -209,8 +209,8 @@ colnames(FDissemi_LAP_D) <- c("FDis")
 FDissemi_LAP_S <-as.data.frame(Indices_semi_LAP_S$FDis)
 colnames(FDissemi_LAP_S) <- c("FDis")
 
-Indices_Leaf_semisites$FDis_SLA <- rbind(FDissemi_SLA_D,FDissemi_SLA_S)
-Indices_Leaf_semisites$FDis_LAP <- rbind(FDissemi_LAP_D,FDissemi_LAP_S)
+Indices_Leaf_semisites$FDis_SLA <- rbind(FDissemi_SLA_S,FDissemi_SLA_D)
+Indices_Leaf_semisites$FDis_LAP <- rbind(FDissemi_LAP_S,FDissemi_LAP_D)
 
 Indices_Leaf_semisites <- tibble::rownames_to_column(Indices_Leaf_semisites,"Site")
 rownames(Indices_Leaf_semisites)<-c(1:60)

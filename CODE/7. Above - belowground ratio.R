@@ -59,9 +59,9 @@ Indices_exp_Ratio_S <- FD::dbFD(Sites_exp_Ratio_SB,Plot_Abun_exp_shallow, w.abun
 CWMexp_Ratio_D <-as.data.frame(Indices_exp_Ratio_D$CWM)
 CWMexp_Ratio_S <-as.data.frame(Indices_exp_Ratio_S$CWM)
 
-Indices_Ratio_expsites <- rbind(CWMexp_Ratio_D,CWMexp_Ratio_S)
+Indices_Ratio_expsites <- rbind(CWMexp_Ratio_S,CWMexp_Ratio_D)
 colnames(Indices_Ratio_expsites) <- c("CWM_Ratio")
-Indices_Ratio_expsites$Depth <- c(rep("Deep",26),rep("Shallow",31))
+Indices_Ratio_expsites$Depth <- c(rep("Shallow",31),rep("Deep",26))
 Indices_Ratio_expsites$Exposure <- c(rep("Exposed",57))
 
 ###### Functional Dispersion
@@ -70,7 +70,7 @@ colnames(FDisexp_Ratio_D) <- c("FDis")
 FDisexp_Ratio_S <-as.data.frame(Indices_exp_Ratio_S$FDis)
 colnames(FDisexp_Ratio_S) <- c("FDis")
 
-Indices_Ratio_expsites$FDis_Ratio <- rbind(FDisexp_Ratio_D,FDisexp_Ratio_S)
+Indices_Ratio_expsites$FDis_Ratio <- rbind(FDisexp_Ratio_S, FDisexp_Ratio_D)
 Indices_Ratio_expsites <- tibble::rownames_to_column(Indices_Ratio_expsites,"Site")
 rownames(Indices_Ratio_expsites)<-c(1:57)
 
@@ -139,10 +139,10 @@ Indices_semi_Ratio_S <- FD::dbFD(Sites_semi_RatioSB,Plot_Abun_semi_shallow, w.ab
 CWMsemi_Ratio_D <-as.data.frame(Indices_semi_Ratio_D$CWM)
 CWMsemi_Ratio_S <-as.data.frame(Indices_semi_Ratio_S$CWM)
 
-Indices_Ratio_semisites <- rbind(CWMsemi_Ratio_D,CWMsemi_Ratio_S)
+Indices_Ratio_semisites <- rbind(CWMsemi_Ratio_S,CWMsemi_Ratio_D)
 colnames(Indices_Ratio_semisites) <- c("CWM_Ratio")
-Indices_Ratio_semisites$Depth <- c(rep("Deep",30),rep("Shallow",30))
-Indices_Ratio_semisites$Exposure <- c(rep("semi",30))
+Indices_Ratio_semisites$Depth <- c(rep("Shallow",30),rep("Deep",30))
+Indices_Ratio_semisites$Exposure <- c(rep("semi",60))
 
 ###### Functional Dispersion
 FDissemi_ratio_D <-as.data.frame(Indices_semi_Ratio_D$FDis)

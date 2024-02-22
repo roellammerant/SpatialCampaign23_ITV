@@ -323,8 +323,8 @@ Indices_height_AllsitesB$Site_number<- c(rep("1S",8),rep("2S",5),rep("3S",6),rep
                                         rep("2D",2),rep("3D",6),rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6),
                                         rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6))
 
-Indices_height_AllsitesB$Exposure_Depth <- factor(paste(Indices_height_Allsites$Exposure, 
-                                                       Indices_height_Allsites$Depth, sep = "_"),
+Indices_height_AllsitesB$Exposure_Depth <- factor(paste(Indices_height_AllsitesB$Exposure, 
+                                                        Indices_height_AllsitesB$Depth, sep = "_"),
                                                  levels = c(
                                                    "Exposed_Shallow", "Exposed_Deep",
                                                    "Semi_Shallow", "Semi_Deep",
@@ -333,8 +333,8 @@ Indices_height_AllsitesB$Exposure_Depth <- factor(paste(Indices_height_Allsites$
                                                  ))
 
 
-Indices_height_AllsitesB$Site_Exposure <- factor(paste(Indices_height_Allsites$Site_number, 
-                                                      Indices_height_Allsites$Exposure, sep = "_"),
+Indices_height_AllsitesB$Site_Exposure <- factor(paste(Indices_height_AllsitesB$Site_number, 
+                                                       Indices_height_AllsitesB$Exposure, sep = "_"),
                                                 levels = c(
                                                   "1S_Exposed", "2S_Exposed", "3S_Exposed", "4S_Exposed", "5S_Exposed", "1D_Exposed", "2D_Exposed", "3D_Exposed", "4D_Exposed",
                                                   "1S_Semi", "2S_Semi", "3S_Semi", "4S_Semi", "5S_Semi", "1D_Semi", "2D_Semi", "3D_Semi", "4D_Semi", "5D_Semi",

@@ -60,9 +60,9 @@ Indices_exp_RootDepth_S <- FD::dbFD(Sites_exp_RootDepth_SB,Plot_Abun_exp_shallow
 CWMexp_RootDepth_D <-as.data.frame(Indices_exp_RootDepth_D$CWM)
 CWMexp_RootDepth_S <-as.data.frame(Indices_exp_RootDepth_S$CWM)
 
-Indices_RootDepth_expsites <- rbind(CWMexp_RootDepth_D,CWMexp_RootDepth_S)
+Indices_RootDepth_expsites <- rbind(CWMexp_RootDepth_S,CWMexp_RootDepth_D)
 colnames(Indices_RootDepth_expsites) <- c("CWM_RootDepth")
-Indices_RootDepth_expsites$Depth <- c(rep("Deep",26),rep("Shallow",31))
+Indices_RootDepth_expsites$Depth <- c(rep("Shallow",31),rep("Deep",26))
 Indices_RootDepth_expsites$Exposure <- c(rep("Exposed",57))
 
 ###### Functional Dispersion
@@ -71,7 +71,7 @@ colnames(FDisexp_RootDepth_D) <- c("FDis")
 FDisexp_RootDepth_S <-as.data.frame(Indices_exp_RootDepth_S$FDis)
 colnames(FDisexp_RootDepth_S) <- c("FDis")
 
-Indices_RootDepth_expsites$FDis_RootDepth <- rbind(FDisexp_RootDepth_D,FDisexp_RootDepth_S)
+Indices_RootDepth_expsites$FDis_RootDepth <- rbind(FDisexp_RootDepth_S,FDisexp_RootDepth_D)
 Indices_RootDepth_expsites <- tibble::rownames_to_column(Indices_RootDepth_expsites,"Site")
 rownames(Indices_RootDepth_expsites)<-c(1:57)
 
@@ -138,9 +138,9 @@ Indices_semi_RootDepth_S <- FD::dbFD(Sites_semi_RootDepthSB,Plot_Abun_semi_shall
 CWMsemi_RootDepth_D <-as.data.frame(Indices_semi_RootDepth_D$CWM)
 CWMsemi_RootDepth_S <-as.data.frame(Indices_semi_RootDepth_S$CWM)
 
-Indices_RootDepth_semisites <- rbind(CWMsemi_RootDepth_D,CWMsemi_RootDepth_S)
+Indices_RootDepth_semisites <- rbind(CWMsemi_RootDepth_S,CWMsemi_RootDepth_D)
 colnames(Indices_RootDepth_semisites) <- c("CWM_RootDepth")
-Indices_RootDepth_semisites$Depth <- c(rep("Deep",30),rep("Shallow",30))
+Indices_RootDepth_semisites$Depth <- c(rep("Shallow",30),rep("Deep",30))
 Indices_RootDepth_semisites$Exposure <- c(rep("semi",30))
 
 ###### Functional Dispersion
@@ -149,7 +149,7 @@ colnames(FDissemi_RootDepth_D) <- c("FDis")
 FDissemi_RootDepth_S <-as.data.frame(Indices_semi_RootDepth_S$FDis)
 colnames(FDissemi_RootDepth_S) <- c("FDis")
 
-Indices_RootDepth_semisites$FDis_RootDepth <- rbind(FDissemi_RootDepth_D,FDissemi_RootDepth_S)
+Indices_RootDepth_semisites$FDis_RootDepth <- rbind(FDissemi_RootDepth_S,FDissemi_RootDepth_D)
 
 Indices_RootDepth_semisites <- tibble::rownames_to_column(Indices_RootDepth_semisites,"Site")
 rownames(Indices_RootDepth_semisites)<-c(1:60)
