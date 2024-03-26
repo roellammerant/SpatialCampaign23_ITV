@@ -45,11 +45,13 @@ Indices_height_Fixed$FDis_Height[Indices_height_Fixed$FDis_Height == 0] <- 0.000
 Shallow_Height_Fixed <- Indices_height_Fixed[ which(Indices_height_Fixed$Depth=='Shallow'), ]
 
 Indices_height_SpecificMinusFixedA$FDis_Height[Indices_height_SpecificMinusFixedA$FDis_Height == 0] <- 0.00001 
-Indices_height_SpecificMinusFixedA$CWM_Height <- Indices_height_SpecificMinusFixedA$CWM_Height + 170
+Indices_height_SpecificMinusFixedA$CWM_Height <- abs(Indices_height_SpecificMinusFixedA$CWM_Height)
+Indices_height_SpecificMinusFixedA$CWM_Height[Indices_height_SpecificMinusFixedA$CWM_Height == 0] <- 0.00001 
 Shallow_Height_IntraA <- Indices_height_SpecificMinusFixedA[ which(Indices_height_SpecificMinusFixedA$Depth=='Shallow'), ]
 
 Indices_height_SpecificMinusFixedB$FDis_Height[Indices_height_SpecificMinusFixedB$FDis_Height == 0] <- 0.00001 
-Indices_height_SpecificMinusFixedB$CWM_Height <- Indices_height_SpecificMinusFixedB$CWM_Height + 151
+Indices_height_SpecificMinusFixedB$CWM_Height <- abs(Indices_height_SpecificMinusFixedB$CWM_Height)
+Indices_height_SpecificMinusFixedB$CWM_Height[Indices_height_SpecificMinusFixedB$CWM_Height == 0] <- 0.00001 
 Shallow_Height_IntraB <- Indices_height_SpecificMinusFixedB[ which(Indices_height_SpecificMinusFixedB$Depth=='Shallow'), ]
 
 Indices_height_Allsites$FDis_Height[Indices_height_Allsites$FDis_Height == 0] <- 0.00001 
