@@ -481,16 +481,16 @@ rownames(Indices_Ratio_pojosites)<-c(1:38)
 ###########                 ######################
 ##################################################
 
-Indices_RootDepth_Expsites <- as.matrix.data.frame(Indices_RootDepth_Expsites)
-Indices_RootDepth_pojosites <- as.matrix.data.frame(Indices_RootDepth_pojosites)
-Indices_RootDepth_Semisites <- as.matrix.data.frame(Indices_RootDepth_Semisites)
-Indices_RootDepth_shelsites <- as.matrix.data.frame(Indices_RootDepth_shelsites)
-Indices_RootDepth_Expsites <- as.data.frame(Indices_RootDepth_Expsites)
-Indices_RootDepth_pojosites <- as.data.frame(Indices_RootDepth_pojosites)
-Indices_RootDepth_Semisites <- as.data.frame(Indices_RootDepth_Semisites)
-Indices_RootDepth_shelsites <- as.data.frame(Indices_RootDepth_shelsites)
+Indices_Ratio_Expsites <- as.matrix.data.frame(Indices_Ratio_Expsites)
+Indices_Ratio_pojosites <- as.matrix.data.frame(Indices_Ratio_pojosites)
+Indices_Ratio_Semisites <- as.matrix.data.frame(Indices_Ratio_Semisites)
+Indices_Ratio_shelsites <- as.matrix.data.frame(Indices_Ratio_shelsites)
+Indices_Ratio_Expsites <- as.data.frame(Indices_Ratio_Expsites)
+Indices_Ratio_pojosites <- as.data.frame(Indices_Ratio_pojosites)
+Indices_Ratio_Semisites <- as.data.frame(Indices_Ratio_Semisites)
+Indices_Ratio_shelsites <- as.data.frame(Indices_Ratio_shelsites)
 
-Indices_Ratio_SpecificMinusFixedB<- rbind.data.frame(Indices_RootDepth_Expsites,Indices_RootDepth_Semisites,Indices_RootDepth_pojosites,Indices_RootDepth_shelsites)
+Indices_Ratio_SpecificMinusFixedB<- rbind.data.frame(Indices_Ratio_Expsites,Indices_Ratio_Semisites,Indices_Ratio_pojosites,Indices_Ratio_shelsites)
 
 
 Indices_Ratio_SpecificMinusFixedB$Exposure_Depth <- factor(paste(Indices_Ratio_SpecificMinusFixedB$Exposure, 
