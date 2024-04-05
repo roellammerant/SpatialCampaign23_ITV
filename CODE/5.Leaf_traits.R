@@ -7,10 +7,10 @@
 Spatial_Campaign_data_exp <- read_excel("DATA/Spatial_Campaign_data.xlsx", 
                                         sheet = "Exposed", na = "NA")
 
-TraitData_expA <- Spatial_Campaign_data_exp[-c(43),c(1:4, 34,36)]
+TraitData_expA <- Spatial_Campaign_data_exp[-c(43),c(1:4, 35,37)]
 names(TraitData_expA)[5]<-paste(c("SLA"))
 names(TraitData_expA)[6]<-paste(c("LAP"))
-TraitData_expB <- Spatial_Campaign_data_exp[-c(43),c(1:4, 35,37)]
+TraitData_expB <- Spatial_Campaign_data_exp[-c(43),c(1:4, 36,38)]
 names(TraitData_expB)[5]<-paste(c("SLA"))
 names(TraitData_expB)[6]<-paste(c("LAP"))
 TraitData_exp <- rbind (TraitData_expA,TraitData_expB )
