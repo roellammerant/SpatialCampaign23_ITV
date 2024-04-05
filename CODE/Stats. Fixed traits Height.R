@@ -1,6 +1,6 @@
 ##%######################################################%##
 #                                                          #
-####      Fixed community indices for Height            ####
+####     Fixed community indices for Root depth         ####
 #                                                          #
 ##%######################################################%##
 
@@ -11,48 +11,43 @@
 ##########################################
 Spatial_Campaign_data_exp <- read_excel("DATA/Spatial_Campaign_data.xlsx", 
                                         sheet = "Exposed", na = "NA")
-TraitData_exp <- Spatial_Campaign_data_exp[,c(1:5)]
-names(TraitData_exp)[5]<-paste(c("Height"))
-names(TraitData_exp)[2]<-paste(c("Site_number"))
+
+TraitData_expA <- Spatial_Campaign_data_exp[-c(43),c(1:5)]
+names(TraitData_expA)[5]<-paste(c("Height"))
+
 
 ##########################################
 ###########          #####################
 ###########   SEMI  ######################
 ###########         ######################
 ##########################################
-
 Spatial_Campaign_data_semi <- read_excel("DATA/Spatial_Campaign_data.xlsx", 
                                          sheet = "Semi", na = "NA")
-TraitData_semi <- Spatial_Campaign_data_semi[,c(1:5)]
-names(TraitData_semi)[5]<-paste(c("Height"))
-names(TraitData_semi)[2]<-paste(c("Site_number"))
+
+TraitData_semiA <- Spatial_Campaign_data_semi[,c(1:5)]
+names(TraitData_semiA)[5]<-paste(c("Height")) 
 
 ##############################################
 ###########             ######################
 ###########   SHELTERED ######################
 ###########             ######################
 ##############################################
-
 Spatial_Campaign_data_shel <- read_excel("DATA/Spatial_Campaign_data.xlsx", 
                                          sheet = "Sheltered", na = "NA")
-TraitData_shel <- Spatial_Campaign_data_shel[,c(1:5)]
-names(TraitData_shel)[5]<-paste(c("Height"))
-names(TraitData_shel)[2]<-paste(c("Site_number"))
-TraitData_shel[is.na(TraitData_shel)] = 0
+
+TraitData_shelA <- Spatial_Campaign_data_shel[,c(1:5)]
+names(TraitData_shelA)[5]<-paste(c("Height"))
 
 ##############################################
 ###########             ######################
 ###########    Pojo     ######################
 ###########             ######################
 ##############################################
-
 Spatial_Campaign_data_pojo <- read_excel("DATA/Spatial_Campaign_data.xlsx", 
                                          sheet = "Pojo", na = "NA")
-TraitData_pojo <- Spatial_Campaign_data_pojo[,c(1:5)]
-names(TraitData_pojo)[5]<-paste(c("Height"))
-names(TraitData_pojo)[2]<-paste(c("Site_number"))
-TraitData_pojo <- TraitData_pojo[-c(1,4,6,7),]
-TraitData_pojo[is.na(TraitData_pojo)] = 0
+
+TraitData_pojoA <- Spatial_Campaign_data_pojo[-c(1,4,6,7),c(1:5)]
+names(TraitData_pojoA)[5]<-paste(c("Height"))
 
 
 #################################################
@@ -61,10 +56,8 @@ TraitData_pojo[is.na(TraitData_pojo)] = 0
 ###########                ######################
 #################################################
 
-All_height <- rbind (TraitData_exp, TraitData_pojo, TraitData_semi, TraitData_shel)
-Fixed_Height <- aggregate(x=All_height$Height, by=list(All_height$Species), FUN=max)
-
-
+All_Height <- rbind (TraitData_expA, TraitData_pojoA, TraitData_semiA, TraitData_shelA)
+Fixed_Height <- aggregate(x=All_Height$Height, by=list(All_Height$Species), FUN=max)
 
 ##%######################################################%##
 #                                                          #
