@@ -371,14 +371,14 @@ Indices_PCA_pojosites <- as.data.frame(Indices_PCA_pojosites)
 Indices_PCA_semisites <- as.data.frame(Indices_PCA_semisites)
 Indices_PCA_shelsites <- as.data.frame(Indices_PCA_shelsites)
 
-Indices_PCA_Fixed<- rbind.data.frame(Indices_PCA_expsites,Indices_PCA_semisites,Indices_PCA_pojosites,Indices_PCA_shelsites)
-Indices_PCA_Fixed$Site_number<- c(rep("1S",8),rep("2S",5),rep("3S",6),rep("4S",6),rep("5S",6),rep("1D",8),rep("2D",6),rep("3D",6),rep("4D",6),
+Indices_PCA_SpecificMinusFixedA<- rbind.data.frame(Indices_PCA_expsites,Indices_PCA_semisites,Indices_PCA_pojosites,Indices_PCA_shelsites)
+Indices_PCA_SpecificMinusFixedA$Site_number<- c(rep("1S",8),rep("2S",5),rep("3S",6),rep("4S",6),rep("5S",6),rep("1D",8),rep("2D",6),rep("3D",6),rep("4D",6),
                                   rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6),rep("1D",6),rep("2D",6),rep("3D",6),rep("4D",6),rep("5D",6),
                                   rep("2D",2),rep("3D",6),rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6),
                                   rep("1S",6),rep("2S",6),rep("3S",6),rep("4S",6),rep("5S",6))
 
-Indices_PCA_Fixed$Exposure_Depth <- factor(paste(Indices_PCA_Fixed$Exposure, 
-                                                 Indices_PCA_Fixed$Depth, sep = "_"),
+Indices_PCA_SpecificMinusFixedA$Exposure_Depth <- factor(paste(Indices_PCA_SpecificMinusFixedA$Exposure, 
+                                                               Indices_PCA_SpecificMinusFixedA$Depth, sep = "_"),
                                            levels = c(
                                              "Exposed_Shallow", "Exposed_Deep",
                                              "semi_Shallow", "semi_Deep",
@@ -387,8 +387,8 @@ Indices_PCA_Fixed$Exposure_Depth <- factor(paste(Indices_PCA_Fixed$Exposure,
                                            ))
 
 
-Indices_PCA_Fixed$Site_Exposure <- factor(paste(Indices_PCA_Fixed$Site_number, 
-                                                Indices_PCA_Fixed$Exposure, sep = "_"),
+Indices_PCA_SpecificMinusFixedA$Site_Exposure <- factor(paste(Indices_PCA_SpecificMinusFixedA$Site_number, 
+                                                              Indices_PCA_SpecificMinusFixedA$Exposure, sep = "_"),
                                           levels = c(
                                             "1S_Exposed", "2S_Exposed", "3S_Exposed", "4S_Exposed", "5S_Exposed", "1D_Exposed", "2D_Exposed", "3D_Exposed", "4D_Exposed",
                                             "1S_semi", "2S_semi", "3S_semi", "4S_semi", "5S_semi", "1D_semi", "2D_semi", "3D_semi", "4D_semi", "5D_semi",
