@@ -145,7 +145,16 @@ All_PCA$PC2 <- data.scores$PC2
 colors <- c("burlywood3","orange2","palegreen","plum1")
 
 
-par(mfrow=c(1,2), mar=c(4,4,1,1))
+png(
+  "output_plot/PCA plant traits.jpg",
+  width = 16,
+  height = 8,
+  units = 'in',
+  res = 300
+)
+par(mfcol=c(1,2))
+
+par(mar = c(3, 5, 2, 3))
 
 
 plot(ord$x[,1:2], pch=16, 
@@ -170,5 +179,5 @@ text(2.85, -3.8, expression("R-S ratio"))
 text(-1, -1, expression("SLA"))
 text(0.6, 1.5, expression("LAP"))
 
-
+dev.off()
 
