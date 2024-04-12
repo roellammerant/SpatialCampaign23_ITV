@@ -21,9 +21,9 @@ TraitData_exp$Ratio <- TraitData_exp$`Total belowground dry mass (mg)`/TraitData
 names(TraitData_exp)[8]<-paste(c("RootDepth"))
 TraitData_exp[is.na(TraitData_exp)] = 0
 ###SLA
-TraitData_exp$SLA <- (TraitData_exp$`Specific leaf area 1 (cm^2/mg)`/TraitData_exp$`Specific leaf area 2 (cm^2/mg)`)/2
+TraitData_exp$SLA <- (TraitData_exp$`Specific leaf area 1 (mm^2/mg)`+ TraitData_exp$`Specific leaf area 2 (mm^2/mg)`)/2
 ###LAP
-TraitData_exp$LAP <- (TraitData_exp$`Leaf area - perimeter ratio 1`/TraitData_exp$`Leaf area - perimeter ratio 2`)/2
+TraitData_exp$LAP <- (TraitData_exp$`Leaf area - perimeter ratio 1`+ TraitData_exp$`Leaf area - perimeter ratio 2`)/2
 
 TraitData_exp <- TraitData_exp[,c(1:5, 8, 13:15)]
 TraitData_exp$Exposure <- "Exposed"
@@ -48,9 +48,9 @@ TraitData_semi$Ratio <- TraitData_semi$`Total belowground dry mass (mg)`/TraitDa
 names(TraitData_semi)[8]<-paste(c("RootDepth"))
 TraitData_semi$RootDepth[is.na(TraitData_semi$RootDepth)] = 0
 ###SLA
-TraitData_semi$SLA <- (TraitData_semi$`Specific leaf area 1 (cm^2/mg)`/TraitData_semi$`Specific leaf area 2 (cm^2/mg)`)/2
+TraitData_semi$SLA <- (TraitData_semi$`Specific leaf area 1 (mm^2/mg)`+TraitData_semi$`Specific leaf area 2 (mm^2/mg)`)/2
 ###LAP
-TraitData_semi$LAP <- (TraitData_semi$`Leaf area - perimeter ratio 1`/TraitData_semi$`Leaf area - perimeter ratio 2`)/2
+TraitData_semi$LAP <- (TraitData_semi$`Leaf area - perimeter ratio 1`+TraitData_semi$`Leaf area - perimeter ratio 2`)/2
 
 TraitData_semi <- TraitData_semi[,c(1:5, 8, 13:15)]
 TraitData_semi$Exposure <- "Semi"
@@ -76,9 +76,9 @@ TraitData_shel$Ratio <- TraitData_shel$`Total belowground dry mass (mg)`/TraitDa
 names(TraitData_shel)[8]<-paste(c("RootDepth"))
 TraitData_shel$RootDepth[is.na(TraitData_shel$RootDepth)] = 0
 ###SLA
-TraitData_shel$SLA <- (TraitData_shel$`Specific leaf area 1 (cm^2/mg)`/TraitData_shel$`Specific leaf area 2 (cm^2/mg)`)/2
+TraitData_shel$SLA <- (TraitData_shel$`Specific leaf area 1 (cm^2/mg)`+TraitData_shel$`Specific leaf area 2 (cm^2/mg)`)/2
 ###LAP
-TraitData_shel$LAP <- (TraitData_shel$`Leaf area - perimeter ratio 1`/TraitData_shel$`Leaf area - perimeter ratio 2`)/2
+TraitData_shel$LAP <- (TraitData_shel$`Leaf area - perimeter ratio 1`+TraitData_shel$`Leaf area - perimeter ratio 2`)/2
 
 TraitData_shel <- TraitData_shel[,c(1:5, 8, 13:15)]
 TraitData_shel$Exposure <- "Shel"
@@ -103,9 +103,9 @@ TraitData_pojo$Ratio <- TraitData_pojo$`Total belowground dry mass (mg)`/TraitDa
 names(TraitData_pojo)[8]<-paste(c("RootDepth"))
 TraitData_pojo$RootDepth[is.na(TraitData_pojo$RootDepth)] = 0
 ###SLA
-TraitData_pojo$SLA <- (TraitData_pojo$`Specific leaf area 1 (cm^2/mg)`/TraitData_pojo$`Specific leaf area 2 (cm^2/mg)`)/2
+TraitData_pojo$SLA <- (TraitData_pojo$`Specific leaf area 1 (cm^2/g)`+ TraitData_pojo$`Specific leaf area 2 (cm^2/g)`)/2
 ###LAP
-TraitData_pojo$LAP <- (TraitData_pojo$`Leaf area - perimeter ratio 1`/TraitData_pojo$`Leaf area - perimeter ratio 2`)/2
+TraitData_pojo$LAP <- (TraitData_pojo$`Leaf area - perimeter ratio 1`+ TraitData_pojo$`Leaf area - perimeter ratio 2`)/2
 
 TraitData_pojo <- TraitData_pojo[,c(1:5, 8, 13:15)]
 TraitData_pojo$Exposure <- "Pojo"
@@ -173,11 +173,11 @@ l.y <- ord$rotation[,2]*5
 
 arrows(rep(0,11), rep(0,11), l.x, l.y, len=0.1, lwd=2, col = "red")
 
-text(3, 3.4, expression("Height"))
-text(3.5, 0.05, expression("Root depth"))
-text(2.85, -3.8, expression("R-S ratio"))
-text(-1, -1, expression("SLA"))
-text(0.6, 1.5, expression("LAP"))
+text(-2.5, 2.2, expression("Height"))
+text(-3.4, -0.70, expression("Root depth"))
+text(-2.5, -2.85, expression("R-S ratio"))
+text(2.0, -2.5, expression("SLA"))
+text(-1.0, -2.8, expression("LAP"))
 
 dev.off()
 

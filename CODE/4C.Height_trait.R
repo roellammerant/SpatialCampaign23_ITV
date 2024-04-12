@@ -117,25 +117,64 @@ library(pairwiseAdonis)
 
 ######### Shallow sites #########
 
-dist_matrixA=vegdist(Shallow_Height$CWM_Height,method="manhattan")
-pairwise.adonis2(dist_matrixA ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Height)
+######### CWM
+table(Shallow_Height$Exposure_Depth[c(1:61)])
+dist_matrixA=vegdist(Shallow_Height$CWM_Height[c(1:61)],method="manhattan")
+pairwise.adonis2(dist_matrixA ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Height[c(1:61),])
 
-dist_matrixB=vegdist(Shallow_Height$FDis_Heigh,method="manhattan")
-pairwise.adonis2(dist_matrixB ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Height)
+table(Shallow_Height$Exposure_Depth[c(32:61, 92:121)])
+dist_matrixB=vegdist(Shallow_Height$CWM_Height[c(32:61, 92:121)],method="manhattan")
+pairwise.adonis2(dist_matrixB ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Height[c(32:61, 92:121),])
 
+table(Shallow_Height$Exposure_Depth[c(92:121, 62:91)])
+dist_matrixC=vegdist(Shallow_Height$CWM_Height[c(92:121, 62:91)],method="manhattan")
+pairwise.adonis2(dist_matrixC ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Height[c(92:121, 62:91),])
+
+######### FDis
+
+table(Shallow_Height$Exposure_Depth[c(1:61)])
+dist_matrixA2=vegdist(Shallow_Height$FDis_Height[c(1:61)],method="manhattan")
+pairwise.adonis2(dist_matrixA2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Height[c(1:61),])
+
+table(Shallow_Height$Exposure_Depth[c(32:61, 92:121)])
+dist_matrixB2=vegdist(Shallow_Height$FDis_Height[c(32:61, 92:121)],method="manhattan")
+pairwise.adonis2(dist_matrixB2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Height[c(32:61, 92:121),])
+
+table(Shallow_Height$Exposure_Depth[c(92:121, 62:91)])
+dist_matrixC2=vegdist(Shallow_Height$FDis_Height[c(92:121, 62:91)],method="manhattan")
+pairwise.adonis2(dist_matrixC2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Height[c(92:121, 62:91),])
+
+table(Shallow_Height$Exposure_Depth[c(1:31, 92:121)])
+dist_matrixD2=vegdist(Shallow_Height$FDis_Height[c(1:31, 92:121)],method="manhattan")
+pairwise.adonis2(dist_matrixD2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Height[c(1:31, 92:121),])
 
 ######### Deep sites #########
 
-dist_matrixAD=vegdist(Deep_Height$CWM_Height,method="manhattan")
-pairwise.adonis2(dist_matrixAD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Height)
+######### CWM
+table(Deep_Height$Exposure_Depth[c(1:26,27:56)])
+dist_matrixAD=vegdist(Deep_Height$CWM_Height[c(1:26,27:56)],method="manhattan")
+pairwise.adonis2(dist_matrixAD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Height[c(1:26,27:56),])
 
-dist_matrixBD=vegdist(Deep_Height$FDis_Heigh,method="manhattan")
-pairwise.adonis2(dist_matrixBD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Height)
+table(Deep_Height$Exposure_Depth[c(27:64)])
+dist_matrixAD2=vegdist(Deep_Height$CWM_Height[c(27:64)],method="manhattan")
+pairwise.adonis2(dist_matrixAD2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Height[c(27:64),])
+
+######### FDis
+table(Deep_Height$Exposure_Depth[c(1:26,27:56)])
+dist_matrixBD=vegdist(Deep_Height$FDis_Heigh[c(1:26,27:56)],method="manhattan")
+pairwise.adonis2(dist_matrixBD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Height[c(1:26,27:56),])
+
+table(Deep_Height$Exposure_Depth[c(27:64)])
+dist_matrixBD2=vegdist(Deep_Height$FDis_Heigh[c(27:64)],method="manhattan")
+pairwise.adonis2(dist_matrixBD2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Height[c(27:64),])
+
 
 ######### Between depths #########
 ExposedDepths <-Indices_height_Allsites[c(1:57),]
 SemiDepths <-Indices_height_Allsites[c(58:117),]
 PojoDepths <-Indices_height_Allsites[c(118:155),]
+
+#### Exposed
 
 dist_matrixA_ExposedDepths=vegdist(ExposedDepths$CWM_Height,method="manhattan")
 pairwise.adonis2(dist_matrixA_ExposedDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
@@ -145,6 +184,8 @@ dist_matrixB_ExposedDepths=vegdist(ExposedDepths$FDis_Heigh,method="manhattan")
 pairwise.adonis2(dist_matrixB_ExposedDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
                  data = ExposedDepths) #significant depth and site level
 
+#### Semi
+
 dist_matrixA_SemiDepths=vegdist(SemiDepths$CWM_Height,method="manhattan")
 pairwise.adonis2(dist_matrixA_SemiDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
                  data = SemiDepths) #significant depth 
@@ -152,6 +193,7 @@ pairwise.adonis2(dist_matrixA_SemiDepths ~ Depth + Site_Exposure, p.adj = "hochb
 dist_matrixB_SemiDepths=vegdist(SemiDepths$FDis_Heigh,method="manhattan")
 pairwise.adonis2(dist_matrixB_SemiDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
                  data = SemiDepths) #significant depth 
+#### Pojo
 
 dist_matrixA_PojoDepths=vegdist(PojoDepths$CWM_Height,method="manhattan")
 pairwise.adonis2(dist_matrixA_PojoDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 

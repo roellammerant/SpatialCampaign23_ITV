@@ -77,7 +77,7 @@ boxplot(CWM_PC2 ~ Exposure_Depth, data = Indices_PCA_AllsitesB,
         boxwex = 0.5, col = c("bisque","azure2","bisque","azure2","bisque","bisque","azure2"),
         main = NA,
         xlab = NA, ylab = "CWM PC2",at = c(1, 2, 4, 5, 7, 9, 10),
-        lex.order = TRUE, xaxt="n",cex.lab = 1.2)
+        lex.order = TRUE, xaxt="n",cex.lab = 1.2, ylim= c(-2,2))
 
 stripchart(CWM_PC2 ~ Exposure_Depth,
            data = Indices_PCA_AllsitesB,
@@ -99,7 +99,7 @@ axis(1,
 boxplot(FDis_PC2 ~ Exposure_Depth, data = Indices_PCA_AllsitesB,
         boxwex = 0.5, col = c("bisque","azure2","bisque","azure2","bisque","bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "FDis LAP",at = c(1, 2, 4, 5, 7, 9, 10),
+        xlab = NA, ylab = "FDis PC2",at = c(1, 2, 4, 5, 7, 9, 10),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(FDis_PC2 ~ Exposure_Depth,

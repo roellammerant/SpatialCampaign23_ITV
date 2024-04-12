@@ -4,6 +4,48 @@
 #                                                          #
 ##%######################################################%##
 
+####Height
+Indices_height_Allsites$CWM_Height <- as.numeric(Indices_height_Allsites$CWM_Height)
+Indices_height_Allsites$FDis_Height <- as.numeric(Indices_height_Allsites$FDis_Height)
+Indices_height_Allsites$Exposure_Depth <- factor(Indices_height_Allsites$Exposure_Depth , # Reorder factor levels
+                                                 c("Exposed_Shallow","Exposed_Deep",
+                                                   "Semi_Shallow", "Semi_Deep", 
+                                                   "Sheltered_Shallow",
+                                                   "Pojo_Shallow", "Pojo_Deep"))
+####Root depth
+
+Indices_RootDepth_AllsitesB$CWM_RootDepth <- as.numeric(Indices_RootDepth_AllsitesB$CWM_RootDepth)
+Indices_RootDepth_AllsitesB$FDis_RootDepth <- as.numeric(Indices_RootDepth_AllsitesB$FDis_RootDepth)
+Indices_RootDepth_AllsitesB$Exposure_Depth <- factor(Indices_RootDepth_AllsitesB$Exposure_Depth , # Reorder factor levels
+                                                 c("Exposed_Shallow","Exposed_Deep",
+                                                   "Semi_Shallow", "Semi_Deep", 
+                                                   "Sheltered_Shallow",
+                                                   "Pojo_Shallow", "Pojo_Deep"))
+
+####R-s ratio
+
+Indices_Ratio_AllsitesB$CWM_Ratio <- as.numeric(Indices_Ratio_AllsitesB$CWM_Ratio)
+Indices_Ratio_AllsitesB$FDis_Ratio <- as.numeric(Indices_Ratio_AllsitesB$FDis_Ratio)
+Indices_Ratio_AllsitesB$Exposure_Depth <- factor(Indices_Ratio_AllsitesB$Exposure_Depth , # Reorder factor levels
+                                                 c("Exposed_Shallow","Exposed_Deep",
+                                                   "Semi_Shallow", "Semi_Deep", 
+                                                   "Sheltered_Shallow",
+                                                   "Pojo_Shallow", "Pojo_Deep"))
+
+####Leaf
+
+Indices_leaf_AllsitesB$CWM_SLA <- as.numeric(Indices_leaf_AllsitesB$CWM_SLA)
+Indices_leaf_AllsitesB$CWM_LAP <- as.numeric(Indices_leaf_AllsitesB$CWM_LAP)
+Indices_leaf_AllsitesB$FDis_SLA <- as.numeric(Indices_leaf_AllsitesB$FDis_SLA)
+Indices_leaf_AllsitesB$FDis_LAP <- as.numeric(Indices_leaf_AllsitesB$FDis_LAP)
+Indices_leaf_AllsitesB$Exposure_Depth <- factor(Indices_leaf_AllsitesB$Exposure_Depth , # Reorder factor levels
+                                                 c("Exposed_Shallow","Exposed_Deep",
+                                                   "Semi_Shallow", "Semi_Deep", 
+                                                   "Sheltered_Shallow",
+                                                   "Pojo_Shallow", "Pojo_Deep"))
+
+
+
 png(
   "output_plot/CWM_All_Indices.jpg",
   width = 13,
@@ -96,7 +138,7 @@ axis(1,
 boxplot(CWM_SLA ~ Exposure_Depth, data = Indices_leaf_AllsitesB,
         boxwex = 0.5, col = c("bisque","azure2","bisque","azure2","bisque","bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "SLA (cm2mg-1)",at = c(1, 2, 4, 5, 7, 9, 10),
+        xlab = NA, ylab = "SLA (mm2mg-1)",at = c(1, 2, 4, 5, 7, 9, 10),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(CWM_SLA ~ Exposure_Depth,

@@ -7,8 +7,8 @@
 Abundance_all_deep$Depth <- c(rep("Deep",14))
 Abundance_all_shallow$Depth <- c(rep("Shallow",15))
 Abundance_all<- rbind.data.frame(Abundance_all_deep,Abundance_all_shallow)
-Abundance_all$Exposure_Depth <- factor(paste(Abundanc_all$Site_group, 
-                                            Abundanc_all$Depth, sep = "_"),
+Abundance_all$Exposure_Depth <- factor(paste(Abundance_all$Site_group, 
+                                            Abundance_all$Depth, sep = "_"),
                                           levels = c(
                                             "exposed_Shallow", "exposed_Deep",
                                             "semi_Shallow", "semi_Deep",
@@ -46,7 +46,7 @@ mshapiro_test(as.numeric(Abundance_all[c(10:14),c(2)])) # No result all zero val
 Abundance_all[c(25:29),c(5)]
 mshapiro_test(as.numeric(Abundance_all[c(25:29),c(2)])) # non-significant
 
-# Conclusion parametric test for shallow sites and non-paramtric for deep sites
+# Conclusion parametric test for shallow sites and non-parametric for deep sites
 
 ##%######################################################%##
 #                                                          #
@@ -90,7 +90,7 @@ A2 # semi to sheltered decreases significantly
 ### Ind Count shallow sites
 
 Plant_ShallowA <- Abundance_all_shallow[c(1:10),]
-Plant_ShallowA2 <- Abundance_all_shallow[c(11:20),]
+Plant_ShallowA2 <- Abundance_all_shallow[c(6:15),]
 
 A <-wilcox.test(Individual_count_per_m2 ~ Site_group, data = Plant_ShallowA, 
                 paired = FALSE, alternative = "greater")
