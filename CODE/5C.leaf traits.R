@@ -183,26 +183,64 @@ FDisLAP_Depths # significant difference among exposure-depth and site level
 
 ######### Shallow sites #########
 
-dist_matrixA=vegdist(Shallow_Leaf$CWM_SLA,method="manhattan")
-pairwise.adonis2(dist_matrixA ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf)
+######### CWM
+table(Shallow_Leaf$Exposure_Depth[c(1:61)])
+dist_matrixA=vegdist(Shallow_Leaf$CWM_SLA[c(1:61)],method="manhattan")
+pairwise.adonis2(dist_matrixA ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(1:61),])
 
-dist_matrixB=vegdist(Shallow_Leaf$FDis_SLA,method="manhattan")
-pairwise.adonis2(dist_matrixB ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf)
+table(Shallow_Leaf$Exposure_Depth[c(32:61, 92:121)])
+dist_matrixB=vegdist(Shallow_Leaf$CWM_SLA[c(32:61, 92:121)],method="manhattan")
+pairwise.adonis2(dist_matrixB ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(32:61, 92:121),])
 
+table(Shallow_Leaf$Exposure_Depth[c(92:121, 62:91)])
+dist_matrixC=vegdist(Shallow_Leaf$CWM_SLA[c(92:121, 62:91)],method="manhattan")
+pairwise.adonis2(dist_matrixC ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(92:121, 62:91),])
+
+######### FDis
+
+table(Shallow_Leaf$Exposure_Depth[c(1:61)])
+dist_matrixA2=vegdist(Shallow_Leaf$FDis_SLA[c(1:61)],method="manhattan")
+pairwise.adonis2(dist_matrixA2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(1:61),])
+
+table(Shallow_Leaf$Exposure_Depth[c(32:61, 92:121)])
+dist_matrixB2=vegdist(Shallow_Leaf$FDis_SLA[c(32:61, 92:121)],method="manhattan")
+pairwise.adonis2(dist_matrixB2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(32:61, 92:121),])
+
+table(Shallow_Leaf$Exposure_Depth[c(92:121, 62:91)])
+dist_matrixC2=vegdist(Shallow_Leaf$FDis_SLA[c(92:121, 62:91)],method="manhattan")
+pairwise.adonis2(dist_matrixC2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(92:121, 62:91),])
+
+table(Shallow_Leaf$Exposure_Depth[c(1:31, 92:121)])
+dist_matrixD2=vegdist(Shallow_Leaf$FDis_SLA[c(1:31, 92:121)],method="manhattan")
+pairwise.adonis2(dist_matrixD2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(1:31, 92:121),])
 
 ######### Deep sites #########
 
-dist_matrixAD=vegdist(Deep_Leaf$CWM_SLA,method="manhattan")
-pairwise.adonis2(dist_matrixAD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Leaf)
+######### CWM
+table(Deep_Leaf$Exposure_Depth[c(1:26,27:56)])
+dist_matrixAD=vegdist(Deep_Leaf$CWM_SLA[c(1:26,27:56)],method="manhattan")
+pairwise.adonis2(dist_matrixAD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Leaf[c(1:26,27:56),])
 
-dist_matrixBD=vegdist(Deep_Leaf$FDis_SLA,method="manhattan")
-pairwise.adonis2(dist_matrixBD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Leaf)
+table(Deep_Leaf$Exposure_Depth[c(27:64)])
+dist_matrixBD=vegdist(Deep_Leaf$CWM_SLA[c(27:64)],method="manhattan")
+pairwise.adonis2(dist_matrixBD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Leaf[c(27:64),])
+
+######### FDis
+table(Deep_Leaf$Exposure_Depth[c(1:26,27:56)])
+dist_matrixBD=vegdist(Deep_Leaf$FDis_SLA[c(1:26,27:56)],method="manhattan")
+pairwise.adonis2(dist_matrixBD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Leaf[c(1:26,27:56),])
+
+table(Deep_Leaf$Exposure_Depth[c(27:64)])
+dist_matrixBD2=vegdist(Deep_Leaf$FDis_SLA[c(27:64)],method="manhattan")
+pairwise.adonis2(dist_matrixBD2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Leaf[c(27:64),])
+
 
 ######### Between depths #########
 ExposedDepths <-Indices_leaf_AllsitesB[c(1:57),]
 SemiDepths <-Indices_leaf_AllsitesB[c(58:117),]
 PojoDepths <-Indices_leaf_AllsitesB[c(118:155),]
 
+###Exposed
 dist_matrixA_ExposedDepths=vegdist(ExposedDepths$CWM_SLA,method="manhattan")
 pairwise.adonis2(dist_matrixA_ExposedDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
                  data = ExposedDepths) #significant site level
@@ -211,6 +249,7 @@ dist_matrixB_ExposedDepths=vegdist(ExposedDepths$FDis_SLA,method="manhattan")
 pairwise.adonis2(dist_matrixB_ExposedDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
                  data = ExposedDepths) #significant depth and site level
 
+###Semi
 dist_matrixA_SemiDepths=vegdist(SemiDepths$CWM_SLA,method="manhattan")
 pairwise.adonis2(dist_matrixA_SemiDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
                  data = SemiDepths) #significant depth and site level
@@ -219,6 +258,7 @@ dist_matrixB_SemiDepths=vegdist(SemiDepths$FDis_SLA,method="manhattan")
 pairwise.adonis2(dist_matrixB_SemiDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
                  data = SemiDepths) #significant depth and site level (marginally)
 
+###Pojo
 dist_matrixA_PojoDepths=vegdist(PojoDepths$CWM_SLA,method="manhattan")
 pairwise.adonis2(dist_matrixA_PojoDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
                  data = PojoDepths) #significant depth and site level (marginally)
@@ -235,26 +275,63 @@ pairwise.adonis2(dist_matrixB_PojoDepths ~ Depth + Site_Exposure, p.adj = "hochb
 
 ######### Shallow sites #########
 
-dist_matrixA=vegdist(Shallow_Leaf$CWM_LAP,method="manhattan")
-pairwise.adonis2(dist_matrixA ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf)
+######### CWM
+table(Shallow_Leaf$Exposure_Depth[c(1:61)])
+dist_matrixA=vegdist(Shallow_Leaf$CWM_LAP[c(1:61)],method="manhattan")
+pairwise.adonis2(dist_matrixA ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(1:61),])
 
-dist_matrixB=vegdist(Shallow_Leaf$FDis_LAP,method="manhattan")
-pairwise.adonis2(dist_matrixB ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf)
+table(Shallow_Leaf$Exposure_Depth[c(32:61, 92:121)])
+dist_matrixB=vegdist(Shallow_Leaf$CWM_LAP[c(32:61, 92:121)],method="manhattan")
+pairwise.adonis2(dist_matrixB ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(32:61, 92:121),])
 
+table(Shallow_Leaf$Exposure_Depth[c(92:121, 62:91)])
+dist_matrixC=vegdist(Shallow_Leaf$CWM_LAP[c(92:121, 62:91)],method="manhattan")
+pairwise.adonis2(dist_matrixC ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(92:121, 62:91),])
+
+######### FDis
+
+table(Shallow_Leaf$Exposure_Depth[c(1:61)])
+dist_matrixA2=vegdist(Shallow_Leaf$FDis_LAP[c(1:61)],method="manhattan")
+pairwise.adonis2(dist_matrixA2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(1:61),])
+
+table(Shallow_Leaf$Exposure_Depth[c(32:61, 92:121)])
+dist_matrixB2=vegdist(Shallow_Leaf$FDis_LAP[c(32:61, 92:121)],method="manhattan")
+pairwise.adonis2(dist_matrixB2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(32:61, 92:121),])
+
+table(Shallow_Leaf$Exposure_Depth[c(92:121, 62:91)])
+dist_matrixC2=vegdist(Shallow_Leaf$FDis_LAP[c(92:121, 62:91)],method="manhattan")
+pairwise.adonis2(dist_matrixC2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(92:121, 62:91),])
+
+table(Shallow_Leaf$Exposure_Depth[c(1:31, 92:121)])
+dist_matrixD2=vegdist(Shallow_Leaf$FDis_LAP[c(1:31, 92:121)],method="manhattan")
+pairwise.adonis2(dist_matrixD2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Shallow_Leaf[c(1:31, 92:121),])
 
 ######### Deep sites #########
 
-dist_matrixAD=vegdist(Deep_Leaf$CWM_LAP,method="manhattan")
-pairwise.adonis2(dist_matrixAD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Leaf)
+######### CWM
+table(Deep_Leaf$Exposure_Depth[c(1:26,27:56)])
+dist_matrixAD=vegdist(Deep_Leaf$CWM_LAP[c(1:26,27:56)],method="manhattan")
+pairwise.adonis2(dist_matrixAD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Leaf[c(1:26,27:56),])
 
-dist_matrixBD=vegdist(Deep_Leaf$FDis_LAP,method="manhattan")
-pairwise.adonis2(dist_matrixBD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Leaf)
+table(Deep_Leaf$Exposure_Depth[c(27:64)])
+dist_matrixBD=vegdist(Deep_Leaf$CWM_LAP[c(27:64)],method="manhattan")
+pairwise.adonis2(dist_matrixBD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Leaf[c(27:64),])
+
+######### FDis
+table(Deep_Leaf$Exposure_Depth[c(1:26,27:56)])
+dist_matrixBD=vegdist(Deep_Leaf$FDis_LAP[c(1:26,27:56)],method="manhattan")
+pairwise.adonis2(dist_matrixBD ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Leaf[c(1:26,27:56),])
+
+table(Deep_Leaf$Exposure_Depth[c(27:64)])
+dist_matrixBD2=vegdist(Deep_Leaf$FDis_LAP[c(27:64)],method="manhattan")
+pairwise.adonis2(dist_matrixBD2 ~ Exposure + Site_Exposure, p.adj = "hochberg", data = Deep_Leaf[c(27:64),])
 
 ######### Between depths #########
 ExposedDepths <-Indices_leaf_AllsitesB[c(1:57),]
 SemiDepths <-Indices_leaf_AllsitesB[c(58:117),]
 PojoDepths <-Indices_leaf_AllsitesB[c(118:155),]
 
+#Exposed
 dist_matrixC_ExposedDepths=vegdist(ExposedDepths$CWM_LAP,method="manhattan")
 pairwise.adonis2(dist_matrixC_ExposedDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
                  data = ExposedDepths) #significant depth and site level
@@ -263,6 +340,7 @@ dist_matrixD_ExposedDepths=vegdist(ExposedDepths$FDis_LAP,method="manhattan")
 pairwise.adonis2(dist_matrixD_ExposedDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
                  data = ExposedDepths) #significant depth and site level
 
+###Semi
 dist_matrixC_SemiDepths=vegdist(SemiDepths$CWM_LAP,method="manhattan")
 pairwise.adonis2(dist_matrixC_SemiDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
                  data = SemiDepths) #significant site level
@@ -271,6 +349,7 @@ dist_matrixD_SemiDepths=vegdist(SemiDepths$FDis_LAP,method="manhattan")
 pairwise.adonis2(dist_matrixD_SemiDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
                  data = SemiDepths) #significant depth and site level 
 
+###Pojo
 dist_matrixC_PojoDepths=vegdist(PojoDepths$CWM_LAP,method="manhattan")
 pairwise.adonis2(dist_matrixC_PojoDepths ~ Depth + Site_Exposure, p.adj = "hochberg", 
                  data = PojoDepths) #significant site level (marginally)
