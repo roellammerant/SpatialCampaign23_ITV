@@ -1,29 +1,27 @@
 ##%######################################################%##
 #                                                          #
-####          Prepare data environmental NMDS           ####
+####          Prepare data environmental PCA            ####
 #                                                          #
 ##%######################################################%##
 library(vegan)
 library(car)
 library(tidyr)
 library(ellipse)
+library(imager)
 
 Site_environmental <- read_excel("DATA/Site environmental.xlsx")
 
-#make community matrix - extract columns with site variables
-com = Site_environmental[,3:6]
-#turn data frame into a matrix
-m_com = as.matrix(com)
-set.seed(123)
-nmds = metaMDS(m_com, distance = "bray")
-nmds
-par(mfcol=c(1,1))
-plot(nmds)
+ord <- prcomp(~ Site_environmental$Salinity +
+                Site_environmental$LOI +
+                Site_environmental$`Percent Sand` +
+                Site_environmental$`Percent Clay` 
+              , center = TRUE, scale = TRUE, data=Site_environmental)
 
-#extract NMDS scores (x and y coordinates)
+summary(ord) # percent of variance explained by each PC AXIS
 
-data.scores = as.data.frame(scores(nmds)$sites)
+data.scores = as.data.frame(ord$x[,1:2])
 data.scores$Exposure <- Site_environmental$Exposure
+
 
 
 ##%######################################################%##
@@ -145,51 +143,33 @@ data.scoresB$Site_group <- All_sites_drymass$Site_group
 
 ##%######################################################%##
 #                                                          #
-####                Plot 4 panel NMDS                   ####
+####           Plot 4 panel figure of sites             ####
 #                                                          #
 ##%######################################################%##
-
 png(
-  "output_plot/NMDSAllNames.jpg",
+  "output_plot/Sites_Environment_Species.jpg",
   width = 13,
   height = 8,
   units = 'in',
-  res = 300
+  res = 400
 )
 
-par(mfcol=c(2,2))
+par(mfcol = c(2, 2), mar = c(1, 1, 0, 0.5))  
 
-par(mar = c(4, 4, 3, 3))
+#######################
+### FIGURE OF sites ###
+#######################
 
-###########################################
-#####  NMDS Environmental variables  ######
-###########################################
+image_data <- load.image("C:/Users/roell/OneDrive/Bureaublad/Github/Coastclim Spatial/Spatial-23-CoastClim/output_plot/Map_sitegroup_colors.png")
+plot(image_data, axes = FALSE)
 
-colors <- c("burlywood3","orange2","palegreen","plum1")
-ordiplot(nmds, display = "species", cex = 1.5,xlim = c(-0.7,0.7), ylim = c(-0.2,0.2), , ylab="NMDS2", xlab="NMDS1")
-dataEllipse(data.scores$NMDS1, data.scores$NMDS2, groups = as.factor(data.scores$Exposure), levels = c(0.60), 
-            center.pch =FALSE,  plot.points = FALSE, group.labels = NA, col=colors)
-
-text(-0.2567360, -0.12, expression("Salinity"))
-text(0.37, 0.018, expression("LOI"))
-text(-0.29, 0.13, expression("Sand %"))
-text(0.695, 0.026, expression("Clay %"))
-
-legend("topleft",
-       legend = unique(data.scores$Exposure),
-       pch = 19,
-       col = c("burlywood3","palegreen","plum1","orange2"))
+mtext("A", 3, -1.25, adj=0.05, font=2)
 
 
-plot(data.scores$NMDS1, data.scores$NMDS2, xlim = c(-0.7,0.7), ylim = c(-0.2,0.2),
-     col=colors[as.factor(data.scores$Exposure)], pch = 19, ylab="NMDS2", xlab="NMDS1",)
-dataEllipse(data.scores$NMDS1, data.scores$NMDS2, groups = as.factor(data.scores$Exposure), levels = c(0.60), 
-            center.pch =FALSE,  plot.points = FALSE, group.labels = NA, col=colors)
-
-
-###########################################
-#####  NMDS community composition    ######
-###########################################
+#######################
+### Species NMDS    ###
+#######################
+par(mar = c(4, 4, 1.5, 0.5))
 
 ordiplot(nmdsB, display = "species", cex = 1.5, xlim = c(-2.3,3.5), ylab="NMDS2", xlab="NMDS1")
 dataEllipse(data.scoresB$NMDS1, data.scoresB$NMDS2, groups = as.factor(data.scoresB$Site_group), levels = c(0.60), 
@@ -214,9 +194,75 @@ text(1.946877033, -1.19134342, expression("P. obtusifolius"))
 text(2.082468368, -0.27188921, expression("N. marina"))
 text(2.913322221, -0.07091259, expression("C. hermaprhoditica"))
 
+mtext("C", 3, 0.25, adj=0, font=2)
+
+##################################################################
+### FIGURE OF ORDINATION
+##################################################################
+
+colors <- c("burlywood3","orange2","palegreen","plum1")
+
+plot(ord$x[,1:2], pch=16, col=c("burlywood3","burlywood3","burlywood3","burlywood3","burlywood3",
+                                "palegreen","palegreen","palegreen","palegreen","palegreen",
+                                "plum1","plum1","plum1","plum1","plum1",
+                                "orange2","orange2","orange2","orange2","orange2"), 
+     cex=0.75,ylim = c(-3,3), xlim = c(-2,4))
+
+dataEllipse(data.scores$PC1, data.scores$PC2, groups = as.factor(data.scores$Exposure), levels = c(0.60), 
+            center.pch =FALSE,  plot.points = FALSE, group.labels = NA, col=colors)
+
+mtext("B", 3, 0.25, adj=0.0, font=2)
+abline(v=0, h=0, lty=3)
+
+l.x <- ord$rotation[,1]*1.5
+l.y <- ord$rotation[,2]*1.5
+
+arrows(rep(0,11), rep(0,11), l.x, l.y, len=0.1, lwd=1.25)
+
+
+text(-0.82, -1.4, expression("Salinity"))
+text(0.90, -0.72, expression("LOI"))
+text(-0.99, 0.37, expression("Sand %"))
+text(1.00, -0.33, expression("Clay %"))
+
+legend("topleft",
+       legend = unique(Site_environmental$Exposure),
+       pch = 19,
+       col = c("#DEB887","#98FB98","#DDA0DD","#FFA500"),
+       cex = 0.95)
+
+###########################
+### Species NMDS data   ###
+###########################
+
 plot(data.scoresB$NMDS1, data.scoresB$NMDS2,  col = colors[as.factor(data.scoresB$Site_group)],xlim=c(-2,3), ylab="NMDS2", xlab="NMDS1", pch = 19)
 dataEllipse(data.scoresB$NMDS1, data.scoresB$NMDS2, groups = as.factor(data.scoresB$Site_group), levels = c(0.60), 
             center.pch =FALSE,  plot.points = FALSE, group.labels = NA, col=colors)
 
+mtext("D", 3, 0.25, adj=0, font=2)
+
 dev.off()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
