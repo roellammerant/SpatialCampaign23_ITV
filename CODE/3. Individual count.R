@@ -134,7 +134,7 @@ stripchart(Individual_count_per_m2 ~ Site_Depth,
            vertical = TRUE,
            add = TRUE)
 
-label=c("Exposed", "Semi-exposed", "Sheltered")
+label=c("Exposed", "Semi-sheltered", "Sheltered")
 
 axis(1, 
      at = seq(1.5 , 8 , 3), 

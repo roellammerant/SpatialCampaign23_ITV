@@ -1,5 +1,29 @@
 ##%######################################################%##
 #                                                          #
+####                  Load R packages                   ####
+#                                                          #
+##%######################################################%##
+resetPar <- function() {
+  dev.new()
+  op <- par(no.readonly = TRUE)
+  dev.off()
+  op
+}
+par(resetPar())
+
+ipak <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg)) 
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
+}
+
+# usage
+packages <- c('readxl', 'data.table', 'vegan', 'reshape2', 'moments')
+ipak(packages)
+
+##%######################################################%##
+#                                                          #
 ####             Exposed plant Cstocks                  ####
 #                                                          #
 ##%######################################################%##
@@ -46,6 +70,7 @@ ExposedPlantCstock <- as.data.frame (rowSums(Plot_Abun_C))
 setDT(ExposedPlantCstock, keep.rownames = "Plot")
 names(ExposedPlantCstock)[2]<-paste("CarbonStock")
 ExposedPlantCstock$Category <- c("Exposed")
+ExposedPlantCstock <- ExposedPlantCstock[,-c(1)]
 ExposedPlantCstock$site <- c("D_1","D_1","D_1","D_1","D_1","D_1","D_1","D_1",
                                  "D_2","D_2","D_2","D_2","D_2","D_2",
                                  "D_3","D_3","D_3","D_3","D_3","D_3",
@@ -96,6 +121,7 @@ ExposedAlgaeCstock <- as.data.frame (Plot_Abun_C)
 setDT(ExposedAlgaeCstock, keep.rownames = "Plot")
 names(ExposedAlgaeCstock)[2]<-paste("CarbonStock")
 ExposedAlgaeCstock$Category <- c("Exposed")
+ExposedAlgaeCstock <- ExposedAlgaeCstock[,-c(1)]
 ExposedAlgaeCstock$site <- c("D_1","D_1","D_1","D_1","D_1","D_1","D_1","D_1",
                              "D_2","D_2","D_2","D_2","D_2","D_2",
                              "D_3","D_3","D_3","D_3","D_3","D_3",
@@ -167,7 +193,7 @@ SemiPlantCstock <- as.data.frame (rowSums(Plot_Abun_C))
 setDT(SemiPlantCstock, keep.rownames = "Plot")
 names(SemiPlantCstock)[2]<-paste("CarbonStock")
 SemiPlantCstock$Category <- c("Semi")
-SemiPlantCstock <- SemiPlantCstock[-c(1),]
+SemiPlantCstock <- SemiPlantCstock[-c(1),-c(1)]
 SemiPlantCstock$site <- c("D_1","D_1","D_1","D_1","D_1","D_1",
                              "D_2","D_2","D_2","D_2","D_2","D_2",
                              "D_3","D_3","D_3","D_3","D_3","D_3",
@@ -219,6 +245,7 @@ SemiAlgaeCstock <- as.data.frame (Plot_Abun_C)
 setDT(SemiAlgaeCstock, keep.rownames = "Plot")
 names(SemiAlgaeCstock)[2]<-paste("CarbonStock")
 SemiAlgaeCstock$Category <- c("Semi")
+SemiAlgaeCstock <- SemiAlgaeCstock[,-c(1)]
 SemiAlgaeCstock$site <- c("D_1","D_1","D_1","D_1","D_1","D_1",
                              "D_2","D_2","D_2","D_2","D_2","D_2",
                              "D_3","D_3","D_3","D_3","D_3","D_3",
@@ -343,6 +370,7 @@ ShelAlgaeCstock <- as.data.frame (Plot_Abun_C)
 setDT(ShelAlgaeCstock, keep.rownames = "Plot")
 names(ShelAlgaeCstock)[2]<-paste("CarbonStock")
 ShelAlgaeCstock$Category <- c("Shel")
+ShelAlgaeCstock <- ShelAlgaeCstock[,-c(1)]
 ShelAlgaeCstock$site <- c("S_1","S_1","S_1","S_1","S_1","S_1",
                           "S_2","S_2","S_2","S_2","S_2","S_2",
                           "S_3","S_3","S_3","S_3","S_3","S_3",

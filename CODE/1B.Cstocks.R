@@ -5,151 +5,71 @@
 ##%######################################################%##
 
 ################################
-##      Shallow quadrats      ##
+##      Plant quadrats      ##
 ################################
-Cstock_exp_quad_Shallow$Exposure <-  c(rep("Exposed",31))
-Cstock_exp_quad_Shallow$Exposure_Site <- factor(paste(Cstock_exp_quad_Shallow$Exposure, 
-                                                      Cstock_exp_quad_Shallow$Site_number, sep = "_"),
-                                                 levels = c("Exposed_1", "Exposed_2","Exposed_3","Exposed_4",
-                                                   "Exposed_5" ))
-Cstock_semi_quad_Shallow$Exposure <-  c(rep("Semi",30))
-Cstock_semi_quad_Shallow$Exposure_Site <- factor(paste(Cstock_semi_quad_Shallow$Exposure, 
-                                                       Cstock_semi_quad_Shallow$Site_number, sep = "_"),
-                                                levels = c("Semi_1", "Semi_2","Semi_3","Semi_4",
-                                                           "Semi_5" ))
-Cstock_shel_quad_Shallow$Exposure <-  c(rep("Sheltered",30))
-Cstock_shel_quad_Shallow$Exposure_Site <- factor(paste(Cstock_shel_quad_Shallow$Exposure, 
-                                                       Cstock_shel_quad_Shallow$Site_number, sep = "_"),
-                                                levels = c("Sheltered_1", "Sheltered_2","Sheltered_3","Sheltered_4",
-                                                           "Sheltered_5" ))
-Cstock_pojo_quad_Shallow$Exposure <-  c(rep("Pojo",30))
-Cstock_pojo_quad_Shallow$Exposure_Site <- factor(paste(Cstock_pojo_quad_Shallow$Exposure, 
-                                                       Cstock_pojo_quad_Shallow$Site_number, sep = "_"),
-                                                levels = c("Pojo_1", "Pojo_2","Pojo_3","Pojo_4",
-                                                           "Pojo_5" ))
-Cstock_all_plant_shallow <-rbind(Cstock_exp_quad_Shallow,Cstock_semi_quad_Shallow,Cstock_shel_quad_Shallow,
-                                 Cstock_pojo_quad_Shallow)
+Cstock_all_Plant <-rbind(PojoPlantCstock,ShelPlantCstock,SemiPlantCstock,ExposedPlantCstock)
+Cstock_all_Plant$Depth <- c(rep("Deep",8), rep("Shallow",60),rep("Deep",30),rep("Shallow",30),rep("Deep",26),rep("Shallow",31))
 
-################################
-##       Deep quadrats        ##
-################################
-Cstock_exp_quad_Deep$Exposure <-  c(rep("Exposed",26))
-Cstock_exp_quad_Deep$Exposure_Site <- factor(paste(Cstock_exp_quad_Deep$Exposure, 
-                                                   Cstock_exp_quad_Deep$Site_number, sep = "_"),
-                                                levels = c("Exposed_1", "Exposed_2","Exposed_3","Exposed_4"))
-Cstock_exp_quad_Deep <- rbind(Cstock_exp_quad_Deep, Cstock_exp_quad_Shallow[c(26:31),])
-Cstock_exp_quad_Deep[27:32, 3] = 0
-Cstock_exp_quad_Deep[27:32, 1] = c("D5.1", "D5.2", "D5.3", "D5.4", "D5.5", "D5.6")
+cstock_Plant_shallow <- Cstock_all_Plant[ which(Cstock_all_Plant$Depth=='Shallow'), ]
+cstock_Plant_shallow$Exposure_Site <- factor(paste(cstock_Plant_shallow$Category, 
+                                                   cstock_Plant_shallow$site, sep = "_"),
+                                          levels = c(
+                                            "Exposed_S_1", "Exposed_S_2","Exposed_S_3", "Exposed_S_4","Exposed_S_5", 
+                                            "Semi_S_1", "Semi_S_2","Semi_S_3", "Semi_S_4","Semi_S_5",
+                                            "Shel_S_1", "Shel_S_2","Shel_S_3", "Shel_S_4","Shel_S_5",
+                                            "Pojo_S_1", "Pojo_S_2","Pojo_S_3", "Pojo_S_4","Pojo_S_5"
+                                          ))
 
-Cstock_semi_quad_Deep$Exposure <-    c(rep("Semi",30))
-Cstock_semi_quad_Deep$Exposure_Site <- factor(paste(Cstock_semi_quad_Deep$Exposure, 
-                                                    Cstock_semi_quad_Deep$Site_number, sep = "_"),
-                                                 levels = c("Semi_1", "Semi_2","Semi_3","Semi_4",
-                                                            "Semi_5" ))
-Cstock_shel_quad_Deep <- Cstock_shel_quad_Shallow
-Cstock_shel_quad_Deep$Exposure <- c(rep("Sheltered",30))
-Cstock_shel_quad_Deep$Cstock_gm2 <- c(rep(0,30))
-Cstock_shel_quad_Deep$Exposure_Site <- factor(paste(Cstock_shel_quad_Deep$Exposure, 
-                                                    Cstock_shel_quad_Deep$Site_number, sep = "_"),
-                                                 levels = c("Sheltered_1", "Sheltered_2","Sheltered_3","Sheltered_4",
-                                                            "Sheltered_5" ))
-Cstock_shel_quad_Deep[c(1:30), 1] = c("D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6",
-                                            "D2.1", "D2.2", "D2.3", "D2.4", "D2.5", "D2.6",
-                                            "D3.1", "D3.2", "D3.3", "D3.4", "D3.5", "D3.6",
-                                            "D4.1", "D4.2", "D4.3", "D4.4", "D4.5", "D4.6",
-                                            "D5.1", "D5.2", "D5.3", "D5.4", "D5.5", "D5.6")
 
-Cstock_pojo_quad_Deep$Exposure <-  c(rep("Pojo",12))
-Cstock_pojo_quad_Deep$Exposure_Site <- factor(paste(Cstock_pojo_quad_Deep$Exposure, 
-                                                    Cstock_pojo_quad_Deep$Site_number, sep = "_"),
-                                              levels = c("Pojo_2","Pojo_3" ))
-Cstock_pojo_quad_Deep <- rbind(Cstock_pojo_quad_Shallow[c(1:6),],Cstock_pojo_quad_Deep, Cstock_pojo_quad_Shallow[c(19:30),])
-Cstock_pojo_quad_Deep[c(1:6, 19:30), 3] = 0
-Cstock_pojo_quad_Deep[c(1:6, 19:30), 1] = c("D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6",
-                                            "D4.1", "D4.2", "D4.3", "D4.4", "D4.5", "D4.6",
-                                            "D5.1", "D5.2", "D5.3", "D5.4", "D5.5", "D5.6")
-
-Cstock_all_plant_deep <-rbind(Cstock_exp_quad_Deep,Cstock_semi_quad_Deep,Cstock_shel_quad_Deep,
-                                 Cstock_pojo_quad_Deep)
-
-##%######################################################%##
-#                                                          #
-####           Algae Quadrat C stocks per site          ####
-#                                                          #
-##%######################################################%##
+cstock_Plant_Deep <- Cstock_all_Plant[ which(Cstock_all_Plant$Depth=='Deep'), ]
+Cstock_PlantD <- data.frame(site=c(rep("D_1",6),rep("D_2",4),rep("D_4",6), rep("D_5",6), rep("D_1",6), rep("D_2",6),
+                                          rep("D_3",6), rep("D_4",6), rep("D_5",12)),
+                            CarbonStock=c(rep("0",58)),
+                           Category=c(rep("Pojo",22), rep("Shel",30), rep("Exposed",6)),
+                           Depth = c(rep("Deep",58)))
+cstock_Plant_Deep <-rbind(cstock_Plant_Deep,Cstock_PlantD)
+cstock_Plant_Deep$Exposure_Site <- factor(paste(cstock_Plant_Deep$Category, 
+                                                cstock_Plant_Deep$site, sep = "_"),
+                                        levels = c(
+                                          "Exposed_D_1", "Exposed_D_2","Exposed_D_3", "Exposed_D_4","Exposed_D_5", 
+                                          "Semi_D_1", "Semi_D_2","Semi_D_3", "Semi_D_4","Semi_D_5",
+                                          "Shel_D_1", "Shel_D_2","Shel_D_3", "Shel_D_4","Shel_D_5",
+                                          "Pojo_D_1", "Pojo_D_2","Pojo_D_3", "Pojo_D_4","Pojo_D_5"
+                                        ))
+cstock_Plant_Deep$CarbonStock <-  as.numeric(cstock_Plant_Deep$CarbonStock)
 
 ################################
-##      Shallow quadrats      ##
+##       Algal quadrats       ##
 ################################
-Cstock_exp_Alg_quad_Shallow$Exposure <-  c(rep("Exposed",31))
-Cstock_exp_Alg_quad_Shallow$Exposure_Site <- factor(paste(Cstock_exp_Alg_quad_Shallow$Exposure, 
-                                                          Cstock_exp_Alg_quad_Shallow$Site_number, sep = "_"),
-                                                levels = c("Exposed_1", "Exposed_2","Exposed_3","Exposed_4",
-                                                           "Exposed_5" ))
+Cstock_all_Algae <-rbind(PojoAlgaeCstock,ShelAlgaeCstock,SemiAlgaeCstock,ExposedAlgaeCstock)
+Cstock_all_Algae$Depth <- c(rep("Deep",12), rep("Shallow",60),rep("Deep",30),rep("Shallow",30),rep("Deep",26),rep("Shallow",31))
 
-Cstock_semi_Alg_quad_Shallow$Exposure <-  c(rep("Semi",30))
-Cstock_semi_Alg_quad_Shallow$Exposure_Site <- factor(paste(Cstock_semi_Alg_quad_Shallow$Exposure, 
-                                                           Cstock_semi_Alg_quad_Shallow$Site_number, sep = "_"),
-                                                 levels = c("Semi_1", "Semi_2","Semi_3","Semi_4",
-                                                            "Semi_5" ))
-
-Cstock_shel_Alg_quad_Shallow$Exposure <-  c(rep("Sheltered",30))
-Cstock_shel_Alg_quad_Shallow$Exposure_Site <- factor(paste(Cstock_shel_Alg_quad_Shallow$Exposure, 
-                                                           Cstock_shel_Alg_quad_Shallow$Site_number, sep = "_"),
-                                                 levels = c("Sheltered_1", "Sheltered_2","Sheltered_3","Sheltered_4",
-                                                            "Sheltered_5" ))
-
-Cstock_pojo_Alg_quad_Shallow$Exposure <-  c(rep("Pojo",30))
-Cstock_pojo_Alg_quad_Shallow$Exposure_Site <- factor(paste(Cstock_pojo_Alg_quad_Shallow$Exposure, 
-                                                           Cstock_pojo_Alg_quad_Shallow$Site_number, sep = "_"),
-                                                 levels = c("Pojo_1", "Pojo_2","Pojo_3","Pojo_4",
-                                                            "Pojo_5" ))
-
-Cstock_all_algae_shallow <-rbind(Cstock_exp_Alg_quad_Shallow,Cstock_semi_Alg_quad_Shallow,Cstock_shel_Alg_quad_Shallow,
-                                 Cstock_pojo_Alg_quad_Shallow)
-################################
-##       Deep quadrats        ##
-################################
-Cstock_exp_Alg_quad_Deep$Exposure <-  c(rep("Exposed",26))
-Cstock_exp_Alg_quad_Deep$Exposure_Site <- factor(paste(Cstock_exp_Alg_quad_Deep$Exposure, 
-                                                       Cstock_exp_Alg_quad_Deep$Site_number, sep = "_"),
-                                             levels = c("Exposed_1", "Exposed_2","Exposed_3","Exposed_4"))
-Cstock_exp_Alg_quad_Deep <- rbind(Cstock_exp_Alg_quad_Deep, Cstock_exp_Alg_quad_Shallow[c(26:31),])
-Cstock_exp_Alg_quad_Deep[27:32, 3] = 0
-Cstock_exp_Alg_quad_Deep[27:32, 1] = c("D5.1", "D5.2", "D5.3", "D5.4", "D5.5", "D5.6")
-
-Cstock_semi_Alg_quad_Deep$Exposure <-   c(rep("Semi",30))
-Cstock_semi_Alg_quad_Deep$Exposure_Site <- factor(paste(Cstock_semi_Alg_quad_Deep$Exposure, 
-                                                        Cstock_semi_Alg_quad_Deep$Site_number, sep = "_"),
-                                              levels = c("Semi_1", "Semi_2","Semi_3","Semi_4",
-                                                         "Semi_5" ))
-
-Cstock_shel_Alg_quad_Deep <- Cstock_shel_Alg_quad_Shallow
-Cstock_shel_Alg_quad_Deep$Exposure <- c(rep("Sheltered",30))
-Cstock_shel_Alg_quad_Deep$Algae_Cstock_gm2 <- c(rep(0,30))
-Cstock_shel_Alg_quad_Deep$Exposure_Site <- factor(paste(Cstock_shel_Alg_quad_Deep$Exposure, 
-                                                        Cstock_shel_Alg_quad_Deep$Site_number, sep = "_"),
-                                              levels = c("Sheltered_1", "Sheltered_2","Sheltered_3","Sheltered_4",
-                                                         "Sheltered_5" ))
-Cstock_shel_Alg_quad_Deep[c(1:30), 1] = c("D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6",
-                                      "D2.1", "D2.2", "D2.3", "D2.4", "D2.5", "D2.6",
-                                      "D3.1", "D3.2", "D3.3", "D3.4", "D3.5", "D3.6",
-                                      "D4.1", "D4.2", "D4.3", "D4.4", "D4.5", "D4.6",
-                                      "D5.1", "D5.2", "D5.3", "D5.4", "D5.5", "D5.6")
+cstock_Algae_shallow <- Cstock_all_Algae[ which(Cstock_all_Algae$Depth=='Shallow'), ]
+cstock_Algae_shallow$Exposure_Site <- factor(paste(cstock_Algae_shallow$Category, 
+                                                   cstock_Algae_shallow$site, sep = "_"),
+                                             levels = c(
+                                               "Exposed_S_1", "Exposed_S_2","Exposed_S_3", "Exposed_S_4","Exposed_S_5", 
+                                               "Semi_S_1", "Semi_S_2","Semi_S_3", "Semi_S_4","Semi_S_5",
+                                               "Shel_S_1", "Shel_S_2","Shel_S_3", "Shel_S_4","Shel_S_5",
+                                               "Pojo_S_1", "Pojo_S_2","Pojo_S_3", "Pojo_S_4","Pojo_S_5"
+                                             ))
 
 
-Cstock_pojo_Alg_quad_Deep$Exposure <-  c(rep("Pojo",12))
-Cstock_pojo_Alg_quad_Deep$Exposure_Site <- factor(paste(Cstock_pojo_Alg_quad_Deep$Exposure, 
-                                                        Cstock_pojo_Alg_quad_Deep$Site_number, sep = "_"),
-                                              levels = c("Pojo_2","Pojo_3" ))
-Cstock_pojo_Alg_quad_Deep <- rbind(Cstock_pojo_Alg_quad_Shallow[c(1:6),],Cstock_pojo_Alg_quad_Deep, Cstock_pojo_Alg_quad_Shallow[c(19:30),])
-Cstock_pojo_Alg_quad_Deep[c(1:6, 19:30), 3] = 0
-Cstock_pojo_Alg_quad_Deep[c(1:6, 19:30), 1] = c("D1.1", "D1.2", "D1.3", "D1.4", "D1.5", "D1.6",
-                                            "D4.1", "D4.2", "D4.3", "D4.4", "D4.5", "D4.6",
-                                            "D5.1", "D5.2", "D5.3", "D5.4", "D5.5", "D5.6")
-
-Cstock_all_algae_deep <-rbind(Cstock_exp_Alg_quad_Deep,Cstock_semi_Alg_quad_Deep,Cstock_shel_Alg_quad_Deep,
-                                 Cstock_pojo_Alg_quad_Deep)
+cstock_Algae_Deep <- Cstock_all_Algae[ which(Cstock_all_Algae$Depth=='Deep'), ]
+Cstock_AlgaeD <- data.frame(site=c(rep("D_1",6),rep("D_4",6), rep("D_5",6), rep("D_1",6), rep("D_2",6),
+                                   rep("D_3",6), rep("D_4",6), rep("D_5",12)),
+                            CarbonStock=c(rep("0",54)),
+                            Category=c(rep("Pojo",18), rep("Shel",30), rep("Exposed",6)),
+                            Depth = c(rep("Deep",54)))
+cstock_Algae_Deep <-rbind(cstock_Algae_Deep,Cstock_AlgaeD)
+cstock_Algae_Deep$Exposure_Site <- factor(paste(cstock_Algae_Deep$Category, 
+                                                cstock_Algae_Deep$site, sep = "_"),
+                                          levels = c(
+                                            "Exposed_D_1", "Exposed_D_2","Exposed_D_3", "Exposed_D_4","Exposed_D_5", 
+                                            "Semi_D_1", "Semi_D_2","Semi_D_3", "Semi_D_4","Semi_D_5",
+                                            "Shel_D_1", "Shel_D_2","Shel_D_3", "Shel_D_4","Shel_D_5",
+                                            "Pojo_D_1", "Pojo_D_2","Pojo_D_3", "Pojo_D_4","Pojo_D_5"
+                                          ))
 
 
 ##%######################################################%##
@@ -158,16 +78,16 @@ Cstock_all_algae_deep <-rbind(Cstock_exp_Alg_quad_Deep,Cstock_semi_Alg_quad_Deep
 #                                                          #
 ##%######################################################%##
 
-CPlant_Shallow <- aggregate(Cstock_all_plant_shallow$Cstock_gm2,
-                    by = list(Cstock_all_plant_shallow$Exposure_Site),
+CPlant_Shallow <- aggregate(cstock_Plant_shallow$CarbonStock,
+                    by = list(cstock_Plant_shallow$Exposure_Site),
                     FUN = function(x) c(mean = mean(x), sd = sd(x),
                                         n = length(x)))
 CPlant_Shallow <- do.call(data.frame, CPlant_Shallow) 
 CPlant_Shallow$se <- CPlant_Shallow$x.sd / sqrt(CPlant_Shallow$x.n)
 colnames(CPlant_Shallow) <- c("Site", "mean", "sd", "n", "se")
 
-CPlant_Deep <- aggregate(Cstock_all_plant_deep$Cstock_gm2,
-                            by = list(Cstock_all_plant_deep$Exposure_Site),
+CPlant_Deep <- aggregate(cstock_Plant_Deep$CarbonStock,
+                            by = list(cstock_Plant_Deep$Exposure_Site),
                             FUN = function(x) c(mean = mean(x), sd = sd(x),
                                                 n = length(x)))
 CPlant_Deep <- do.call(data.frame, CPlant_Deep) 
@@ -188,7 +108,7 @@ par(mar = c(3, 5, 2, 3))
 
 barCenters <- barplot(height = CPlant_Shallow$mean,
                       beside = true, las = 2,
-                      ylim = c(0, 150),
+                      ylim = c(0, 120),
                       cex.axis = 1.25, cex.lab =1.25, xaxt = "n",
                       ylab = "g C m-2 (1-2m)",
                       border = "black", axes = TRUE, 
@@ -202,13 +122,13 @@ segments(barCenters, CPlant_Shallow$mean - CPlant_Shallow$se, barCenters,
 arrows(barCenters, CPlant_Shallow$mean - CPlant_Shallow$se, barCenters,
        CPlant_Shallow$mean + CPlant_Shallow$se, lwd = 1.5, angle = 90,
        code = 3, length = 0.05)
-legend("topleft", legend = c("Exposed", "Semi-exposed","Sheltered","Pojo bay"), 
+legend("topleft", legend = c("Exposed", "Semi-sheltered","Sheltered","Pojo bay"), 
        col=c("burlywood3","palegreen","plum1","orange2"),
        pch = 15, bty = "n", pt.cex = 3, cex = 1,  horiz = F)
 
 barCenters <- barplot(height = CPlant_Deep$mean,
                       beside = true, las = 2,
-                      ylim = c(0, 150),
+                      ylim = c(0, 125),
                       cex.axis = 1.25, cex.lab =1.25, xaxt = "n",
                       ylab = "g C m-2 (3-4m)",
                       border = "black", axes = TRUE, 
@@ -231,16 +151,17 @@ dev.off()
 #                                                          #
 ##%######################################################%##
 
-CAlgae_Shallow <- aggregate(Cstock_all_algae_shallow$Algae_Cstock_gm2,
-                            by = list(Cstock_all_algae_shallow$Exposure_Site),
+CAlgae_Shallow <- aggregate(cstock_Algae_shallow$CarbonStock,
+                            by = list(cstock_Algae_shallow$Exposure_Site),
                             FUN = function(x) c(mean = mean(x), sd = sd(x),
                                                 n = length(x)))
 CAlgae_Shallow <- do.call(data.frame, CAlgae_Shallow) 
 CAlgae_Shallow$se <- CAlgae_Shallow$x.sd / sqrt(CAlgae_Shallow$x.n)
 colnames(CAlgae_Shallow) <- c("Site", "mean", "sd", "n", "se")
 
-CAlgae_Deep <- aggregate(Cstock_all_algae_deep$Algae_Cstock_gm2,
-                            by = list(Cstock_all_algae_deep$Exposure_Site),
+cstock_Algae_Deep$CarbonStock <- as.numeric(cstock_Algae_Deep$CarbonStock)
+CAlgae_Deep <- aggregate(cstock_Algae_Deep$CarbonStock,
+                            by = list(cstock_Algae_Deep$Exposure_Site),
                             FUN = function(x) c(mean = mean(x), sd = sd(x),
                                                 n = length(x)))
 CAlgae_Deep <- do.call(data.frame, CAlgae_Deep) 
@@ -261,7 +182,7 @@ par(mar = c(3, 5, 2, 3))
 
 barCenters <- barplot(height = CAlgae_Shallow$mean,
                       beside = true, las = 2,
-                      ylim = c(0, 350),
+                      ylim = c(0, 200),
                       cex.axis = 1.25, cex.lab =1.25, xaxt = "n",
                       ylab = "g C m-2 (1-2m)",
                       border = "black", axes = TRUE, 
@@ -275,13 +196,13 @@ segments(barCenters, CAlgae_Shallow$mean - CAlgae_Shallow$se, barCenters,
 arrows(barCenters, CAlgae_Shallow$mean - CAlgae_Shallow$se, barCenters,
        CAlgae_Shallow$mean + CAlgae_Shallow$se, lwd = 1.5, angle = 90,
        code = 3, length = 0.05)
-legend("topleft", legend = c("Exposed", "Semi-exposed","Sheltered","Pojo bay"), 
+legend("topleft", legend = c("Exposed", "Semi-sheltered","Sheltered","Pojo bay"), 
        col=c("burlywood3","palegreen","plum1","orange2"),
        pch = 15, bty = "n", pt.cex = 3, cex = 1,  horiz = F)
 
 barCenters <- barplot(height = CAlgae_Deep$mean,
                       beside = true, las = 2,
-                      ylim = c(0, 350),
+                      ylim = c(0, 200),
                       cex.axis = 1.25, cex.lab =1.25, xaxt = "n",
                       ylab = "g C m-2 (3-4m)",
                       border = "black", axes = TRUE, 
