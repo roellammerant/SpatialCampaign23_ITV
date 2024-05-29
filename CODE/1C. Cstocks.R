@@ -3,65 +3,81 @@
 ####              Update data file for stats            ####
 #                                                          #
 ##%######################################################%##
-
-Cstock_all_mean_deep$Depth <- c(rep("Deep",40))
-Cstock_all_mean_shallow$Depth <- c(rep("Shallow",40))
-Cstocks_all_mean <- rbind.data.frame(Cstock_all_mean_deep,Cstock_all_mean_shallow)
-Cstocks_all_mean$Exposure_Depth <- factor(paste(Cstocks_all_mean$Site_group, 
-                                                Cstocks_all_mean$Depth, sep = "_"),
+Cstock_all$Exposure_Depth <- factor(paste(Cstock_all$Site_group, 
+                                          Cstock_all$Depth, sep = "_"),
                                                  levels = c(
                                                    "exposed_Shallow", "exposed_Deep",
-                                                   "semi_Shallow", "semi_Deep",
+                                                   "Semi_Shallow", "Semi_Deep",
                                                    "Pojo_Shallow", "Pojo_Deep",
-                                                   "sheltered_Shallow","sheltered_Deep"
+                                                   "Shel_Shallow","Shel_Deep"
                                                  ))
 
+Cstock_all$Exposure_Depth <- factor(Cstock_all$Exposure_Depth , # Reorder factor levels
+                                            c("exposed_Shallow", "exposed_Deep", "Semi_Shallow", "Semi_Deep", 
+                                              "Shel_Shallow", "Shel_Deep", "Pojo_Shallow", "Pojo_Deep"))
 ##%######################################################%##
 #                                                          #
 ####                  Normality tests                   ####
 #                                                          #
 ##%######################################################%##
+library(rstatix)
 
 ### Exposed_Deep
-Cstocks_all_mean[c(1:5, 21:25),c(6)]
-mshapiro_test(as.numeric(Cstocks_all_mean[c(1:5),c(2)])) # significant for plants
-mshapiro_test(as.numeric(Cstocks_all_mean[c(1:4),c(2)])) # non-significant for plants
-mshapiro_test(as.numeric(Cstocks_all_mean[c(21:25),c(2)])) # significant for algae
+Exp_dp <- subset(Cstock_all, Organism=="Plant" & Exposure_Depth=="exposed_Deep")
+Exp_da <-  subset(Cstock_all, Organism=="Algae" & Exposure_Depth=="exposed_Deep")
+
+mshapiro_test(as.numeric(Exp_dp[,c(2)])) #  marginally significant for plants
+mshapiro_test(as.numeric(Exp_dp[c(1:4),c(2)])) # non-significant for plants
+mshapiro_test(as.numeric(Exp_da[,c(2)])) # significant for algae
 
 ### Exposed_Shallow
-Cstocks_all_mean[c(41:45, 61:65),c(6)]
-mshapiro_test(as.numeric(Cstocks_all_mean[c(41:45),c(2)])) # non-significant for plants
-mshapiro_test(as.numeric(Cstocks_all_mean[c(61:65),c(2)])) # significant for algae
+Exp_sp <- subset(Cstock_all, Organism=="Plant" & Exposure_Depth=="exposed_Shallow")
+Exp_sa <-  subset(Cstock_all, Organism=="Algae" & Exposure_Depth=="exposed_Shallow")
+
+mshapiro_test(as.numeric(Exp_sp[,c(2)])) # non-significant for plants
+mshapiro_test(as.numeric(Exp_sa[,c(2)])) # significant for algae
 
 ### Semi_Deep
-Cstocks_all_mean[c(6:10, 26:30),c(6)]
-mshapiro_test(as.numeric(Cstocks_all_mean[c(6:10),c(2)])) # significant for plants
-mshapiro_test(as.numeric(Cstocks_all_mean[c(26:30),c(2)])) # all zero so no results for algae
+Semi_dp <- subset(Cstock_all, Organism=="Plant" & Exposure_Depth=="Semi_Deep")
+Semi_da <-  subset(Cstock_all, Organism=="Algae" & Exposure_Depth=="Semi_Deep")
+
+mshapiro_test(as.numeric(Semi_dp[,c(2)])) # significant for plants
+mshapiro_test(as.numeric(Semi_da[,c(2)])) # all zero so no results for algae
 
 ### Semi_Shallow
-Cstocks_all_mean[c(46:50, 66:70),c(6)]
-mshapiro_test(as.numeric(Cstocks_all_mean[c(46:50),c(2)])) # non-significant for plants
-mshapiro_test(as.numeric(Cstocks_all_mean[c(66:70),c(2)])) # non-significant for algae
+Semi_sp <- subset(Cstock_all, Organism=="Plant" & Exposure_Depth=="Semi_Shallow")
+Semi_sa <-  subset(Cstock_all, Organism=="Algae" & Exposure_Depth=="Semi_Shallow")
+
+mshapiro_test(as.numeric(Semi_sp[,c(2)])) # non-significant for plants
+mshapiro_test(as.numeric(Semi_sa[,c(2)])) # non-significant for algae
 
 ### Sheltered_Deep
-Cstocks_all_mean[c(11:15, 31:35),c(6)]
-mshapiro_test(as.numeric(Cstocks_all_mean[c(11:15),c(2)])) # all zero so no results for plants
-mshapiro_test(as.numeric(Cstocks_all_mean[c(31:35),c(2)])) # all zero so no results for algae
+Shel_dp <- subset(Cstock_all, Organism=="Plant" & Exposure_Depth=="Shel_Deep")
+Shel_da <-  subset(Cstock_all, Organism=="Algae" & Exposure_Depth=="Shel_Deep")
+
+mshapiro_test(as.numeric(Shel_dp[,c(2)])) # all zero so no results for plants
+mshapiro_test(as.numeric(Shel_da[,c(2)])) # all zero so no results for algae
 
 ### Sheltered_Shallow
-Cstocks_all_mean[c(51:55, 71:75),c(6)]
-mshapiro_test(as.numeric(Cstocks_all_mean[c(51:55),c(2)])) # significant for plants
-mshapiro_test(as.numeric(Cstocks_all_mean[c(71:75),c(2)])) # significant for algae
+Shel_sp <- subset(Cstock_all, Organism=="Plant" & Exposure_Depth=="Shel_Shallow")
+Shel_sa <-  subset(Cstock_all, Organism=="Algae" & Exposure_Depth=="Shel_Shallow")
+
+mshapiro_test(as.numeric(Shel_sp[,c(2)])) # significant for plants
+mshapiro_test(as.numeric(Shel_sa[,c(2)])) # significant for algae
 
 ### Pojo_Deep
-Cstocks_all_mean[c(16:20, 36:40),c(6)]
-mshapiro_test(as.numeric(Cstocks_all_mean[c(16:20),c(2)])) # significant for plants
-mshapiro_test(as.numeric(Cstocks_all_mean[c(36:40),c(2)])) # significant for algae
+Pojo_dp <- subset(Cstock_all, Organism=="Plant" & Exposure_Depth=="Pojo_Deep")
+Pojo_da <-  subset(Cstock_all, Organism=="Algae" & Exposure_Depth=="Pojo_Deep")
+
+mshapiro_test(as.numeric(Pojo_dp[,c(2)])) # significant for plants
+mshapiro_test(as.numeric(Pojo_da[,c(2)])) # significant for algae
 
 ### Pojo_Shallow
-Cstocks_all_mean[c(56:60, 76:80),c(6)]
-mshapiro_test(as.numeric(Cstocks_all_mean[c(56:60),c(2)])) # significant for plants
-mshapiro_test(as.numeric(Cstocks_all_mean[c(76:80),c(2)])) # marginally significant for algae
+Pojo_sp <- subset(Cstock_all, Organism=="Plant" & Exposure_Depth=="Pojo_Shallow")
+Pojo_sa <-  subset(Cstock_all, Organism=="Algae" & Exposure_Depth=="Pojo_Shallow")
+
+mshapiro_test(as.numeric(Pojo_sp[,c(2)])) # significant for plants
+mshapiro_test(as.numeric(Pojo_sa[,c(2)])) # marginally significant for algae
 
 # Conclusion non-parametric tests for both depths and algae/plants
 
@@ -71,11 +87,12 @@ mshapiro_test(as.numeric(Cstocks_all_mean[c(76:80),c(2)])) # marginally signific
 #                                                          #
 ##%######################################################%##
 
-Cstocks_all_mean$Cstock_gm2<- as.numeric(Cstocks_all_mean$Cstock_gm2) 
-Algae_Shallow <- subset(Cstocks_all_mean, Macrophytes=="Algae" & Depth=="Shallow")
-Algae_Deep <- subset(Cstocks_all_mean, Macrophytes=="Algae" & Depth=="Deep")
-Plant_Shallow <- subset(Cstocks_all_mean, Macrophytes=="Plants" & Depth=="Shallow")
-Plant_Deep <- subset(Cstocks_all_mean, Macrophytes=="Plants" & Depth=="Deep")
+Cstock_all$Cstock_gm2<- as.numeric(Cstock_all$Cstock_gm2) 
+
+Algae_Shallow <- subset(Cstock_all, Organism=="Algae" & Depth=="Shallow")
+Algae_Deep <- subset(Cstock_all, Organism=="Algae" & Depth=="Deep")
+Plant_Shallow <- subset(Cstock_all, Organism=="Plant" & Depth=="Shallow")
+Plant_Deep <- subset(Cstock_all, Organism=="Plant" & Depth=="Deep")
 
 fligner.test(Algae_Shallow$Cstock_gm2 ~ Algae_Shallow$Exposure) # non-signifcant
 fligner.test(Algae_Deep$Cstock_gm2 ~ Algae_Deep$Exposure) # non-signifcant
@@ -101,6 +118,8 @@ kruskal.test(Cstock_gm2 ~ Exposure_Depth, data = Plant_Deep) # significant diffe
 
 ### Deep plant C stocks
 
+Plant_Deep <- rbind(Exp_dp, Semi_dp, Shel_dp, Pojo_dp)
+
 Plant_DeepA <- Plant_Deep[c(1:10),]
 Plant_DeepA2 <- Plant_Deep[c(1:4, 6:10),]
 Plant_DeepB <- Plant_Deep[c(6:15),] 
@@ -125,11 +144,11 @@ B2 # Sheltered to Pojo are margnially significant lower
 #                                                          #
 ##%######################################################%##
 
-Plant_Exposure <- Cstocks_all_mean[c(1:5, 41:45),]
-Plant_DeepExposure2 <- Cstocks_all_mean[c(1:4, 41:45),]
-Plant_Semi <- Cstocks_all_mean[c(6:10, 46,50),] 
-Plant_Sheltered <- Cstocks_all_mean[c(11:15, 51:55),] 
-Plant_Pojo <- Cstocks_all_mean[c(16:20, 56:60),] 
+Plant_Exposure <- subset(Cstock_all, Organism=="Plant" & Site_group=="exposed")
+Plant_DeepExposure2 <- Plant_Exposure[-c(10),]
+Plant_Semi <- subset(Cstock_all, Organism=="Plant" & Site_group=="Semi")
+Plant_Sheltered <- subset(Cstock_all, Organism=="Plant" & Site_group=="Shel")
+Plant_Pojo <- subset(Cstock_all, Organism=="Plant" & Site_group=="Pojo")
 
 A <-wilcox.test(Cstock_gm2 ~ Depth, data = Plant_Exposure, paired = FALSE, alternative = "less")
 A # No significant difference between depths
