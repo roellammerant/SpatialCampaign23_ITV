@@ -51,7 +51,7 @@ png(
   width = 13,
   height = 8,
   units = 'in',
-  res = 300
+  res = 600
 )
 par(mfcol=c(3,2))
 
@@ -62,7 +62,7 @@ par(mar = c(3, 5, 2, 3))
 boxplot(CWM_Height ~ Exposure_Depth, data = Indices_height_Allsites,
         boxwex = 0.5, col = c("bisque","azure2","bisque","azure2","bisque","bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "Height (cm)",at = c(1, 2, 4, 5, 7, 9, 10),
+        xlab = NA, ylab = "CWM of Height",at = c(1, 2, 4, 5, 7, 9, 10),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(CWM_Height ~ Exposure_Depth,
@@ -90,7 +90,7 @@ legend("topleft", legend = c("Shallow", "Deep"),
 boxplot(CWM_Ratio ~ Exposure_Depth, data = Indices_Ratio_AllsitesB,
         boxwex = 0.5, col = c("bisque","azure2","bisque","azure2","bisque","bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "Root to shoot ratio",at = c(1, 2, 4, 5, 7, 9, 10),
+        xlab = NA, ylab = "CWM of R:S ratio",at = c(1, 2, 4, 5, 7, 9, 10),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(CWM_Ratio ~ Exposure_Depth,
@@ -114,7 +114,7 @@ axis(1,
 boxplot(CWM_RootDepth ~ Exposure_Depth, data = Indices_RootDepth_AllsitesB,
         boxwex = 0.5, col = c("bisque","azure2","bisque","azure2","bisque","bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "Root depth (cm)",at = c(1, 2, 4, 5, 7, 9, 10),
+        xlab = NA, ylab = "CWM of Root depth",at = c(1, 2, 4, 5, 7, 9, 10),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(CWM_RootDepth ~ Exposure_Depth,
@@ -138,7 +138,7 @@ axis(1,
 boxplot(CWM_SLA ~ Exposure_Depth, data = Indices_leaf_AllsitesB,
         boxwex = 0.5, col = c("bisque","azure2","bisque","azure2","bisque","bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "SLA (mm2mg-1)",at = c(1, 2, 4, 5, 7, 9, 10),
+        xlab = NA, ylab = "CWM of SLA",at = c(1, 2, 4, 5, 7, 9, 10),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(CWM_SLA ~ Exposure_Depth,
@@ -162,7 +162,7 @@ axis(1,
 boxplot(CWM_LAP ~ Exposure_Depth, data = Indices_leaf_AllsitesB,
         boxwex = 0.5, col = c("bisque","azure2","bisque","azure2","bisque","bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "LAP",at = c(1, 2, 4, 5, 7, 9, 10),
+        xlab = NA, ylab = "CWM of LAP",at = c(1, 2, 4, 5, 7, 9, 10),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(CWM_LAP ~ Exposure_Depth,
@@ -194,7 +194,7 @@ png(
   width = 13,
   height = 8,
   units = 'in',
-  res = 300
+  res = 600
 )
 par(mfcol=c(3,2))
 
@@ -205,7 +205,7 @@ par(mar = c(3, 5, 2, 3))
 boxplot(FDis_Height ~ Exposure_Depth, data = Indices_height_Allsites,
         boxwex = 0.5, col = c("bisque","azure2","bisque","azure2","bisque","bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "Height",at = c(1, 2, 4, 5, 7, 9, 10),
+        xlab = NA, ylab = "FDis of Height",at = c(1, 2, 4, 5, 7, 9, 10),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(FDis_Height ~ Exposure_Depth,
@@ -233,7 +233,7 @@ legend("topleft", legend = c("Shallow", "Deep"),
 boxplot(FDis_Ratio ~ Exposure_Depth, data = Indices_Ratio_AllsitesB,
         boxwex = 0.5, col = c("bisque","azure2","bisque","azure2","bisque","bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "Root to shoot ratio",at = c(1, 2, 4, 5, 7, 9, 10),
+        xlab = NA, ylab = "FDis of R:S ratio",at = c(1, 2, 4, 5, 7, 9, 10),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(FDis_Ratio ~ Exposure_Depth,
@@ -257,7 +257,7 @@ axis(1,
 boxplot(FDis_RootDepth ~ Exposure_Depth, data = Indices_RootDepth_AllsitesB,
         boxwex = 0.5, col = c("bisque","azure2","bisque","azure2","bisque","bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "Root depth",at = c(1, 2, 4, 5, 7, 9, 10),
+        xlab = NA, ylab = "FDis of Root depth",at = c(1, 2, 4, 5, 7, 9, 10),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(FDis_RootDepth ~ Exposure_Depth,
@@ -281,7 +281,7 @@ axis(1,
 boxplot(FDis_SLA ~ Exposure_Depth, data = Indices_leaf_AllsitesB,
         boxwex = 0.5, col = c("bisque","azure2","bisque","azure2","bisque","bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "SLA",at = c(1, 2, 4, 5, 7, 9, 10),
+        xlab = NA, ylab = "FDis of SLA",at = c(1, 2, 4, 5, 7, 9, 10),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(FDis_SLA ~ Exposure_Depth,
@@ -305,7 +305,7 @@ axis(1,
 boxplot(FDis_LAP ~ Exposure_Depth, data = Indices_leaf_AllsitesB,
         boxwex = 0.5, col = c("bisque","azure2","bisque","azure2","bisque","bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "LAP",at = c(1, 2, 4, 5, 7, 9, 10),
+        xlab = NA, ylab = "FDis of LAP",at = c(1, 2, 4, 5, 7, 9, 10),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(FDis_LAP ~ Exposure_Depth,

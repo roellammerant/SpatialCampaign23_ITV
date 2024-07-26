@@ -551,9 +551,17 @@ Cstock_all$MacrophyteCategory <- factor(paste(Cstock_all$Site_group,
                                                     "Pojo_Plant", "Pojo_Algae"
                                                   ))
 
+Cstock_Plant <- Cstock_all[ which(Cstock_all$Organism=='Plant'), ]
 
-cstock_shallow <- Cstock_all[ which(Cstock_all$Depth=='Shallow'), ]
-cstock_Deep <- Cstock_all[ which(Cstock_all$Depth=='Deep'), ]
+Cstock_Plant$MacrophyteCategoryDepth <- factor(paste(Cstock_Plant$MacrophyteCategory, 
+                                                     Cstock_Plant$Depth, sep = "_"),
+                                        levels = c(
+                                          "exposed_Plant_Shallow", "exposed_Plant_Deep",
+                                          "Semi_Plant_Shallow", "Semi_Plant_Deep",
+                                          "Shel_Plant_Shallow", "Shel_Plant_Deep",
+                                          "Pojo_Plant_Shallow", "Pojo_Plant_Deep"
+                                        ))
+
 
 ##%######################################################%##
 #                                                          #
@@ -563,33 +571,33 @@ cstock_Deep <- Cstock_all[ which(Cstock_all$Depth=='Deep'), ]
 
 
 png(
-  "output_plot/CarbonStocksBoxplotB.jpg",
+  "output_plot/CarbonStocksPlant.jpg",
   width = 13,
   height = 8,
   units = 'in',
-  res = 300
+  res = 600
 )
 
-par(mfcol=c(2,1))
+par(mfcol=c(1,1))
 
 par(mar = c(3, 5, 2, 3))
 
-cstock_shallow$MacrophyteCategory <- factor(cstock_shallow$MacrophyteCategory , # Reorder factor levels
-                                                     c("exposed_Plant", "exposed_Algae", "Semi_Plant", "Semi_Algae", 
-                                                       "Shel_Plant", "Shel_Algae", "Pojo_Plant", "Pojo_Algae"))
+Cstock_Plant$MacrophyteCategoryDepth <- factor(Cstock_Plant$MacrophyteCategoryDepth , # Reorder factor levels
+                                                     c("exposed_Plant_Shallow", "exposed_Plant_Deep", "Semi_Plant_Shallow", "Semi_Plant_Deep", 
+                                                       "Shel_Plant_Shallow", "Shel_Plant_Deep", "Pojo_Plant_Shallow", "Pojo_Plant_Deep"))
 
-boxplot(Cstock_gm2 ~ MacrophyteCategory, data = cstock_shallow,
-        boxwex = 0.5, col = c("aquamarine","honeydew3"),
+boxplot(Cstock_gm2 ~ MacrophyteCategoryDepth, data = Cstock_Plant,
+        boxwex = 0.5, col = c("bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "g C m-2 (1-2m)", ylim = c(0, 125),at = c(1, 2, 4, 5, 7, 8, 10, 11),
+        xlab = NA, ylab = "g C m???2", ylim = c(0, 100),at = c(1, 2, 4, 5, 7, 8, 10, 11),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
-stripchart(Cstock_gm2 ~ MacrophyteCategory,
-           data = cstock_shallow,
+stripchart(Cstock_gm2 ~ MacrophyteCategoryDepth,
+           data = Cstock_Plant,
            method = "jitter",
            at = c(0.5, 1.5, 3.5, 4.5, 6.5,7.5,9.5,10.5),
            pch = 17,
-           col = c("aquamarine","honeydew3"),
+           col = c("bisque","azure2"),
            vertical = TRUE,
            add = TRUE)
 
@@ -600,34 +608,10 @@ axis(1,
      labels = label , 
      tick=FALSE , cex=1.2)
 
-legend("topleft", legend = c("Plant", "Algae"), 
-       col=c("aquamarine","honeydew3"),
+legend("topleft", legend = c("Shallow", "Deep"), 
+       col=c("bisque","azure2"),
        pch = 15, bty = "n", pt.cex = 3, cex = 1,  horiz = F)
 
 
-cstock_Deep$MacrophyteCategory <- factor(cstock_Deep$MacrophyteCategory , # Reorder factor levels
-                                                  c("exposed_Plant", "exposed_Algae", "Semi_Plant", "Semi_Algae", 
-                                                    "Shel_Plant", "Shel_Algae", "Pojo_Plant", "Pojo_Algae"))
-boxplot(Cstock_gm2 ~ MacrophyteCategory, data = cstock_Deep,
-        boxwex = 0.5, col = c("aquamarine","honeydew3"),
-        main = NA,
-        xlab = NA, ylab = "g C m-2 (3-4m)", ylim = c(0, 75),at = c(1, 2, 4, 5, 7, 8, 10, 11),
-        lex.order = TRUE, xaxt="n",cex.lab = 1.2)
-
-stripchart(Cstock_gm2 ~ MacrophyteCategory,
-           data = cstock_Deep,
-           method = "jitter",
-           at = c(0.5, 1.5, 3.5, 4.5, 6.5,7.5,9.5,10.5),
-           pch = 17,
-           col = c("aquamarine","honeydew3"),
-           vertical = TRUE,
-           add = TRUE)
-
-label=c("Exposed", "Semi-sheltered", "Sheltered", "Pojo bay")
-
-axis(1, 
-     at = seq(1.5 , 11 , 3), 
-     labels = label , 
-     tick=FALSE , cex=1.2)
 dev.off()
 

@@ -36,7 +36,7 @@ cstock_Plant_Deep$Exposure_Site <- factor(paste(cstock_Plant_Deep$Category,
                                           "Shel_D_1", "Shel_D_2","Shel_D_3", "Shel_D_4","Shel_D_5",
                                           "Pojo_D_1", "Pojo_D_2","Pojo_D_3", "Pojo_D_4","Pojo_D_5"
                                         ))
-cstock_Plant_Deep$CarbonStock <-  as.numeric(cstock_Plant_Deep$CarbonStock)
+
 
 ################################
 ##       Algal quadrats       ##
@@ -70,7 +70,6 @@ cstock_Algae_Deep$Exposure_Site <- factor(paste(cstock_Algae_Deep$Category,
                                             "Shel_D_1", "Shel_D_2","Shel_D_3", "Shel_D_4","Shel_D_5",
                                             "Pojo_D_1", "Pojo_D_2","Pojo_D_3", "Pojo_D_4","Pojo_D_5"
                                           ))
-
 
 ##%######################################################%##
 #                                                          #
@@ -108,7 +107,7 @@ par(mar = c(3, 5, 2, 3))
 
 barCenters <- barplot(height = CPlant_Shallow$mean,
                       beside = true, las = 2,
-                      ylim = c(0, 120),
+                      ylim = c(0, 150),
                       cex.axis = 1.25, cex.lab =1.25, xaxt = "n",
                       ylab = "g C m-2 (1-2m)",
                       border = "black", axes = TRUE, 
@@ -122,13 +121,13 @@ segments(barCenters, CPlant_Shallow$mean - CPlant_Shallow$se, barCenters,
 arrows(barCenters, CPlant_Shallow$mean - CPlant_Shallow$se, barCenters,
        CPlant_Shallow$mean + CPlant_Shallow$se, lwd = 1.5, angle = 90,
        code = 3, length = 0.05)
-legend("topleft", legend = c("Exposed", "Semi-sheltered","Sheltered","Pojo bay"), 
+legend("topleft", legend = c("Exposed", "Semi-exposed","Sheltered","Pojo bay"), 
        col=c("burlywood3","palegreen","plum1","orange2"),
        pch = 15, bty = "n", pt.cex = 3, cex = 1,  horiz = F)
 
 barCenters <- barplot(height = CPlant_Deep$mean,
                       beside = true, las = 2,
-                      ylim = c(0, 125),
+                      ylim = c(0, 150),
                       cex.axis = 1.25, cex.lab =1.25, xaxt = "n",
                       ylab = "g C m-2 (3-4m)",
                       border = "black", axes = TRUE, 
@@ -151,17 +150,16 @@ dev.off()
 #                                                          #
 ##%######################################################%##
 
-CAlgae_Shallow <- aggregate(cstock_Algae_shallow$CarbonStock,
-                            by = list(cstock_Algae_shallow$Exposure_Site),
+CAlgae_Shallow <- aggregate(Cstock_all_algae_shallow$Algae_Cstock_gm2,
+                            by = list(Cstock_all_algae_shallow$Exposure_Site),
                             FUN = function(x) c(mean = mean(x), sd = sd(x),
                                                 n = length(x)))
 CAlgae_Shallow <- do.call(data.frame, CAlgae_Shallow) 
 CAlgae_Shallow$se <- CAlgae_Shallow$x.sd / sqrt(CAlgae_Shallow$x.n)
 colnames(CAlgae_Shallow) <- c("Site", "mean", "sd", "n", "se")
 
-cstock_Algae_Deep$CarbonStock <- as.numeric(cstock_Algae_Deep$CarbonStock)
-CAlgae_Deep <- aggregate(cstock_Algae_Deep$CarbonStock,
-                            by = list(cstock_Algae_Deep$Exposure_Site),
+CAlgae_Deep <- aggregate(Cstock_all_algae_deep$Algae_Cstock_gm2,
+                            by = list(Cstock_all_algae_deep$Exposure_Site),
                             FUN = function(x) c(mean = mean(x), sd = sd(x),
                                                 n = length(x)))
 CAlgae_Deep <- do.call(data.frame, CAlgae_Deep) 
@@ -182,7 +180,7 @@ par(mar = c(3, 5, 2, 3))
 
 barCenters <- barplot(height = CAlgae_Shallow$mean,
                       beside = true, las = 2,
-                      ylim = c(0, 200),
+                      ylim = c(0, 350),
                       cex.axis = 1.25, cex.lab =1.25, xaxt = "n",
                       ylab = "g C m-2 (1-2m)",
                       border = "black", axes = TRUE, 
@@ -196,13 +194,13 @@ segments(barCenters, CAlgae_Shallow$mean - CAlgae_Shallow$se, barCenters,
 arrows(barCenters, CAlgae_Shallow$mean - CAlgae_Shallow$se, barCenters,
        CAlgae_Shallow$mean + CAlgae_Shallow$se, lwd = 1.5, angle = 90,
        code = 3, length = 0.05)
-legend("topleft", legend = c("Exposed", "Semi-sheltered","Sheltered","Pojo bay"), 
+legend("topleft", legend = c("Exposed", "Semi-exposed","Sheltered","Pojo bay"), 
        col=c("burlywood3","palegreen","plum1","orange2"),
        pch = 15, bty = "n", pt.cex = 3, cex = 1,  horiz = F)
 
 barCenters <- barplot(height = CAlgae_Deep$mean,
                       beside = true, las = 2,
-                      ylim = c(0, 200),
+                      ylim = c(0, 350),
                       cex.axis = 1.25, cex.lab =1.25, xaxt = "n",
                       ylab = "g C m-2 (3-4m)",
                       border = "black", axes = TRUE, 
