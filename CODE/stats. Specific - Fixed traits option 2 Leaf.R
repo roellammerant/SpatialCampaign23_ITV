@@ -58,95 +58,95 @@ Site1_exp_SLAD <- subset(Sites_exp_SLA, Site==1 & Depth=="D")
 Site1_exp_SLADB <- as.data.frame(Site1_exp_SLAD[,c(4)])
 rownames(Site1_exp_SLADB) <- Site1_exp_SLAD$Species
 names(Site1_exp_SLADB)[1]<-paste(c("SLA"))
-Site1_exp_SLADB$SLA <- Site1_exp_SLADB$SLA - as.numeric(c("0.47","0.13", "0.12"))
+Site1_exp_SLADB$SLA <- Site1_exp_SLADB$SLA - as.numeric(c("66.37","21.11", "50.42"))
 
 Site1_exp_SLAS <- subset(Sites_exp_SLA, Site==1 & Depth=="S")
 Site1_exp_SLASB <- as.data.frame(Site1_exp_SLAS[,c(4)])
 rownames(Site1_exp_SLASB) <- Site1_exp_SLAS$Species
 names(Site1_exp_SLASB)[1]<-paste(c("SLA"))
-Site1_exp_SLASB$SLA <- Site1_exp_SLASB$SLA - as.numeric(c("0.18","0.47", "0.13", "0.12"))
+Site1_exp_SLASB$SLA <- Site1_exp_SLASB$SLA - as.numeric(c("35.54","66.37","21.11", "50.42"))
 
 Site2_exp_SLAD <- subset(Sites_exp_SLA, Site==2 & Depth=="D")
 Site2_exp_SLADB <- as.data.frame(Site2_exp_SLAD[,c(4)])
 rownames(Site2_exp_SLADB) <- Site2_exp_SLAD$Species
 names(Site2_exp_SLADB)[1]<-paste(c("SLA"))
-Site2_exp_SLADB$SLA <- as.numeric(c("0.34609")) - as.numeric(c("0.31"))
+Site2_exp_SLADB$SLA <- as.numeric(c("33.75753")) - as.numeric(c("32.24"))
 
 Site2_exp_SLAS <- subset(Sites_exp_SLA, Site==2 & Depth=="S")
 Site2_exp_SLASB <- as.data.frame(Site2_exp_SLAS[,c(4)])
 rownames(Site2_exp_SLASB) <- Site2_exp_SLAS$Species
 names(Site2_exp_SLASB)[1]<-paste(c("SLA"))
-Site2_exp_SLASB$SLA <- Site2_exp_SLASB$SLA - as.numeric(c("0.19","0.13", "0.12", "0.31"))
+Site2_exp_SLASB$SLA <- Site2_exp_SLASB$SLA - as.numeric(c("28.62","21.11", "50.42", "32.24"))
 
 Site3_exp_SLAD <- subset(Sites_exp_SLA, Site==3 & Depth=="D")
 Site3_exp_SLADB <- as.data.frame(Site3_exp_SLAD[,c(4)])
 rownames(Site3_exp_SLADB) <- Site3_exp_SLAD$Species
 names(Site3_exp_SLADB)[1]<-paste(c("SLA"))
-Site3_exp_SLADB$SLA <- Site3_exp_SLADB$SLA - as.numeric(c("0.47","0.13", "0.12", "0.31"))
+Site3_exp_SLADB$SLA <- Site3_exp_SLADB$SLA - as.numeric(c("66.37","21.11", "50.42", "32.24"))
 
 Site3_exp_SLAS <- subset(Sites_exp_SLA, Site==3 & Depth=="S")
 Site3_exp_SLASB <- as.data.frame(Site3_exp_SLAS[,c(4)])
 rownames(Site3_exp_SLASB) <- Site3_exp_SLAS$Species
 names(Site3_exp_SLASB)[1]<-paste(c("SLA"))
-Site3_exp_SLASB$SLA <- Site3_exp_SLASB$SLA - as.numeric(c("0.47","0.19","0.13", "0.12"))
+Site3_exp_SLASB$SLA <- Site3_exp_SLASB$SLA - as.numeric(c("66.37","28.62","21.11", "50.42"))
 
 Site4_exp_SlAD <- subset(Sites_exp_SLA, Site==4 & Depth=="D")
 Site4_exp_SlADB <- as.data.frame(Site4_exp_SlAD[,c(4)])
-Site4_exp_SlADB[nrow(Site4_exp_SlADB) + 1, 1] = c("1.875")
+Site4_exp_SlADB[nrow(Site4_exp_SlADB) + 1, 1] = c("187.5")
 Site4_exp_SlADB <- as.data.frame(Site4_exp_SlADB[c(3,1,2),])
 names(Site4_exp_SlADB)[1]<-paste(c("SLA"))
 rownames(Site4_exp_SlADB)[1:3] <- c("MYRSPI", "STUPEC", "ZOSMAR")
-Site4_exp_SlADB$SLA <- as.numeric(Site4_exp_SlADB$SLA) - as.numeric(c("0.18","0.13","0.31"))
+Site4_exp_SlADB$SLA <- as.numeric(Site4_exp_SlADB$SLA) - as.numeric(c("35.54","21.11","32.24"))
 
 Site4_exp_SLAS <- subset(Sites_exp_SLA, Site==4 & Depth=="S")
 Site4_exp_SLASB <- as.data.frame(Site4_exp_SLAS[,c(4)])
 rownames(Site4_exp_SLASB) <- Site4_exp_SLAS$Species
 names(Site4_exp_SLASB)[1]<-paste(c("SLA"))
-Site4_exp_SLASB$SLA <- Site4_exp_SLASB$SLA - as.numeric(c("0.18","0.47","0.19","0.13", "0.12", 
-                                                                "0.31"))
+Site4_exp_SLASB$SLA <- Site4_exp_SLASB$SLA - as.numeric(c("35.54","66.37","28.62","21.11", "50.42", 
+                                                                "32.24"))
 
 Site5_exp_SLAS <- subset(Sites_exp_SLA, Site==5 & Depth=="S")
 Site5_exp_SLASB <- as.data.frame(Site5_exp_SLAS[,c(4)])
 rownames(Site5_exp_SLASB) <- Site5_exp_SLAS$Species
 names(Site5_exp_SLASB)[1]<-paste(c("SLA"))
-Site5_exp_SLASB$SLA <- Site5_exp_SLASB$SLA - as.numeric(c("0.18","0.19", "0.13", "0.12"))
+Site5_exp_SLASB$SLA <- Site5_exp_SLASB$SLA - as.numeric(c("35.54","28.62", "21.11", "50.42"))
 
 ############ LAP  ############ 
 Site1_exp_LAPD <- subset(Sites_exp_LAP, Site==1 & Depth=="D")
 Site1_exp_LAPDB <- as.data.frame(Site1_exp_LAPD[,c(4)])
 rownames(Site1_exp_LAPDB) <- Site1_exp_LAPD$Species
 names(Site1_exp_LAPDB)[1]<-paste(c("LAP"))
-Site1_exp_LAPDB$LAP <- Site1_exp_LAPDB$LAP - as.numeric(c("0.52","0.06", "0.18"))
+Site1_exp_LAPDB$LAP <- Site1_exp_LAPDB$LAP - as.numeric(c("0.409","0.028", "0.039"))
 
 Site1_exp_LAPS <- subset(Sites_exp_LAP, Site==1 & Depth=="S")
 Site1_exp_LAPSB <- as.data.frame(Site1_exp_LAPS[,c(4)])
 rownames(Site1_exp_LAPSB) <- Site1_exp_LAPS$Species
 names(Site1_exp_LAPSB)[1]<-paste(c("LAP"))
-Site1_exp_LAPSB$LAP <- Site1_exp_LAPSB$LAP - as.numeric(c("0.09","0.52","0.06", "0.18"))
+Site1_exp_LAPSB$LAP <- Site1_exp_LAPSB$LAP - as.numeric(c("0.0136","0.409","0.028", "0.039"))
 
 Site2_exp_LAPD <- subset(Sites_exp_LAP, Site==2 & Depth=="D")
 Site2_exp_LAPDB <- as.data.frame(Site2_exp_LAPD[,c(4)])
 rownames(Site2_exp_LAPDB) <- Site2_exp_LAPD$Species
 names(Site2_exp_LAPDB)[1]<-paste(c("LAP"))
-Site2_exp_LAPDB$LAP <- Site2_exp_LAPDB$LAP - as.numeric(c("0.22"))
+Site2_exp_LAPDB$LAP <- Site2_exp_LAPDB$LAP - as.numeric(c("0.139"))
 
 Site2_exp_LAPS <- subset(Sites_exp_LAP, Site==2 & Depth=="S")
 Site2_exp_LAPSB <- as.data.frame(Site2_exp_LAPS[,c(4)])
 rownames(Site2_exp_LAPSB) <- Site2_exp_LAPS$Species
 names(Site2_exp_LAPSB)[1]<-paste(c("LAP"))
-Site2_exp_LAPSB$LAP <- Site2_exp_LAPSB$LAP - as.numeric(c("0.013","0.06", "0.18", "0.22"))
+Site2_exp_LAPSB$LAP <- Site2_exp_LAPSB$LAP - as.numeric(c("0.025","0.028", "0.039", "0.139"))
 
 Site3_exp_LAPD <- subset(Sites_exp_LAP, Site==3 & Depth=="D")
 Site3_exp_LAPDB <- as.data.frame(Site3_exp_LAPD[,c(4)])
 rownames(Site3_exp_LAPDB) <- Site3_exp_LAPD$Species
 names(Site3_exp_LAPDB)[1]<-paste(c("LAP"))
-Site3_exp_LAPDB$LAP <- Site3_exp_LAPDB$LAP - as.numeric(c("0.52","0.06", "0.18", "0.22"))
+Site3_exp_LAPDB$LAP <- Site3_exp_LAPDB$LAP - as.numeric(c("0.409","0.028", "0.039", "0.139"))
 
 Site3_exp_LAPS <- subset(Sites_exp_LAP, Site==3 & Depth=="S")
 Site3_exp_LAPSB <- as.data.frame(Site3_exp_LAPS[,c(4)])
 rownames(Site3_exp_LAPSB) <- Site3_exp_LAPS$Species
 names(Site3_exp_LAPSB)[1]<-paste(c("LAP"))
-Site3_exp_LAPSB$LAP <- Site3_exp_LAPSB$LAP - as.numeric(c("0.52","0.13", "0.06", "0.18"))
+Site3_exp_LAPSB$LAP <- Site3_exp_LAPSB$LAP - as.numeric(c("0.409","0.025","0.028", "0.039"))
 
 Site4_exp_LAPD <- subset(Sites_exp_LAP, Site==4 & Depth=="D")
 Site4_exp_LAPDB <- as.data.frame(Site4_exp_LAPD[,c(4)])
@@ -154,19 +154,19 @@ Site4_exp_LAPDB[nrow(Site4_exp_LAPDB) + 1, 1] = c("0.0109054015")
 Site4_exp_LAPDB <- as.data.frame(Site4_exp_LAPDB[c(3,1,2),])
 names(Site4_exp_LAPDB)[1]<-paste(c("LAP"))
 rownames(Site4_exp_LAPDB)[1:3] <- c("MYRSPI", "STUPEC", "ZOSMAR")
-Site4_exp_LAPDB$LAP <- as.numeric(Site4_exp_LAPDB$LAP) - as.numeric(c("0.09","0.06","0.22"))
+Site4_exp_LAPDB$LAP <- as.numeric(Site4_exp_LAPDB$LAP) - as.numeric(c("0.0136","0.028","0.139"))
 
 Site4_exp_LAPS <- subset(Sites_exp_LAP, Site==4 & Depth=="S")
 Site4_exp_LAPSB <- as.data.frame(Site4_exp_LAPS[,c(4)])
 rownames(Site4_exp_LAPSB) <- Site4_exp_LAPS$Species
 names(Site4_exp_LAPSB)[1]<-paste(c("LAP"))
-Site4_exp_LAPSB$LAP <- Site4_exp_LAPSB$LAP - as.numeric(c("0.09","0.52", "0.13", "0.06", "0.18", "0.22"))
+Site4_exp_LAPSB$LAP <- Site4_exp_LAPSB$LAP - as.numeric(c("0.0136","0.409","0.025","0.028", "0.039", "0.139"))
 
 Site5_exp_LAPS <- subset(Sites_exp_LAP, Site==5 & Depth=="S")
 Site5_exp_LAPSB <- as.data.frame(Site5_exp_LAPS[,c(4)])
 rownames(Site5_exp_LAPSB) <- Site5_exp_LAPS$Species
 names(Site5_exp_LAPSB)[1]<-paste(c("LAP"))
-Site5_exp_LAPSB$LAP <- Site5_exp_LAPSB$LAP - as.numeric(c("0.09","0.13", "0.06", "0.18"))
+Site5_exp_LAPSB$LAP <- Site5_exp_LAPSB$LAP - as.numeric(c("0.0136","0.025","0.028", "0.039"))
 
 ########################################################
 ### Community weighted mean value for leaf traits ######
@@ -372,122 +372,122 @@ Site1_semi_SLAD<- subset(Sites_semi_SLA, Site==1 & Depth=="D")
 Site1_semi_SLADB <- as.data.frame(Site1_semi_SLAD[,c(4)])
 rownames(Site1_semi_SLADB) <- Site1_semi_SLAD$Species
 names(Site1_semi_SLADB)[1]<-paste(c("SLA"))
-Site1_semi_SLADB$SLA <- Site1_semi_SLADB$SLA - as.numeric(c("0.18","0.19", "0.13", "0.12"))
+Site1_semi_SLADB$SLA <- Site1_semi_SLADB$SLA - as.numeric(c("35.54","28.62", "21.11", "50.42"))
 
 Site1_semi_SLAS <- subset(Sites_semi_SLA, Site==1 & Depth=="S")
 Site1_semi_SLASB <- as.data.frame(Site1_semi_SLAS[,c(4)])
 rownames(Site1_semi_SLASB) <- Site1_semi_SLAS$Species
 names(Site1_semi_SLASB)[1]<-paste(c("SLA"))
-Site1_semi_SLASB$SLA <- Site1_semi_SLASB$SLA - as.numeric(c("0.18","0.47", "0.19", "0.13", "0.12"))
+Site1_semi_SLASB$SLA <- Site1_semi_SLASB$SLA - as.numeric(c("35.54","66.37", "28.62", "21.11", "50.42"))
 
 Site2_semi_SLAD <- subset(Sites_semi_SLA, Site==2 & Depth=="D")
 Site2_semi_SLADB <- as.data.frame(Site2_semi_SLAD[,c(4)])
 rownames(Site2_semi_SLADB) <- Site2_semi_SLAD$Species
 names(Site2_semi_SLADB)[1]<-paste(c("SLA"))
-Site2_semi_SLADB$SLA <- Site2_semi_SLADB$SLA - as.numeric(c("0.18","0.47", "0.13", "0.12"))
+Site2_semi_SLADB$SLA <- Site2_semi_SLADB$SLA - as.numeric(c("35.54","66.37", "21.11", "50.42"))
 
 Site2_semi_SLAS <- subset(Sites_semi_SLA, Site==2 & Depth=="S")
 Site2_semi_SLASB <- as.data.frame(Site2_semi_SLAS[,c(4)])
 rownames(Site2_semi_SLASB) <- Site2_semi_SLAS$Species
 names(Site2_semi_SLASB)[1]<-paste(c("SLA"))
-Site2_semi_SLASB$SLA <- Site2_semi_SLASB$SLA - as.numeric(c("0.47", "0.19", "0.13", "0.12"))
+Site2_semi_SLASB$SLA <- Site2_semi_SLASB$SLA - as.numeric(c("66.37", "28.62", "21.11", "50.42"))
 
 Site3_semi_SLAD <- subset(Sites_semi_SLA, Site==3 & Depth=="D")
 Site3_semi_SLADB <- as.data.frame(Site3_semi_SLAD[,c(4)])
 rownames(Site3_semi_SLADB) <- Site3_semi_SLAD$Species
 names(Site3_semi_SLADB)[1]<-paste(c("SLA"))
-Site3_semi_SLADB$SLA <- Site3_semi_SLADB$SLA - as.numeric(c("0.22","0.18"))
+Site3_semi_SLADB$SLA <- Site3_semi_SLADB$SLA - as.numeric(c("28.71","35.54"))
 
 Site3_semi_SLAS <- subset(Sites_semi_SLA, Site==3 & Depth=="S")
 Site3_semi_SLASB <- as.data.frame(Site3_semi_SLAS[,c(4)])
 rownames(Site3_semi_SLASB) <- Site3_semi_SLAS$Species
 names(Site3_semi_SLASB)[1]<-paste(c("SLA"))
-Site3_semi_SLASB$SLA <- Site3_semi_SLASB$SLA - as.numeric(c("0.22","0.18", "0.47", "0.13"))
+Site3_semi_SLASB$SLA <- Site3_semi_SLASB$SLA - as.numeric(c("28.71","35.54", "66.37", "21.11"))
 
 Site4_semi_SLAD <- subset(Sites_semi_SLA, Site==4 & Depth=="D")
 Site4_semi_SLADB <- as.data.frame(Site4_semi_SLAD[,c(4)])
 rownames(Site4_semi_SLADB) <- Site4_semi_SLAD$Species
 names(Site4_semi_SLADB)[1]<-paste(c("SLA"))
-Site4_semi_SLADB$SLA <- Site4_semi_SLADB$SLA - as.numeric(c("0.22","0.18","0.19"))
+Site4_semi_SLADB$SLA <- Site4_semi_SLADB$SLA - as.numeric(c("28.71","35.54","28.62"))
 
 Site4_semi_SLAS <- subset(Sites_semi_SLA, Site==4 & Depth=="S")
 Site4_semi_SLASB <- as.data.frame(Site4_semi_SLAS[,c(4)])
 rownames(Site4_semi_SLASB) <- Site4_semi_SLAS$Species
 names(Site4_semi_SLASB)[1]<-paste(c("SLA"))
-Site4_semi_SLASB$SLA <- Site4_semi_SLASB$SLA - as.numeric(c("0.22","0.18", "0.47", "0.06", "0.13"))
+Site4_semi_SLASB$SLA <- Site4_semi_SLASB$SLA - as.numeric(c("28.71","35.54", "66.37", "36.66", "21.11"))
 
 Site5_semi_SLAD <- subset(Sites_semi_SLA, Site==5 & Depth=="D")
 Site5_semi_SLADB <- as.data.frame(Site5_semi_SLAD[,c(4)])
 rownames(Site5_semi_SLADB) <- Site5_semi_SLAD$Species
 names(Site5_semi_SLADB)[1]<-paste(c("SLA"))
-Site5_semi_SLADB$SLA <- Site5_semi_SLADB$SLA - as.numeric(c("0.22","0.18", "0.47","0.13","0.12","0.31"))
+Site5_semi_SLADB$SLA <- Site5_semi_SLADB$SLA - as.numeric(c("28.71","35.54", "66.37","21.11","50.42","32.24"))
 
 Site5_semi_SLAS <- subset(Sites_semi_SLA, Site==5 & Depth=="S")
 Site5_semi_SLASB <- as.data.frame(Site5_semi_SLAS[,c(4)])
 rownames(Site5_semi_SLASB) <- Site5_semi_SLAS$Species
 names(Site5_semi_SLASB)[1]<-paste(c("SLA"))
-Site5_semi_SLASB$SLA <- Site5_semi_SLASB$SLA - as.numeric(c("0.18", "0.47", "0.10", "0.13","0.12"))
+Site5_semi_SLASB$SLA <- Site5_semi_SLASB$SLA - as.numeric(c("35.54", "66.37", "19.85", "21.11","50.42"))
 
 ############ LAP  ############ 
 Site1_semi_LAPD<- subset(Sites_semi_LAP, Site==1 & Depth=="D")
 Site1_semi_LAPDB <- as.data.frame(Site1_semi_LAPD[,c(4)])
 rownames(Site1_semi_LAPDB) <- Site1_semi_LAPD$Species
 names(Site1_semi_LAPDB)[1]<-paste(c("LAP"))
-Site1_semi_LAPDB$LAP <- Site1_semi_LAPDB$LAP - as.numeric(c("0.09","0.13", "0.06", "0.18"))
+Site1_semi_LAPDB$LAP <- Site1_semi_LAPDB$LAP - as.numeric(c("0.014","0.025", "0.028", "0.039"))
 
 Site1_semi_LAPS <- subset(Sites_semi_LAP, Site==1 & Depth=="S")
 Site1_semi_LAPSB <- as.data.frame(Site1_semi_LAPS[,c(4)])
 rownames(Site1_semi_LAPSB) <- Site1_semi_LAPS$Species
 names(Site1_semi_LAPSB)[1]<-paste(c("LAP"))
-Site1_semi_LAPSB$LAP <- Site1_semi_LAPSB$LAP - as.numeric(c("0.09","0.52","0.13", "0.06", "0.18"))
+Site1_semi_LAPSB$LAP <- Site1_semi_LAPSB$LAP - as.numeric(c("0.014","0.41","0.025", "0.028", "0.039"))
 
 Site2_semi_LAPD <- subset(Sites_semi_LAP, Site==2 & Depth=="D")
 Site2_semi_LAPDB <- as.data.frame(Site2_semi_LAPD[,c(4)])
 rownames(Site2_semi_LAPDB) <- Site2_semi_LAPD$Species
 names(Site2_semi_LAPDB)[1]<-paste(c("LAP"))
-Site2_semi_LAPDB$LAP <- Site2_semi_LAPDB$LAP - as.numeric(c("0.09","0.52","0.06", "0.18"))
+Site2_semi_LAPDB$LAP <- Site2_semi_LAPDB$LAP - as.numeric(c("0.014","0.41","0.028", "0.039"))
 
 Site2_semi_LAPS <- subset(Sites_semi_LAP, Site==2 & Depth=="S")
 Site2_semi_LAPSB <- as.data.frame(Site2_semi_LAPS[,c(4)])
 rownames(Site2_semi_LAPSB) <- Site2_semi_LAPS$Species
 names(Site2_semi_LAPSB)[1]<-paste(c("LAP"))
-Site2_semi_LAPSB$LAP <- Site2_semi_LAPSB$LAP - as.numeric(c("0.52","0.13", "0.06", "0.18"))
+Site2_semi_LAPSB$LAP <- Site2_semi_LAPSB$LAP - as.numeric(c("0.41","0.025", "0.028", "0.039"))
 
 Site3_semi_LAPD <- subset(Sites_semi_LAP, Site==3 & Depth=="D")
 Site3_semi_LAPDB <- as.data.frame(Site3_semi_LAPD[,c(4)])
 rownames(Site3_semi_LAPDB) <- Site3_semi_LAPD$Species
 names(Site3_semi_LAPDB)[1]<-paste(c("LAP"))
-Site3_semi_LAPDB$LAP <- Site3_semi_LAPDB$LAP - as.numeric(c("0.08","0.09"))
+Site3_semi_LAPDB$LAP <- Site3_semi_LAPDB$LAP - as.numeric(c("0.02","0.014"))
 
 Site3_semi_LAPS <- subset(Sites_semi_LAP, Site==3 & Depth=="S")
 Site3_semi_LAPSB <- as.data.frame(Site3_semi_LAPS[,c(4)])
 rownames(Site3_semi_LAPSB) <- Site3_semi_LAPS$Species
 names(Site3_semi_LAPSB)[1]<-paste(c("LAP"))
-Site3_semi_LAPSB$LAP <- Site3_semi_LAPSB$LAP - as.numeric(c("0.08","0.09", "0.52", "0.06"))
+Site3_semi_LAPSB$LAP <- Site3_semi_LAPSB$LAP - as.numeric(c("0.02","0.014", "0.41","0.028"))
 
 Site4_semi_LAPD <- subset(Sites_semi_LAP, Site==4 & Depth=="D")
 Site4_semi_LAPDB <- as.data.frame(Site4_semi_LAPD[,c(4)])
 rownames(Site4_semi_LAPDB) <- Site4_semi_LAPD$Species
 names(Site4_semi_LAPDB)[1]<-paste(c("LAP"))
-Site4_semi_LAPDB$LAP <- Site4_semi_LAPDB$LAP - as.numeric(c("0.08","0.09", "0.13"))
+Site4_semi_LAPDB$LAP <- Site4_semi_LAPDB$LAP - as.numeric(c("0.02","0.014", "0.025"))
 
 Site4_semi_LAPS <- subset(Sites_semi_LAP, Site==4 & Depth=="S")
 Site4_semi_LAPSB <- as.data.frame(Site4_semi_LAPS[,c(4)])
 rownames(Site4_semi_LAPSB) <- Site4_semi_LAPS$Species
 names(Site4_semi_LAPSB)[1]<-paste(c("LAP"))
-Site4_semi_LAPSB$LAP <- Site4_semi_LAPSB$LAP - as.numeric(c("0.08","0.09", "0.52", "0.07","0.06"))
+Site4_semi_LAPSB$LAP <- Site4_semi_LAPSB$LAP - as.numeric(c("0.02","0.014", "0.41","0.018","0.028"))
 
 Site5_semi_LAPD <- subset(Sites_semi_LAP, Site==5 & Depth=="D")
 Site5_semi_LAPDB <- as.data.frame(Site5_semi_LAPD[,c(4)])
 rownames(Site5_semi_LAPDB) <- Site5_semi_LAPD$Species
 names(Site5_semi_LAPDB)[1]<-paste(c("LAP"))
-Site5_semi_LAPDB$LAP <- Site5_semi_LAPDB$LAP - as.numeric(c("0.08","0.09", "0.52", "0.06", "0.18", "0.22"))
+Site5_semi_LAPDB$LAP <- Site5_semi_LAPDB$LAP - as.numeric(c("0.02","0.014", "0.41", "0.028", "0.38", "0.139"))
 
 Site5_semi_LAPS <- subset(Sites_semi_LAP, Site==5 & Depth=="S")
 Site5_semi_LAPSB <- as.data.frame(Site5_semi_LAPS[,c(4)])
 rownames(Site5_semi_LAPSB) <- Site5_semi_LAPS$Species
 names(Site5_semi_LAPSB)[1]<-paste(c("LAP"))
-Site5_semi_LAPSB$LAP <- Site5_semi_LAPSB$LAP - as.numeric(c("0.09", "0.52", "0.11", "0.06", "0.18"))
+Site5_semi_LAPSB$LAP <- Site5_semi_LAPSB$LAP - as.numeric(c("0.014", "0.41", "0.023", "0.028", "0.38"))
 
 ########################################################
 ### Community weighted mean value for leaf traits ######
@@ -650,10 +650,10 @@ Sites_shel_SLA <- aggregate(x=TraitData_shel$SLA, by=list(TraitData_shel$Depth, 
 Sites_shel_LAP <- aggregate(x=TraitData_shel$LAP, by=list(TraitData_shel$Depth, TraitData_shel$Species), FUN=median)
 names(Sites_shel_SLA)[1:3]<-paste(c("Depth","Species", "SLA"))
 names(Sites_shel_LAP)[1:3]<-paste(c("Depth","Species", "LAP"))
-Sites_shel_SLA$SLA <- Sites_shel_SLA$SLA - as.numeric(c("1.16","0.22", "0.61","0.08", "0.18", "0.14", "0.47", "0.06", 
-                                                        "0.13"))
-Sites_shel_LAP$LAP <- Sites_shel_LAP$LAP - as.numeric(c("0.45","0.08", "0.28","0.10", "0.09", "0.10", "0.52", "0.07", 
-                                                        "0.06"))
+Sites_shel_SLA$SLA <- Sites_shel_SLA$SLA - as.numeric(c("128.03","28.71", "105.08","57.57", "35.54", "50.58", "66.37", "36.66", 
+                                                        "21.11"))
+Sites_shel_LAP$LAP <- Sites_shel_LAP$LAP - as.numeric(c("0.051","0.02", "0.088","0.0145", "0.0136", "0.044", "0.409", "0.018", 
+                                                        "0.028"))
 
 
 Sites_shel_SLAB <- as.data.frame(Sites_shel_SLA[,c(3)])
@@ -710,10 +710,10 @@ Sites_pojo_SLA <- aggregate(x=TraitData_pojo$SLA, by=list(TraitData_pojo$Depth, 
 Sites_pojo_LAP <- aggregate(x=TraitData_pojo$LAP, by=list(TraitData_pojo$Depth, TraitData_pojo$Species), FUN=median)
 names(Sites_pojo_SLA)[1:3]<-paste(c("Depth","Species", "SLA"))
 names(Sites_pojo_LAP)[1:3]<-paste(c("Depth","Species", "LAP"))
-Sites_pojo_SLA$SLA <- Sites_pojo_SLA$SLA - as.numeric(c("1.16","0.22", "0.22","0.75", "0.61", "0.61", "0.08", "0.18", 
-                                                        "0.14","0.14","0.72","0.80", "0.80","0.39", "0.06", "0.06", "0.97"))
-Sites_pojo_LAP$LAP <- Sites_pojo_LAP$LAP - as.numeric(c("0.45","0.08", "0.08","0.11", "0.28", "0.28", "0.10", "0.09", 
-                                                        "0.10","0.10","1.91", "0.63","0.63", "0.44", "0.07", "0.07", "1.15"))
+Sites_pojo_SLA$SLA <- Sites_pojo_SLA$SLA - as.numeric(c("128.03","28.71", "28.71","263.75", "105.08", "105.08", "60.49", "43.48", 
+                                                        "50.58","50.58","143.52","95.89", "95.89","77.72", "36.66", "36.66", "218.58"))
+Sites_pojo_LAP$LAP <- Sites_pojo_LAP$LAP - as.numeric(c("0.05","0.02", "0.02","0.022", "0.088", "0.088", "0.0145", "0.0136", 
+                                                        "0.044","0.044","2.613","0.381", "0.381","0.112", "0.018", "0.018", "0.146"))
 
 Site_pojo_SLA_D <- subset(Sites_pojo_SLA, Depth=="D")
 Site_pojo_SLA_S <- subset(Sites_pojo_SLA, Depth=="S")

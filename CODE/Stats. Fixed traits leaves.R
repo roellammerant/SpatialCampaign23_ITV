@@ -12,10 +12,10 @@
 Spatial_Campaign_data_exp <- read_excel("DATA/Spatial_Campaign_data.xlsx", 
                                         sheet = "Exposed", na = "NA")
 
-TraitData_expA <- Spatial_Campaign_data_exp[-c(43),c(1:4, 34,36)]
+TraitData_expA <- Spatial_Campaign_data_exp[-c(43),c(1:4, 35,37)]
 names(TraitData_expA)[5]<-paste(c("SLA"))
 names(TraitData_expA)[6]<-paste(c("LAP"))
-TraitData_expB <- Spatial_Campaign_data_exp[-c(43),c(1:4, 35,37)]
+TraitData_expB <- Spatial_Campaign_data_exp[-c(43),c(1:4, 36,38)]
 names(TraitData_expB)[5]<-paste(c("SLA"))
 names(TraitData_expB)[6]<-paste(c("LAP"))
 TraitData_exp <- rbind (TraitData_expA,TraitData_expB )
@@ -29,10 +29,10 @@ TraitData_exp <- rbind (TraitData_expA,TraitData_expB )
 Spatial_Campaign_data_semi <- read_excel("DATA/Spatial_Campaign_data.xlsx", 
                                          sheet = "Semi", na = "NA")
 
-TraitData_semiA <- Spatial_Campaign_data_semi[-c(43),c(1:4, 35,37)]
+TraitData_semiA <- Spatial_Campaign_data_semi[-c(43),c(1:4, 36,38)]
 names(TraitData_semiA)[5]<-paste(c("SLA"))
 names(TraitData_semiA)[6]<-paste(c("LAP"))
-TraitData_semiB <- Spatial_Campaign_data_semi[-c(43),c(1:4, 36,38)]
+TraitData_semiB <- Spatial_Campaign_data_semi[-c(43),c(1:4, 37,39)]
 names(TraitData_semiB)[5]<-paste(c("SLA"))
 names(TraitData_semiB)[6]<-paste(c("LAP"))
 TraitData_semi <- rbind (TraitData_semiA,TraitData_semiB )
@@ -46,10 +46,10 @@ TraitData_semi <- rbind (TraitData_semiA,TraitData_semiB )
 Spatial_Campaign_data_shel <- read_excel("DATA/Spatial_Campaign_data.xlsx", 
                                          sheet = "Sheltered", na = "NA")
 
-TraitData_shelA <- Spatial_Campaign_data_shel[-c(2),c(1:4, 39,41)]
+TraitData_shelA <- Spatial_Campaign_data_shel[-c(2),c(1:4, 40,42)]
 names(TraitData_shelA)[5]<-paste(c("SLA"))
 names(TraitData_shelA)[6]<-paste(c("LAP"))
-TraitData_shelB <- Spatial_Campaign_data_shel[-c(2),c(1:4, 40,42)]
+TraitData_shelB <- Spatial_Campaign_data_shel[-c(2),c(1:4, 41,43)]
 names(TraitData_shelB)[5]<-paste(c("SLA"))
 names(TraitData_shelB)[6]<-paste(c("LAP"))
 TraitData_shel <- rbind (TraitData_shelA,TraitData_shelB )
@@ -63,10 +63,10 @@ TraitData_shel <- rbind (TraitData_shelA,TraitData_shelB )
 Spatial_Campaign_data_pojo <- read_excel("DATA/Spatial_Campaign_data.xlsx", 
                                          sheet = "Pojo", na = "NA")
 
-TraitData_pojoA <- Spatial_Campaign_data_pojo[-c(1,4,6,7),c(1:4, 37,39)]
+TraitData_pojoA <- Spatial_Campaign_data_pojo[-c(1,4,6,7),c(1:4, 38,40)]
 names(TraitData_pojoA)[5]<-paste(c("SLA"))
 names(TraitData_pojoA)[6]<-paste(c("LAP"))
-TraitData_pojoB <- Spatial_Campaign_data_pojo[-c(1,4,6,7),c(1:4, 38,40)]
+TraitData_pojoB <- Spatial_Campaign_data_pojo[-c(1,4,6,7),c(1:4, 39,41)]
 names(TraitData_pojoB)[5]<-paste(c("SLA"))
 names(TraitData_pojoB)[6]<-paste(c("LAP"))
 TraitData_pojo <- rbind (TraitData_pojoA,TraitData_pojoB )
@@ -118,10 +118,10 @@ Sites_exp_SLA <- aggregate(x=TraitData_exp$SLA, by=list(TraitData_exp$Depth, Tra
 Sites_exp_LAP <- aggregate(x=TraitData_exp$LAP, by=list(TraitData_exp$Depth, TraitData_exp$Species), FUN=median)
 names(Sites_exp_SLA)[1:3]<-paste(c("Depth","Species", "SLA"))
 names(Sites_exp_LAP)[1:3]<-paste(c("Depth","Species", "LAP"))
-Sites_exp_SLA$SLA <- as.numeric(c("0.18","0.47", "0.47","0.19", "0.13", "0.13", "0.12", 
-                                  "0.12", "0.31","0.31"))
-Sites_exp_LAP$LAP <- as.numeric(c("0.09","0.52", "0.52","0.13", "0.06", "0.06", "0.18", 
-                                  "0.18", "0.22","0.22"))
+Sites_exp_SLA$SLA <- as.numeric(c("35.54","66.37", "66.37","28.61", "21.11", "21.11", "50.42", 
+                                  "50.42", "32.24","32.24"))
+Sites_exp_LAP$LAP <- as.numeric(c("0.013","0.41", "0.41","0.024", "0.03", "0.03", "0.04", 
+                                  "0.04", "0.14","0.14"))
 
 Site_exp_SLA_D <- subset(Sites_exp_SLA, Depth=="D")
 Site_exp_SLA_S <- subset(Sites_exp_SLA, Depth=="S")
@@ -217,10 +217,10 @@ Sites_semi_SLA <- aggregate(x=TraitData_semi$SLA, by=list(TraitData_semi$Depth, 
 Sites_semi_LAP <- aggregate(x=TraitData_semi$LAP, by=list(TraitData_semi$Depth, TraitData_semi$Species), FUN=median)
 names(Sites_semi_SLA)[1:3]<-paste(c("Depth","Species", "SLA"))
 names(Sites_semi_LAP)[1:3]<-paste(c("Depth","Species", "LAP"))
-Sites_semi_SLA$SLA <- as.numeric(c("0.22","0.22", "0.18","0.18", "0.47","0.47", "0.10", "0.06", "0.19", 
-                                   "0.19","0.13","0.13","0.12","0.12","0.31"))
-Sites_semi_LAP$LAP <- as.numeric(c("0.08","0.08", "0.09","0.09", "0.52","0.52", "0.11", "0.07", "0.13", 
-                                   "0.13","0.06","0.06","0.18","0.18","0.22"))
+Sites_semi_SLA$SLA <- as.numeric(c("28.71","28.71", "35.54","35.54", "66.37","66.37", "19.85", "36.66", "28.61", 
+                                   "28.61","21.11","21.11","50.42","50.42","32.24"))
+Sites_semi_LAP$LAP <- as.numeric(c("0.02","0.02", "0.013","0.013", "0.41","0.41", "0.022", "0.018", "0.024", 
+                                   "0.024","0.028","0.028","0.039","0.039","0.14"))
 
 
 Site_semi_SLA_D <- subset(Sites_semi_SLA, Depth=="D")
@@ -313,10 +313,10 @@ Sites_shel_SLA <- aggregate(x=TraitData_shel$SLA, by=list(TraitData_shel$Depth, 
 Sites_shel_LAP <- aggregate(x=TraitData_shel$LAP, by=list(TraitData_shel$Depth, TraitData_shel$Species), FUN=median)
 names(Sites_shel_SLA)[1:3]<-paste(c("Depth","Species", "SLA"))
 names(Sites_shel_LAP)[1:3]<-paste(c("Depth","Species", "LAP"))
-Sites_shel_SLA$SLA <- as.numeric(c("1.16","0.22", "0.61","0.08", "0.18", "0.14", "0.47", "0.06", 
-                                   "0.13"))
-Sites_shel_LAP$LAP <- as.numeric(c("0.45","0.08", "0.28","0.10", "0.09", "0.10", "0.52", "0.07", 
-                                   "0.06"))
+Sites_shel_SLA$SLA <- as.numeric(c("128.02","28.71", "105.08","57.57", "35.54", "50.58", "66.37", "36.66", 
+                                   "21.11"))
+Sites_shel_LAP$LAP <- as.numeric(c("0.05","0.02", "0.09","0.014", "0.013", "0.04", "0.41", "0.018", 
+                                   "0.028"))
 
 
 Sites_shel_SLAB <- as.data.frame(Sites_shel_SLA[,c(3)])
@@ -389,10 +389,10 @@ Sites_pojo_SLA <- aggregate(x=TraitData_pojo$SLA, by=list(TraitData_pojo$Depth, 
 Sites_pojo_LAP <- aggregate(x=TraitData_pojo$LAP, by=list(TraitData_pojo$Depth, TraitData_pojo$Species), FUN=median)
 names(Sites_pojo_SLA)[1:3]<-paste(c("Depth","Species", "SLA"))
 names(Sites_pojo_LAP)[1:3]<-paste(c("Depth","Species", "LAP"))
-Sites_pojo_SLA$SLA <- as.numeric(c("1.16","0.22", "0.22","0.75", "0.61", "0.61", "0.08", "0.18", 
-                                   "0.14","0.14","0.72","0.80", "0.80","0.39", "0.06", "0.06", "0.97"))
-Sites_pojo_LAP$LAP <- as.numeric(c("0.45","0.08", "0.08","0.11", "0.28", "0.28", "0.10", "0.09", 
-                                   "0.10","0.10","1.91", "0.63","0.63", "0.44", "0.07", "0.07", "1.15"))
+Sites_pojo_SLA$SLA <- as.numeric(c("128.03","28.71", "28.71","263.75", "105.08", "105.08", "57.57", 
+                                   "34.54","50.58","50.58","143.52", "95.89","95.89", "77.72", "36.66", "36.66", "218.58"))
+Sites_pojo_LAP$LAP <- as.numeric(c("0.05","0.02", "0.02","0.022", "0.09", "0.09", "0.014", "0.013", 
+                                   "0.04","0.04","2.61", "0.38","0.38", "0.11", "0.018", "0.018", "0.15"))
 
 Site_pojo_SLA_D <- subset(Sites_pojo_SLA, Depth=="D")
 Site_pojo_SLA_S <- subset(Sites_pojo_SLA, Depth=="S")
