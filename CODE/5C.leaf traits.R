@@ -130,11 +130,11 @@ FDisSLA_D <- adonis2(Deep_Leaf$FDis_SLA ~ Exposure + Site_Exposure , data=Deep_L
 FDisSLA_D # significant difference at exposure and site level
 
 ######### Between depths #########
-CWMSLA_Depths <- adonis2(Indices_leaf_AllsitesB$CWM_SLA ~ Exposure_Depth + Site_Exposure, 
+CWMSLA_Depths <- adonis2(Indices_leaf_AllsitesB$CWM_SLA ~ Depth + Site_Exposure, 
                             data=Indices_leaf_AllsitesB, perm=999)
 CWMSLA_Depths # significant difference among exposure-depth and site level
 
-FDisSLA_Depths <- adonis2(Indices_leaf_AllsitesB$FDis_SLA ~ Exposure_Depth + Site_Exposure, 
+FDisSLA_Depths <- adonis2(Indices_leaf_AllsitesB$FDis_SLA ~ Depth + Site_Exposure, 
                              data=Indices_leaf_AllsitesB, perm=999)
 FDisSLA_Depths # significant difference among exposure-depth and site level
 
@@ -160,11 +160,11 @@ FDisLAP_D <- adonis2(Deep_Leaf$FDis_LAP ~ Exposure + Site_Exposure , data=Deep_L
 FDisLAP_D # significant difference at exposure and site level
 
 ######### Between depths #########
-CWMLAP_Depths <- adonis2(Indices_leaf_AllsitesB$CWM_LAP ~ Exposure_Depth + Site_Exposure, 
+CWMLAP_Depths <- adonis2(Indices_leaf_AllsitesB$CWM_LAP ~ Depth + Site_Exposure, 
                          data=Indices_leaf_AllsitesB, perm=999)
 CWMLAP_Depths # significant difference among exposure-depth and site level
 
-FDisLAP_Depths <- adonis2(Indices_leaf_AllsitesB$FDis_LAP ~ Exposure_Depth + Site_Exposure, 
+FDisLAP_Depths <- adonis2(Indices_leaf_AllsitesB$FDis_LAP ~ Depth + Site_Exposure, 
                           data=Indices_leaf_AllsitesB, perm=999)
 FDisLAP_Depths # significant difference among exposure-depth and site level
 

@@ -90,11 +90,11 @@ FDisRatio_D <- adonis2(Deep_Ratio$FDis_Ratio ~ Exposure + Site_Exposure , data=D
 FDisRatio_D # significant difference at exposure and site level
 
 ######### Between depths #########
-CWMRatio_Depths <- adonis2(Indices_Ratio_AllsitesB$CWM_Ratio ~ Exposure_Depth + Site_Exposure, 
+CWMRatio_Depths <- adonis2(Indices_Ratio_AllsitesB$CWM_Ratio ~ Depth + Site_Exposure, 
                             data=Indices_Ratio_AllsitesB, perm=999)
 CWMRatio_Depths # significant difference among exposure-depth and site level
 
-FDisRatio_Depths <- adonis2(Indices_Ratio_AllsitesB$FDis_Ratio ~ Exposure_Depth + Site_Exposure, 
+FDisRatio_Depths <- adonis2(Indices_Ratio_AllsitesB$FDis_Ratio ~ Depth + Site_Exposure, 
                              data=Indices_Ratio_AllsitesB, perm=999)
 FDisRatio_Depths # significant difference among exposure-depth and site level
 

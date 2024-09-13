@@ -90,11 +90,11 @@ FDisRootDepth_D <- adonis2(Deep_RootDepth$FDis_RootDepth ~ Exposure + Site_Expos
 FDisRootDepth_D # significant difference at exposure and site level
 
 ######### Between depths #########
-CWMRootDepth_Depths <- adonis2(Indices_RootDepth_AllsitesB$CWM_RootDepth ~ Exposure_Depth + Site_Exposure, 
+CWMRootDepth_Depths <- adonis2(Indices_RootDepth_AllsitesB$CWM_RootDepth ~ Depth + Site_Exposure, 
                             data=Indices_RootDepth_AllsitesB, perm=999)
 CWMRootDepth_Depths # significant difference among exposure-depth and site level
 
-FDisRootDepth_Depths <- adonis2(Indices_RootDepth_AllsitesB$FDis_RootDepth ~ Exposure_Depth + Site_Exposure, 
+FDisRootDepth_Depths <- adonis2(Indices_RootDepth_AllsitesB$FDis_RootDepth ~ Depth + Site_Exposure, 
                              data=Indices_RootDepth_AllsitesB, perm=999)
 FDisRootDepth_Depths # significant difference among exposure-depth and site level
 
