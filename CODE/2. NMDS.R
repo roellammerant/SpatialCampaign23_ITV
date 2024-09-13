@@ -226,7 +226,7 @@ text(-0.99, 0.37, expression("Sand %"))
 text(1.00, -0.33, expression("Clay %"))
 
 legend("topleft",
-       legend = unique(Site_environmental$Exposure),
+       legend = c("Exposed", "Semi-sheltered", "Shelted", "Pojo bay"),
        pch = 19,
        col = c("#DEB887","#98FB98","#DDA0DD","#FFA500"),
        cex = 0.95)

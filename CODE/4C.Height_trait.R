@@ -98,11 +98,11 @@ FDisHeight_D # significant difference at exposure and site level
 
 ######### Between depths #########
 
-CWMHeight_Depths <- adonis2(Indices_height_Allsites$CWM_Height ~ Exposure_Depth + Site_Exposure, 
+CWMHeight_Depths <- adonis2(Indices_height_Allsites$CWM_Height ~ Depth + Site_Exposure, 
                             data=Indices_height_Allsites, perm=999)
 CWMHeight_Depths # significant difference among exposure-depth and site level
 
-FDisHeight_Depths <- adonis2(Indices_height_Allsites$FDis_Height ~ Exposure_Depth + Site_Exposure, 
+FDisHeight_Depths <- adonis2(Indices_height_Allsites$FDis_Height ~ Depth + Site_Exposure, 
                              data=Indices_height_Allsites, perm=999)
 FDisHeight_Depths # significant difference among exposure-depth and site level
 

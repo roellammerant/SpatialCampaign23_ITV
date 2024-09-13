@@ -122,7 +122,7 @@ par(mar = c(3, 5, 2, 3))
 boxplot(Individual_count_per_m2 ~ Site_Depth, data = Abundance_All,
         boxwex = 0.5, col = c("bisque","azure2"),
         main = NA,
-        xlab = NA, ylab = "Individual count per m2", ylim = c(0, 5500),at = c(1, 2, 4, 5, 7, 8),
+        xlab = NA, ylab = "Individual count m-2", ylim = c(0, 5500),at = c(1, 2, 4, 5, 7, 8),
         lex.order = TRUE, xaxt="n",cex.lab = 1.2)
 
 stripchart(Individual_count_per_m2 ~ Site_Depth,

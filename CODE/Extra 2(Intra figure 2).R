@@ -11,7 +11,7 @@ png(
   units = 'in',
   res = 300
 )
-par(mfcol=c(2,2))
+par(mfcol=c(2,3))
 
 par(mar = c(3, 5, 2, 3))
 
@@ -84,6 +84,42 @@ axis(1,
 barplot(as.numeric(c("12.37", "17.94", "-13.72", "16.58")),
         col = c("azure2","bisque","aquamarine","lightsalmon","azure2","bisque","aquamarine","lightsalmon"),
         ylab = "Explained variance of SLA", space = as.numeric(c("0.25","0.25","0.25","0.25")),
+        cex.lab = 1.5, ylim=c(-60,60))
+
+label=c("CWM")
+
+axis(1, 
+     at = seq(3 ,6 , 4), 
+     labels = label , 
+     tick=FALSE)
+
+##%######################################################%##
+#                                                          #
+####                        PC1                         ####
+#                                                          #
+##%######################################################%##
+
+barplot(as.numeric(c("19.48", "12.88", "-14.94", "17.42")),
+        col = c("azure2","bisque","aquamarine","lightsalmon","azure2","bisque","aquamarine","lightsalmon"),
+        ylab = "Explained variance of PC1", space = as.numeric(c("0.25","0.25","0.25","0.25")),
+        cex.lab = 1.5, ylim=c(-60,60))
+
+label=c("CWM")
+
+axis(1, 
+     at = seq(3 ,6 , 4), 
+     labels = label , 
+     tick=FALSE)
+
+##%######################################################%##
+#                                                          #
+####                        PC2                         ####
+#                                                          #
+##%######################################################%##
+
+barplot(as.numeric(c("18.57", "22.72", "0.00", "41.45")),
+        col = c("azure2","bisque","aquamarine","lightsalmon","azure2","bisque","aquamarine","lightsalmon"),
+        ylab = "Explained variance of PC2", space = as.numeric(c("0.25","0.25","0.25","0.25")),
         cex.lab = 1.5, ylim=c(-60,60))
 
 label=c("CWM")

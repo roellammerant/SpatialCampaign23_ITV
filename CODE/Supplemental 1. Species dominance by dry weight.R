@@ -91,7 +91,7 @@ stripchart((`Total  dry mass (mg)`/1000)*16 ~Species,
 
 boxplot((`Total  dry mass (mg)`/1000)*16 ~Species,
         data=Semi,
-        main= "Semi",
+        main= "Semi-sheltered",
         xlab=NA,
         ylab="g dwt biomass m-2",
         xlim = c(0, 18),
