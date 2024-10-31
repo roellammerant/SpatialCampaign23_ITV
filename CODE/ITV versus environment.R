@@ -61,6 +61,8 @@ plot(Height_Intra$mean ~ Height_Intra$Environment, las = 1,
 segments(Height_Intra$Environment, Height_Intra$mean - Height_Intra$se,
          Height_Intra$Environment, Height_Intra$mean + Height_Intra$se)
 
+abline(lm(Height_Intra$mean ~ Height_Intra$Environment),col='black', lty=1, lwd=3) 
+
 legend("topright", legend = c("Exposed", "Semi-exposed","Sheltered","Pojo bay"), 
        col=c("burlywood3","palegreen","plum1","orange2"),
        pch = 15, bty = "n", pt.cex = 3, cex = 1,  horiz = F)
@@ -117,6 +119,9 @@ segments(RootDepth_Intra$Environment, RootDepth_Intra$mean - RootDepth_Intra$se,
          RootDepth_Intra$Environment, RootDepth_Intra$mean + RootDepth_Intra$se)
 
 cor.test(RootDepth_Intra$mean,RootDepth_Intra$Environment)
+
+mshapiro_test(RootDepth_Intra$mean) # significant
+
 x2<-lm(RootDepth_Intra$mean ~ RootDepth_Intra$Environment)
 summary(x2)
 
@@ -165,6 +170,9 @@ segments(Ratio_Intra$Environment, Ratio_Intra$mean - Ratio_Intra$se,
          Ratio_Intra$Environment, Ratio_Intra$mean + Ratio_Intra$se)
 
 cor.test(Ratio_Intra$mean,Ratio_Intra$Environment)
+
+mshapiro_test(Ratio_Intra$mean) # significant
+
 x3<-lm(Ratio_Intra$mean ~ Ratio_Intra$Environment)
 summary(x3)
 
@@ -214,6 +222,9 @@ segments(SLA_Intra$Environment, SLA_Intra$mean - SLA_Intra$se,
          SLA_Intra$Environment, SLA_Intra$mean + SLA_Intra$se)
 
 cor.test(SLA_Intra$mean,SLA_Intra$Environment)
+
+mshapiro_test(SLA_Intra$mean) # significant
+
 x4<-lm(SLA_Intra$mean ~ SLA_Intra$Environment)
 summary(x4)
 
@@ -262,6 +273,8 @@ plot(PC1_Intra$mean ~ PC1_Intra$Environment, las = 1,
 segments(PC1_Intra$Environment, PC1_Intra$mean - PC1_Intra$se,
          PC1_Intra$Environment, PC1_Intra$mean + PC1_Intra$se)
 
+cor.test(PC1_Intra$mean,PC1_Intra$Environment)
+
 ###########################
 #          PC2            #
 ###########################
@@ -301,6 +314,7 @@ plot(PC2_Intra$mean ~ PC2_Intra$Environment, las = 1,
 segments(PC2_Intra$Environment, PC2_Intra$mean - PC2_Intra$se,
          PC2_Intra$Environment, PC2_Intra$mean + PC2_Intra$se)
 
+cor.test(PC2_Intra$mean,PC2_Intra$Environment)
 ##%######################################################%##
 #                                                          #
 ####              Overall amount of ITV                 ####
@@ -340,6 +354,8 @@ segments(Height_Intra$Environment, Height_Intra$mean - Height_Intra$se,
                  "orange2","orange2","orange2","orange2","orange2",
                  "plum1","plum1","plum1","plum1","plum1"))
 
+abline(lm(Height_Intra$mean ~ Height_Intra$Environment),col='black', lty=1, lwd=2) 
+
 legend("topright", legend = c("Exposed", "Semi-Sheltered","Sheltered","Pojo bay"), 
        col=c("burlywood3","palegreen","plum1","orange2"),
        pch = 15, bty = "n", pt.cex = 3, cex = 1.75,  horiz = F)
@@ -364,6 +380,8 @@ segments(RootDepth_Intra$Environment, RootDepth_Intra$mean - RootDepth_Intra$se,
                  "orange2","orange2","orange2","orange2","orange2",
                  "plum1","plum1","plum1","plum1","plum1"))
 
+abline(lm(RootDepth_Intra$mean ~ RootDepth_Intra$Environment),col='black', lty=1, lwd=2) 
+
 #### R:S ratio
 
 plot(Ratio_Intra$mean ~ Ratio_Intra$Environment, las = 1,
@@ -383,6 +401,9 @@ segments(Ratio_Intra$Environment, Ratio_Intra$mean - Ratio_Intra$se,
                  "palegreen","palegreen","palegreen","palegreen","palegreen",
                  "orange2","orange2","orange2","orange2","orange2",
                  "plum1","plum1","plum1","plum1","plum1"))
+
+abline(lm(Ratio_Intra$mean ~ Ratio_Intra$Environment),col='black', lty=1, lwd=2) 
+
 #### SLA
 
 plot(SLA_Intra$mean ~ SLA_Intra$Environment, las = 1,
@@ -403,6 +424,8 @@ segments(SLA_Intra$Environment, SLA_Intra$mean - SLA_Intra$se,
                  "orange2","orange2","orange2","orange2","orange2",
                  "plum1","plum1","plum1","plum1","plum1"))
 
+abline(lm(SLA_Intra$mean ~ SLA_Intra$Environment),col='lightgrey', lty=2, lwd=2) 
+
 #### PC1
 plot(PC1_Intra$mean ~ PC1_Intra$Environment, las = 1,
      cex.axis = 1.5, cex.lab =1.75, pch = 16, cex = 2,
@@ -422,6 +445,7 @@ segments(PC1_Intra$Environment, PC1_Intra$mean - PC1_Intra$se,
                  "orange2","orange2","orange2","orange2","orange2",
                  "plum1","plum1","plum1","plum1","plum1"))
 
+abline(lm(PC1_Intra$mean ~ PC1_Intra$Environment),col='lightgrey', lty=2, lwd=2) 
 
 #### PC2
 
@@ -442,6 +466,8 @@ segments(PC2_Intra$Environment, PC2_Intra$mean - PC2_Intra$se,
                  "palegreen","palegreen","palegreen","palegreen","palegreen",
                  "orange2","orange2","orange2","orange2","orange2",
                  "plum1","plum1","plum1","plum1","plum1"))
+
+abline(lm(PC2_Intra$mean ~ PC2_Intra$Environment),col='lightgrey', lty=2, lwd=2) 
 
 
 dev.off ()

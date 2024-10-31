@@ -117,7 +117,7 @@ TraitData_pojo$Exposure <- "Pojo"
 #################################################
 
 All_PCA <- rbind (TraitData_exp, TraitData_semi, TraitData_shel, TraitData_pojo)
-
+All_PCA <- subset(All_PCA,Depth=="S")
 #################################################
 ###########                ######################
 ###########       PCA      ######################

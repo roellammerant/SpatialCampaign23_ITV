@@ -43,11 +43,13 @@ Sites_exp_PC1 <- aggregate(x=TraitData_expP$PC1, by=list(TraitData_expP$Depth, T
 Sites_exp_PC2 <- aggregate(x=TraitData_expP$PC2, by=list(TraitData_expP$Depth, TraitData_expP$Species), FUN=median)
 names(Sites_exp_PC1)[1:3]<-paste(c("Depth","Species", "PC1"))
 names(Sites_exp_PC2)[1:3]<-paste(c("Depth","Species", "PC2"))
-Sites_exp_PC1$PC1 <- as.numeric(c("-1.217","-0.117", "-0.427","-0.365", "-0.936", "-0.545"))
-Sites_exp_PC2$PC2 <- as.numeric(c("0.755","-0.263", "-0.675","0.198", "-1.063", "-0.432"))
-
 Sites_exp_PC1_S <- subset(Sites_exp_PC1, Depth=="S")
 Sites_exp_PC2_S <- subset(Sites_exp_PC2, Depth=="S")
+
+Sites_exp_PC1_S$PC1 <- as.numeric(c("-1.217","-0.117", "-0.427","-0.365", "-0.936", "-0.545"))
+Sites_exp_PC1_S$PC2 <- as.numeric(c("0.755","-0.263", "-0.675","0.198", "-1.063", "-0.432"))
+
+
 
 Sites_exp_PC1_SB <- as.data.frame(Sites_exp_PC1_S[,c(3)])
 rownames(Sites_exp_PC1_SB) <- Sites_exp_PC1_S$Species
@@ -120,12 +122,13 @@ Sites_semi_PC1 <- aggregate(x=TraitData_semiP$PC1, by=list(TraitData_semiP$Depth
 Sites_semi_PC2 <- aggregate(x=TraitData_semiP$PC2, by=list(TraitData_semiP$Depth, TraitData_semiP$Species), FUN=median)
 names(Sites_semi_PC1)[1:3]<-paste(c("Depth","Species", "PC1"))
 names(Sites_semi_PC2)[1:3]<-paste(c("Depth","Species", "PC2"))
-Sites_semi_PC1$PC1 <- as.numeric(c("0.915","-1.218", "-0.117","-2.777", "0.465","-0.427", "-0.365", "-0.936"))
-Sites_semi_PC2$PC2 <- as.numeric(c("0.416","0.755", "-0.262","2.454", "0.154","-0.675", "0.198", "-0.106"))
-
-
 Site_semi_PC1_S <- subset(Sites_semi_PC1, Depth=="S")
 Site_semi_PC2_S <- subset(Sites_semi_PC2, Depth=="S")
+
+Site_semi_PC1_S$PC1 <- as.numeric(c("0.915","-1.218", "-0.117","-2.777", "0.465","-0.427", "-0.365", "-0.936"))
+Site_semi_PC2_S$PC2 <- as.numeric(c("0.416","0.755", "-0.262","2.454", "0.154","-0.675", "0.198", "-1.062"))
+
+
 
 Site_semi_PC1_SB <- as.data.frame(Site_semi_PC1_S[,c(3)])
 rownames(Site_semi_PC1_SB) <- Site_semi_PC1_S$Species
@@ -197,7 +200,7 @@ names(Sites_shel_PC1)[1:3]<-paste(c("Depth","Species", "PC1"))
 names(Sites_shel_PC2)[1:3]<-paste(c("Depth","Species", "PC2"))
 Sites_shel_PC1$PC1 <- as.numeric(c("1.047","0.915", "1.516","-0.996", "-1.218", "1.015", "-0.117", "0.465", 
                                    "-0.365"))
-Sites_shel_PC2$PC2 <- as.numeric(c("0","0.416", "0.075","0.654", "0.755", "0.382", "-0.263", "0.154", 
+Sites_shel_PC2$PC2 <- as.numeric(c("-0.00001","0.416", "0.075","0.654", "0.755", "0.382", "-0.263", "0.154", 
                                    "0.198"))
 
 
@@ -270,13 +273,16 @@ Sites_pojo_PC1 <- aggregate(x=TraitData_pojoP$PC1, by=list(TraitData_pojoP$Depth
 Sites_pojo_PC2 <- aggregate(x=TraitData_pojoP$PC2, by=list(TraitData_pojoP$Depth, TraitData_pojoP$Species), FUN=median)
 names(Sites_pojo_PC1)[1:3]<-paste(c("Depth","Species", "PC1"))
 names(Sites_pojo_PC2)[1:3]<-paste(c("Depth","Species", "PC12"))
-Sites_pojo_PC1$PC1 <- as.numeric(c("0.915","2.597", "1.516","-0.997", "-1.218", "1.015", "-0.713", "0.285", 
-                                   "0.136","0.464","0.984"))
-Sites_pojo_PC2$PC2 <- as.numeric(c("0.416","-0.294", "0.075","0.654", "0.755", "0.382", "-1.147", "0.223", 
-                                   "-0.051","0.154","-0.365"))
 
 Site_pojo_PC1_S <- subset(Sites_pojo_PC1, Depth=="S")
 Site_pojo_PC2_S <- subset(Sites_pojo_PC2, Depth=="S")
+
+Site_pojo_PC1_S$PC1 <- as.numeric(c("0.915","2.597", "1.516","-0.997", "-1.218", "1.015", "-0.713", "0.285", 
+                                   "0.136","0.464","0.984"))
+Site_pojo_PC2_S$PC2 <- as.numeric(c("0.416","-0.294", "0.075","0.654", "0.755", "0.382", "-1.147", "0.223", 
+                                   "-0.051","0.154","-0.365"))
+
+
 
 Site_pojo_PC1_SB <- as.data.frame(Site_pojo_PC1_S[,c(3)])
 rownames(Site_pojo_PC1_SB) <- Site_pojo_PC1_S$Species
