@@ -71,7 +71,7 @@ par(mar = c(3, 5, 2, 3))
 
 ##%######################################################%##
 #                                                          #
-####                    Intra height                    ####
+####                 Intra RootDepth                    ####
 #                                                          #
 ##%######################################################%##
 
@@ -115,4 +115,124 @@ axis(1,
 legend("topleft", legend = c(expression(italic("M. spicatum")), expression(italic("S. pectinata")), expression(italic("p. perfoliatus")), expression(italic("C. demersum"))), 
        col=c("cyan3","burlywood","grey","darkorange"),
        pch = 15, bty = "n", pt.cex = 3, cex = 1,  horiz = F)
+
+##%######################################################%##
+#                                                          #
+####                 Stats Rootdepth                    ####
+#                                                          #
+##%######################################################%##
+
+##### Normality #####
+
+library(rstatix)
+
+### Exposed
+RootS[c(1:8),c(7)]
+mshapiro_test(RootS[c(1:8),c(5)]) # MYRSPI significant
+RootS[c(40:60),c(7)]
+mshapiro_test(RootS[c(40:60),c(5)]) # STUPEC significant
+RootS[c(138:152),c(7)]
+mshapiro_test(RootS[c(138:152),c(5)]) # POTPER significant
+
+### Semi
+RootS[c(9:24),c(7)]
+mshapiro_test(RootS[c(9:24),c(5)]) # MYRSPI significant
+RootS[c(61:75),c(7)]
+mshapiro_test(RootS[c(61:75),c(5)]) # STUPEC non-significant
+RootS[c(85:88),c(7)]
+mshapiro_test(RootS[c(85:88),c(5)]) # CERDEM all zero
+RootS[c(153:169),c(7)]
+mshapiro_test(RootS[c(153:169),c(5)]) # POTPER non-significant
+
+### sheltered
+RootS[c(25:33),c(7)]
+mshapiro_test(RootS[c(25:33),c(5)]) # MYRSPI non-significant
+RootS[c(76:84),c(7)]
+mshapiro_test(RootS[c(76:84),c(5)]) # STUPEC non-significant
+RootS[c(91:112),c(7)]
+mshapiro_test(RootS[c(91:112),c(5)]) # CERDEM all zero
+RootS[c(170:175),c(7)]
+mshapiro_test(RootS[c(170:175),c(5)]) # POTPER Non-significant
+
+### Pojo
+RootS[c(34:39),c(7)]
+mshapiro_test(RootS[c(34:39),c(5)]) # MYRSPI non-significant
+RootS[c(113:137),c(7)]
+mshapiro_test(RootS[c(113:137),c(5)]) # CERDEM all zero
+
+
+#### For every species, not all data is normal distributed
+
+##### Homogeneity #####
+
+RootS$Site_Exposure <- paste(RootS$Site_number, RootS$Exposure, sep="_")
+
+RD_Intra_Myrspi <- RootS[ which(RootS$Species=='MYRSPI'), ]
+RD_Intra_STUPEC <- RootS[ which(RootS$Species=='STUPEC'), ]
+RD_Intra_CERDEM <- RootS[ which(RootS$Species=='CERDEM'), ]
+RD_Intra_POTPER <- RootS[ which(RootS$Species=='POTPER'), ]
+
+fligner.test(RD_Intra_Myrspi$RootDepth ~ RD_Intra_Myrspi$Site_group) # non-significant
+fligner.test(RD_Intra_STUPEC$RootDepth ~ RD_Intra_STUPEC$Site_group) # non-significant
+fligner.test(RD_Intra_CERDEM$RootDepth ~ RD_Intra_CERDEM$Site_group) # all zero
+fligner.test(RD_Intra_POTPER$RootDepth ~ RD_Intra_POTPER$Site_group) # non-significant
+
+
+##%######################################################%##
+#                                                          #
+####      Non-parametric test + heteroscedasticity     #####
+#                                                          #
+##%######################################################%##
+
+library(tidyverse)
+library(vegan)
+
+##%######################################################%##
+#                                                          #
+####            Non parametric permanova                ####   
+####                                                    ####
+#                                                          #
+##%######################################################%##
+
+
+######### Shallow sites #########
+# https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/permanova/
+# Doesn´t assume normality or homogeneity of variance
+
+MYRSPI_RD <- adonis2(RD_Intra_Myrspi$RootDepth ~ Exposure + Site_Exposure, data=RD_Intra_Myrspi, perm=999)
+MYRSPI_RD # no significant differences
+
+RD_Intra_STUPEC$RootDepth[RD_Intra_STUPEC$RootDepth == 0] <- 0.00001 
+STUPEC_RD <- adonis2(RD_Intra_STUPEC$RootDepth ~ Exposure + Site_Exposure, data=RD_Intra_STUPEC, perm=999)
+STUPEC_RD # significant differences ate exposure categories
+
+CERDEM_RD <- adonis2(RD_Intra_CERDEM$RootDepth ~ Exposure + Site_Exposure, data=RD_Intra_CERDEM, perm=999)
+CERDEM_RD # no significant differences, all values are zero
+
+POTPER_RD <- adonis2(RD_Intra_POTPER$RootDepth ~ Exposure + Site_Exposure, data=RD_Intra_POTPER, perm=999)
+POTPER_RD # no significant differences
+
+##%######################################################%##
+#                                                          #
+####                 Post-hoc adonis test               ####   
+#                                                          #
+##%######################################################%##
+library(devtools)
+library(pairwiseAdonis)
+
+######### Across exposure categories #########
+
+dist_matrixM=vegdist(RD_Intra_Myrspi$RootDepth,method="manhattan")
+pairwise.adonis2(dist_matrixM ~ Exposure + Site_Exposure, p.adj = "hochberg", data = RD_Intra_Myrspi)
+
+dist_matrixS=vegdist(RD_Intra_STUPEC$RootDepth,method="manhattan")
+pairwise.adonis2(dist_matrixS ~ Exposure + Site_Exposure, p.adj = "hochberg", data = RD_Intra_STUPEC)
+
+dist_matrixC=vegdist(RD_Intra_CERDEM$RootDepth,method="manhattan")
+pairwise.adonis2(dist_matrixC ~ Exposure + Site_Exposure, p.adj = "hochberg", data = RD_Intra_CERDEM)
+
+dist_matrixP=vegdist(RD_Intra_POTPER$RootDepth,method="manhattan")
+pairwise.adonis2(dist_matrixP ~ Exposure + Site_Exposure, p.adj = "hochberg", data = RD_Intra_POTPER)
+
+
 

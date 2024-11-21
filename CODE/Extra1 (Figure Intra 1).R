@@ -263,7 +263,7 @@ data.scoresB$Site_group <- All_sites_drymass$Site_group
 
 ##%######################################################%##
 #                                                          #
-####           Plot 3 panel figure of sites             ####
+####           Plot 4 panel figure of sites             ####
 #                                                          #
 ##%######################################################%##
 
@@ -324,7 +324,7 @@ mtext("B", 3, -1.25, adj=0.05, font=2)
 ### Species traits  ###
 #######################
 
-plot(NULL, xlim=c(-4,4), ylim=c(-4,4), ylab="PC2", xlab="PC1")
+plot(NULL, xlim=c(-4,4), ylim=c(-4,4), ylab="PC2 (27.79%)", xlab="PC1 (40.35%)")
 
 dataEllipse(All_PCA$PC1, All_PCA$PC2, groups = as.factor(All_PCA$Exposure), levels = c(0.60), 
             center.pch =FALSE,  plot.points = FALSE, group.labels = NA, col=colors)
