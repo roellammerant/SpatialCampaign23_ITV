@@ -142,7 +142,24 @@ data.scores = as.data.frame(ord$x[,1:2])
 All_PCA$PC1 <- data.scores$PC1
 All_PCA$PC2 <- data.scores$PC2
 
+##%######################################################%##
+#                                                          #
+####                 environmental PCA                  ####
+#                                                          #
+##%######################################################%##
 
+Site_environmental <- read_excel("DATA/Site environmental.xlsx")
+
+ordB <- prcomp(~ Site_environmental$Salinity +
+                Site_environmental$LOI +
+                Site_environmental$`Percent Sand` +
+                Site_environmental$`Percent Clay` 
+              , center = TRUE, scale = TRUE, data=Site_environmental)
+
+summary(ordB) # percent of variance explained by each PC AXIS
+
+data.scores = as.data.frame(ordB$x[,1:2])
+data.scores$Exposure <- Site_environmental$Exposure
 
 ##%######################################################%##
 #                                                          #
@@ -270,12 +287,12 @@ data.scoresB$Site_group <- All_sites_drymass$Site_group
 png(
   "output_plot/Figure_Intra1(Sites_Species_traits).jpg",
   width = 16,
-  height = 6,
+  height = 11,
   units = 'in',
   res = 600
 )
 
-par(mfcol = c(1, 3), mar = c(0.5, 0.5, 0, 0))  
+par(mfcol = c(2, 2), mar = c(0.5, 0.5, 0, 0))  
 
 #######################
 ### FIGURE OF sites ###
@@ -284,11 +301,7 @@ par(mfcol = c(1, 3), mar = c(0.5, 0.5, 0, 0))
 image_data <- load.image("C:/Users/roell/OneDrive/Bureaublad/Github/Coastclim Spatial/Spatial-23-CoastClim/output_plot/Map_sitegroup_colors.png")
 plot(image_data, axes = FALSE)
 
-legend("topright", legend = c("Exposed", "Semi-exposed","Sheltered","Pojo bay"), 
-       col=c("burlywood3","palegreen","plum1","orange2"),
-       pch = 15, bty = "n", pt.cex = 3, cex = 1,  horiz = F)
-
-mtext("A", 3, -1.25, adj=0.05, font=2)
+mtext("A", 3, 0.25, adj=0.00, font=2)
 
 #######################
 ### Species NMDS    ###
@@ -318,7 +331,37 @@ text(1.946877033, -1.19134342, expression("P. obtusifolius"))
 text(2.082468368, -0.27188921, expression("N. marina"))
 text(2.913322221, -0.07091259, expression("C. hermaprhoditica"))
 
-mtext("B", 3, -1.25, adj=0.05, font=2)
+mtext("C", 3, 0.25, adj=0.00, font=2)
+
+#######################
+### Environmental   ###
+#######################
+plot(ordB$x[,1:2], pch=16, col=c("burlywood3","burlywood3","burlywood3","burlywood3","burlywood3",
+                                "palegreen","palegreen","palegreen","palegreen","palegreen",
+                                "plum1","plum1","plum1","plum1","plum1",
+                                "orange2","orange2","orange2","orange2","orange2"), 
+     cex=0.75,ylim = c(-3,3), xlim = c(-2,4), ylab="PC2 (12.00%)", xlab="PC1 (86.35%)")
+
+dataEllipse(data.scores$PC1, data.scores$PC2, groups = as.factor(data.scores$Exposure), levels = c(0.60), 
+            center.pch =FALSE,  plot.points = FALSE, group.labels = NA, col=colors)
+
+legend("topleft", legend = c("Exposed", "Semi-sheltered","Sheltered","Pojo bay"), 
+       col=c("burlywood3","palegreen","plum1","orange2"),
+       pch = 15, bty = "n", pt.cex = 3, cex = 1,  horiz = F)
+
+mtext("B", 3, 0.25, adj=0.0, font=2)
+abline(v=0, h=0, lty=3)
+
+l.x <- ordB$rotation[,1]*1.5
+l.y <- ordB$rotation[,2]*1.5
+
+arrows(rep(0,11), rep(0,11), l.x, l.y, len=0.1, lwd=1.25)
+
+
+text(-0.82, -1.4, expression("Salinity"))
+text(0.90, -0.72, expression("LOI"))
+text(-0.99, 0.37, expression("Sand %"))
+text(1.00, -0.33, expression("Clay %"))
 
 #######################
 ### Species traits  ###
@@ -339,7 +382,9 @@ text(-3.3, -0.6, expression("Root depth"))
 text(-2.0, -3.3, expression("R:S ratio"))
 text(2.0, -0.7, expression("SLA"))
 
-mtext("C", 3, -1.25, adj=0.05, font=2)
+abline(v=0, h=0, lty=3)
+
+mtext("D", 3, 0.25, adj=0.00, font=2)
 
 dev.off()
 
