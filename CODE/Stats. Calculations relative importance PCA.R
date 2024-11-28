@@ -119,7 +119,7 @@ library(vegan)
 
 # Permanova can´t handle zero`s
 Indices_PCA_Fixed$FDis_PC2[Indices_PCA_Fixed$FDis_PC2 == 0] <- 0.00001 
-Indices_PCA_Fixed$CWM_PC2 <- Indices_PCA_Fixed$CWM_PC2 + 1.0640
+Indices_PCA_Fixed$CWM_PC2 <- Indices_PCA_Fixed$CWM_PC2 + 1.2640
 
 Indices_PCA_SpecificMinusFixedB$FDis_PC2[Indices_PCA_SpecificMinusFixedB$FDis_PC2 == 0] <- 0.00001 
 Indices_PCA_SpecificMinusFixedB$CWM_PC2 <- Indices_PCA_SpecificMinusFixedB$CWM_PC2 + 0.952
@@ -129,25 +129,25 @@ Indices_PCA_AllsitesB$CWM_PC2 <- Indices_PCA_AllsitesB$CWM_PC2 + 1.254
 
 #### FIXED ####
 
-CWMPC1_Fixed <- adonis2(Indices_PCA_Fixed$CWM_PC2 ~ Exposure + Site_Exposure, data=Indices_PCA_Fixed, perm=999)
-CWMPC1_Fixed # significant difference at exposure and site level
+CWMPC2_Fixed <- adonis2(Indices_PCA_Fixed$CWM_PC2 ~ Exposure + Site_Exposure, data=Indices_PCA_Fixed, perm=999)
+CWMPC2_Fixed # significant difference at exposure and site level
 
-FDisPC1_Fixed <- adonis2(Indices_PCA_Fixed$FDis_PC2 ~ Exposure + Site_Exposure , data=Indices_PCA_Fixed, perm=999)
-FDisPC1_Fixed # significant difference at exposure and site level
+FDisPC2_Fixed <- adonis2(Indices_PCA_Fixed$FDis_PC2 ~ Exposure + Site_Exposure , data=Indices_PCA_Fixed, perm=999)
+FDisPC2_Fixed # significant difference at exposure and site level
 
 
 #### Intra B ####
 
-CWMPC1_IntraB <- adonis2(Indices_PCA_SpecificMinusFixedB$CWM_PC2 ~ Exposure + Site_Exposure, data=Indices_PCA_SpecificMinusFixedB, perm=999)
-CWMPC1_IntraB # significant difference at exposure and site level
+CWMPC2_IntraB <- adonis2(Indices_PCA_SpecificMinusFixedB$CWM_PC2 ~ Exposure + Site_Exposure, data=Indices_PCA_SpecificMinusFixedB, perm=999)
+CWMPC2_IntraB # significant difference at exposure and site level
 
-FDisPC1_IntraB <- adonis2(Indices_PCA_SpecificMinusFixedB$FDis_PC2 ~ Exposure + Site_Exposure , data=Indices_PCA_SpecificMinusFixedB, perm=999)
-FDisPC1_IntraB # significant difference at exposure and site level
+FDisPC2_IntraB <- adonis2(Indices_PCA_SpecificMinusFixedB$FDis_PC2 ~ Exposure + Site_Exposure , data=Indices_PCA_SpecificMinusFixedB, perm=999)
+FDisPC2_IntraB # significant difference at exposure and site level
 
 #### Specific B ####
 
-CWMPC1_SpecificB <- adonis2(Indices_PCA_AllsitesB$CWM_PC2 ~ Exposure + Site_Exposure, data=Indices_PCA_AllsitesB, perm=999)
-CWMPC1_SpecificB # significant difference at exposure and site level
+CWMPC2_SpecificB <- adonis2(Indices_PCA_AllsitesB$CWM_PC2 ~ Exposure + Site_Exposure, data=Indices_PCA_AllsitesB, perm=999)
+CWMPC2_SpecificB # significant difference at exposure and site level
 
-FDisPC1_SpecificB <- adonis2(Indices_PCA_AllsitesB$CWM_PC2 ~ Exposure + Site_Exposure , data=Indices_PCA_AllsitesB, perm=999)
-FDisPC1_SpecificB # significant difference at exposure and site level
+FDisPC2_SpecificB <- adonis2(Indices_PCA_AllsitesB$CWM_PC2 ~ Exposure + Site_Exposure , data=Indices_PCA_AllsitesB, perm=999)
+FDisPC2_SpecificB # significant difference at exposure and site level
