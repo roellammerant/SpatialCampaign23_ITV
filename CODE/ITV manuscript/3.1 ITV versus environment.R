@@ -354,7 +354,7 @@ segments(Height_Intra$Environment, Height_Intra$mean - Height_Intra$se,
                  "orange2","orange2","orange2","orange2","orange2",
                  "plum1","plum1","plum1","plum1","plum1"))
 
-abline(lm(Height_Intra$mean ~ Height_Intra$Environment),col='black', lty=1, lwd=2) 
+abline(lm(Height_Intra$mean ~ Height_Intra$Environment),col='black', lty=2, lwd=2) 
 
 legend("topright", legend = c("Exposed", "Semi-Sheltered","Sheltered","Pojo bay"), 
        col=c("burlywood3","palegreen","plum1","orange2"),
@@ -380,7 +380,7 @@ segments(RootDepth_Intra$Environment, RootDepth_Intra$mean - RootDepth_Intra$se,
                  "orange2","orange2","orange2","orange2","orange2",
                  "plum1","plum1","plum1","plum1","plum1"))
 
-abline(lm(RootDepth_Intra$mean ~ RootDepth_Intra$Environment),col='black', lty=1, lwd=2) 
+abline(lm(RootDepth_Intra$mean ~ RootDepth_Intra$Environment),col='black', lty=2, lwd=2) 
 
 #### R:S ratio
 
@@ -402,7 +402,7 @@ segments(Ratio_Intra$Environment, Ratio_Intra$mean - Ratio_Intra$se,
                  "orange2","orange2","orange2","orange2","orange2",
                  "plum1","plum1","plum1","plum1","plum1"))
 
-abline(lm(Ratio_Intra$mean ~ Ratio_Intra$Environment),col='black', lty=1, lwd=2) 
+abline(lm(Ratio_Intra$mean ~ Ratio_Intra$Environment),col='black', lty=2, lwd=2) 
 
 #### SLA
 
