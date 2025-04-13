@@ -307,6 +307,7 @@ mtext("A", 3, 0.25, adj=0.00, font=2)
 ### Species NMDS    ###
 #######################
 par(mar = c(4, 4, 1.5, 0.5))
+colors <- c("burlywood3","orange2","palegreen","plum1")
 
 ordiplot(nmdsB, display = "species", cex = 1.5, xlim = c(-2.3,3.5), ylab="NMDS2", xlab="NMDS1")
 dataEllipse(data.scoresB$NMDS1, data.scoresB$NMDS2, groups = as.factor(data.scoresB$Site_group), levels = c(0.60), 
@@ -367,7 +368,12 @@ text(1.00, -0.33, expression("Clay %"))
 ### Species traits  ###
 #######################
 
-plot(NULL, xlim=c(-4,4), ylim=c(-4,4), ylab="PC2 (27.79%)", xlab="PC1 (40.35%)")
+
+
+plot(ord$x[,1:2], pch=16, 
+     cex=0.90, asp=1, ylim=c(-4,4), xlim=c(-4,4),col=colors[as.factor(All_PCA$Exposure)],
+     ylab="PC2 (27.79%)", xlab="PC1 (40.35%)")
+
 
 dataEllipse(All_PCA$PC1, All_PCA$PC2, groups = as.factor(All_PCA$Exposure), levels = c(0.60), 
             center.pch =FALSE,  plot.points = FALSE, group.labels = NA, col=colors)
