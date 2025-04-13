@@ -52,7 +52,7 @@ Shallow_Ratio_SpecificB <- Indices_Ratio_AllsitesB[ which(Indices_Ratio_Allsites
 CWMRatio_Fixed <- adonis2(Shallow_Ratio_Fixed$CWM_Ratio ~ Exposure + Site_Exposure, data=Shallow_Ratio_Fixed, perm=999)
 CWMRatio_Fixed # significant difference at exposure and site level
 
-FDisRatio_Fixed <- adonis2(Shallow_RootDepth_Fixed$FDis_Ratio ~ Exposure + Site_Exposure , data=Shallow_Ratio_Fixed, perm=999)
+FDisRatio_Fixed <- adonis2(Shallow_Ratio_Fixed$FDis_Ratio ~ Exposure + Site_Exposure , data=Shallow_Ratio_Fixed, perm=999)
 FDisRatio_Fixed # significant difference at exposure and site level
 
 #### Intra B ####

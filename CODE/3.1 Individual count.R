@@ -108,7 +108,7 @@ Abundance_All$Site_Depth <- factor(Abundance_All$Site_Depth , # Reorder factor l
                                                     "sheltered_Shallow", "sheltered_Deep"))
 
 png(
-  "output_plot/IndividualCount.jpg",
+  "output_plot/Supplemental_IndividualCount.jpg",
   width = 13,
   height = 8,
   units = 'in',

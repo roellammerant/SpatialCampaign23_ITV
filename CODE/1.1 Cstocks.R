@@ -571,7 +571,7 @@ Cstock_Plant$MacrophyteCategoryDepth <- factor(paste(Cstock_Plant$MacrophyteCate
 
 
 png(
-  "output_plot/CarbonStocksPlant.jpg",
+  "output_plot/MainFigure_CarbonStocksPlant.jpg",
   width = 13,
   height = 8,
   units = 'in',

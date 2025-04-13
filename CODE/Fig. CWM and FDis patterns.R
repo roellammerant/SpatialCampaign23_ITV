@@ -47,7 +47,7 @@ Indices_leaf_AllsitesB$Exposure_Depth <- factor(Indices_leaf_AllsitesB$Exposure_
 
 
 png(
-  "output_plot/CWM_All_Indices.jpg",
+  "output_plot/MainFigure_CWM_All_Indices.jpg",
   width = 13,
   height = 8,
   units = 'in',
@@ -190,7 +190,7 @@ dev.off()
 ##%######################################################%##
 
 png(
-  "output_plot/FDis_All_Indices.jpg",
+  "output_plot/MainFigure_FDis_All_Indices.jpg",
   width = 13,
   height = 8,
   units = 'in',
