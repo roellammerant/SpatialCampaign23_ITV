@@ -165,7 +165,7 @@ mshapiro_test(HeightS[c(113:137),c(5)]) # CERDEM significant
 
 ##### Homogeneity #####
 
-HeightS$Site_Exposure <- paste(HeightS$Site_number, RootS$Exposure, sep="_")
+HeightS$Site_Exposure <- paste(HeightS$Site_number, HeightS$Exposure, sep="_")
 
 H_Intra_Myrspi <- HeightS[ which(HeightS$Species=='MYRSPI'), ]
 H_Intra_STUPEC <- HeightS[ which(HeightS$Species=='STUPEC'), ]

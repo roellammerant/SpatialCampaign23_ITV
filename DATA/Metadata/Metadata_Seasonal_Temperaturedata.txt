@@ -1,0 +1,23 @@
+### METADATA for Temperature.xlsx
+
+## Data processed by Roel lammerant, Tvärminne Zoological Station, Finland - in collaboration with Eva Karin Rohlfer, Alf Norkko & Camilla gustafsson.
+## Correspondence concerning these data should be directed to Roel Lammerant (Roel.lammerant@outlook.be).
+
+## Description: 
+Seasonal field survey, based on four sampling campaigns (October 2021, March 2022, June 2022 and August 2022) of destructively harvesting macrophyte material in the Tvärminne archipelago, Finland.  
+Water temperature data collected during our data collection 
+
+## Metadata are in the form of: # Variable - description with units
+
+# Variable list:
+
+# Temperature - Water temperature measurements in degrees celcius 
+# Time - Timing of the data collection (March, June, August, October)
+
+
+
+
+
+
+
+

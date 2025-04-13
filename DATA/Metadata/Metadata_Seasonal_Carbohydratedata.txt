@@ -1,0 +1,29 @@
+### METADATA for AllCarbohydrates.xlsx
+
+## Data processed by Roel lammerant, Tvärminne Zoological Station, Finland - in collaboration with Eva Karin Rohlfer, Alf Norkko & Camilla gustafsson.
+## Correspondence concerning these data should be directed to Roel Lammerant (Roel.lammerant@outlook.be).
+
+## Description: 
+Seasonal field survey, based on four sampling campaigns (October 2021, March 2022, June 2022 and August 2022) of destructively harvesting macrophyte material in the Tvärminne archipelago, Finland.  
+Carbohydrate analyses were conducted on a subset of samples collected during the four field surveys. For every species, up to 10 samples for each tissue compartement (i.e. leaf and rhizome) during each survey.
+Dried tissue was homogenized using  sterile stainless-steel beads and a ball mill (Retsch MM 400). Samples were micro-weighed by hand and analyzed following an acid-based method by Landhäusser et al. (2018). 
+This method quantified the total amount of soluble sugars (i.e., mono- and oligosaccharides) and starch present in the samples.
+
+## Metadata are in the form of: # Variable - description with units
+
+# Variable list:
+
+# Species - Six letter code of the species. Codes are as follows: MYRSPI - Myriophyllum spicatum, CERDEM - Ceratophyllum demersum, POTPER - Potamogeton perfoliatus, RANBAU - Ranunculus baudotii, RANCIR - Ranunculus circinatus, RUPCIR - Ruppia cirhos, STUPEC - Stuckenia pectinata, ZANMAJ - Zannichelia major, ZOSMAR - Zoster Marina 
+# Tissue - Tissue compartement used for elemental analyses (leaf or rhizome)
+# Carbohydrate - The differen carbohydrate compounds: Soluble (i.e. soluble sugars) and starch 
+# Time - Timing of the data collection (March, June, August, October)
+# Amount (mg/g) - The amount of carbohydrate per dry weight of the sampled tissue in mg/g
+# Boxplot - Factor for plotting Carbohydrates 
+# BoxplotB - Factor for plotting Carbohydrates 
+
+
+
+
+
+
+
