@@ -44,7 +44,7 @@ legend("topright", legend = c("Species turnover", "Intraspecific variation", "Co
 #                                                          #
 ##%######################################################%##
 
-barplot(as.numeric(c("16.54", "20.18", "-5.15", "15.95","8.19", "13.21", "-14.88", "6.51")),
+barplot(as.numeric(c("16.54", "50.91", "-51.50", "15.95","8.19", "13.21", "-14.88", "6.51")),
         col = c("azure2","bisque","aquamarine","lightsalmon","azure2","bisque","aquamarine","lightsalmon"),
         ylab = "Explained variance of Root depth", space = as.numeric(c("0.25","0.25","0.25","0.25", "2.0","0.25","0.25","0.25")),
         cex.lab = 1.5, ylim=c(-60,60))

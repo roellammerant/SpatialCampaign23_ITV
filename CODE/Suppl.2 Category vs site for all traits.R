@@ -1,44 +1,64 @@
 CategoryLevel_Height<- Indices_height_AllsitesB[c(1:117),]
+CategoryLevel_Height$CWM_Height <- as.numeric(CategoryLevel_Height$CWM_Height)
+CategoryLevel_Height$FDis_Height <- as.numeric(CategoryLevel_Height$FDis_Height)
 CategoryLevel_Height$Exposure_Depth <- factor(CategoryLevel_Height$Exposure_Depth , # Reorder factor levels
                                               c("Exposed_Shallow","Exposed_Deep",
                                                 "Semi_Shallow", "Semi_Deep"))
 SiteLevel_Height<- Indices_height_Allsites[c(1:117),]
+SiteLevel_Height$CWM_Height <- as.numeric(SiteLevel_Height$CWM_Height)
+SiteLevel_Height$FDis_Height <- as.numeric(SiteLevel_Height$FDis_Height)
 SiteLevel_Height$Exposure_Depth <- factor(SiteLevel_Height$Exposure_Depth , # Reorder factor levels
                                           c("Exposed_Shallow","Exposed_Deep",
                                             "Semi_Shallow", "Semi_Deep"))
 
 CategoryLevel_Ratio<- Indices_Ratio_Allsites[c(1:117),]
+CategoryLevel_Ratio$CWM_Ratio <- as.numeric(CategoryLevel_Ratio$CWM_Ratio)
+CategoryLevel_Ratio$FDis_Ratio <- as.numeric(CategoryLevel_Ratio$FDis_Ratio)
 CategoryLevel_Ratio$Exposure_Depth <- factor(CategoryLevel_Ratio$Exposure_Depth , # Reorder factor levels
                                              c("Exposed_Shallow","Exposed_Deep",
                                                "semi_Shallow", "semi_Deep"))
 SiteLevel_Ratio<- Indices_Ratio_AllsitesB[c(1:117),]
+SiteLevel_Ratio$CWM_Ratio <- as.numeric(SiteLevel_Ratio$CWM_Ratio)
+SiteLevel_Ratio$FDis_Ratio <- as.numeric(SiteLevel_Ratio$FDis_Ratio)
 SiteLevel_Ratio$Exposure_Depth <- factor(SiteLevel_Ratio$Exposure_Depth , # Reorder factor levels
                                          c("Exposed_Shallow","Exposed_Deep",
                                            "Semi_Shallow", "Semi_Deep"))
 
 CategoryLevel_RootDepth<- Indices_RootDepth_Allsites[c(1:117),]
+CategoryLevel_RootDepth$CWM_RootDepth <- as.numeric(CategoryLevel_RootDepth$CWM_RootDepth)
+CategoryLevel_RootDepth$FDis_RootDepth <- as.numeric(CategoryLevel_RootDepth$FDis_RootDepth)
 CategoryLevel_RootDepth$Exposure_Depth <- factor(CategoryLevel_RootDepth$Exposure_Depth , # Reorder factor levels
                                                  c("Exposed_Shallow","Exposed_Deep",
                                                    "semi_Shallow", "semi_Deep"))
 SiteLevel_RootDepth<- Indices_RootDepth_AllsitesB[c(1:117),]
+SiteLevel_RootDepth$CWM_RootDepth <- as.numeric(SiteLevel_RootDepth$CWM_RootDepth)
+SiteLevel_RootDepth$FDis_RootDepth <- as.numeric(SiteLevel_RootDepth$FDis_RootDepth)
 SiteLevel_RootDepth$Exposure_Depth <- factor(SiteLevel_RootDepth$Exposure_Depth , # Reorder factor levels
                                              c("Exposed_Shallow","Exposed_Deep",
                                                "Semi_Shallow", "Semi_Deep"))
 
 CategoryLevel_SLA<- Indices_leaf_Allsites[c(1:117),]
+CategoryLevel_SLA$CWM_SLA <- as.numeric(CategoryLevel_SLA$CWM_SLA)
+CategoryLevel_SLA$FDis_SLA <- as.numeric(CategoryLevel_SLA$FDis_SLA)
 CategoryLevel_SLA$Exposure_Depth <- factor(CategoryLevel_SLA$Exposure_Depth , # Reorder factor levels
                                            c("Exposed_Shallow","Exposed_Deep",
                                              "semi_Shallow", "semi_Deep"))
 SiteLevel_SLA<- Indices_leaf_AllsitesB[c(1:117),]
+SiteLevel_SLA$CWM_SLA <- as.numeric(SiteLevel_SLA$CWM_SLA)
+SiteLevel_SLA$FDis_SLA <- as.numeric(SiteLevel_SLA$FDis_SLA)
 SiteLevel_SLA$Exposure_Depth <- factor(SiteLevel_SLA$Exposure_Depth , # Reorder factor levels
                                        c("Exposed_Shallow","Exposed_Deep",
                                          "Semi_Shallow", "Semi_Deep"))
 
 CategoryLevel_LAP<- Indices_leaf_Allsites[c(1:117),]
+CategoryLevel_LAP$CWM_LAP <- as.numeric(CategoryLevel_LAP$CWM_LAP)
+CategoryLevel_LAP$FDis_LAP <- as.numeric(CategoryLevel_LAP$FDis_LAP)
 CategoryLevel_LAP$Exposure_Depth <- factor(CategoryLevel_LAP$Exposure_Depth , # Reorder factor levels
                                            c("Exposed_Shallow","Exposed_Deep",
                                              "semi_Shallow", "semi_Deep"))
 SiteLevel_LAP<- Indices_leaf_AllsitesB[c(1:117),]
+SiteLevel_LAP$CWM_LAP <- as.numeric(SiteLevel_LAP$CWM_LAP)
+SiteLevel_LAP$FDis_LAP <- as.numeric(SiteLevel_LAP$FDis_LAP)
 SiteLevel_LAP$Exposure_Depth <- factor(SiteLevel_LAP$Exposure_Depth , # Reorder factor levels
                                        c("Exposed_Shallow","Exposed_Deep",
                                          "Semi_Shallow", "Semi_Deep"))
@@ -51,7 +71,7 @@ SiteLevel_LAP$Exposure_Depth <- factor(SiteLevel_LAP$Exposure_Depth , # Reorder 
 ##%######################################################%##
 
 png(
-  "output_plot/Category VS Site CWM all.jpg",
+  "output_plot/SupplementaL_Category VS Site CWM all.jpg",
   width = 16,
   height = 8,
   units = 'in',
@@ -308,7 +328,7 @@ dev.off()
 ##%######################################################%##
 
 png(
-  "output_plot/Category VS Site FDis all.jpg",
+  "output_plot/Suppelemental_Category VS Site FDis all.jpg",
   width = 16,
   height = 8,
   units = 'in',

@@ -15,7 +15,7 @@ Pojo <- read_excel("DATA/Spatial_Campaign_data.xlsx",
 
 
 png(
-  "output_plot/SupplDominanceSpecies.jpg",
+  "output_plot/Supplemental_DominanceSpecies.jpg",
   width = 13,
   height = 8,
   units = 'in',
