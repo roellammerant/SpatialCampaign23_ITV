@@ -189,13 +189,13 @@ Shallow_All_PCA$Exposure_Depth <- factor(Shallow_All_PCA$Exposure_Depth , # Reor
 png(
   "output_plot/MainFigure_CWM_TakePatternsApart.jpg",
   width = 15,
-  height = 20,
+  height = 25,
   units = 'in',
   res = 600
 )
 
 par(mfcol=c(6,1))
-par(mar = c(3, 5, 2, 3), cex = c(1.2))
+par(mar = c(3, 5, 2, 3), cex = c(1.4))
 boxplot(CWM_Height ~ Exposure_Depth, data = Shallow_All,
         boxwex = 0.5, col = c("lightsalmon","azure2","bisque","lightsalmon","azure2","bisque","lightsalmon","azure2","bisque","lightsalmon","azure2","bisque"),
         at = c(1,2,3, 5,6,7, 9,10,11, 13,14,15),
@@ -222,9 +222,6 @@ axis(1,
      tick=FALSE , cex=1.2)
 
 
-legend("bottomleft", legend = c("Total variation", "Species turnover", "Intra-specific variation"), 
-       col=c("lightsalmon","azure2","bisque"),
-       pch = 15, bty = "n", pt.cex = 3, cex = 1,  horiz = F)
 
 boxplot(CWM_RootDepth ~ Exposure_Depth, data = Shallow_All_RootDepth,
         boxwex = 0.5, col = c("lightsalmon","azure2","bisque","lightsalmon","azure2","bisque","lightsalmon","azure2","bisque","lightsalmon","azure2","bisque"),
@@ -250,6 +247,10 @@ axis(1,
      at = seq(2 , 15 , 4), 
      labels = label , 
      tick=FALSE , cex=1.2)
+
+legend("bottomleft", legend = c("Total variation", "Species turnover", "Intra-specific variation"), 
+       col=c("lightsalmon","azure2","bisque"),
+       pch = 15, bty = "n", pt.cex = 3, cex = 1,  horiz = F)
 
 boxplot(CWM_Ratio ~ Exposure_Depth, data = Shallow_All_Ratio,
         boxwex = 0.5, col = c("lightsalmon","azure2","bisque","lightsalmon","azure2","bisque","lightsalmon","azure2","bisque","lightsalmon","azure2","bisque"),
