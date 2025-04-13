@@ -187,17 +187,15 @@ Shallow_All_PCA$Exposure_Depth <- factor(Shallow_All_PCA$Exposure_Depth , # Reor
 
 
 png(
-  "output_plot/CWM_TakePatternsApart.jpg",
+  "output_plot/MainFigure_CWM_TakePatternsApart.jpg",
   width = 15,
   height = 20,
   units = 'in',
-  res = 300
+  res = 600
 )
 
-
 par(mfcol=c(6,1))
-
-par(mar = c(3, 5, 2, 3))
+par(mar = c(3, 5, 2, 3), cex = c(1.2))
 boxplot(CWM_Height ~ Exposure_Depth, data = Shallow_All,
         boxwex = 0.5, col = c("lightsalmon","azure2","bisque","lightsalmon","azure2","bisque","lightsalmon","azure2","bisque","lightsalmon","azure2","bisque"),
         at = c(1,2,3, 5,6,7, 9,10,11, 13,14,15),
