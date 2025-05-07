@@ -1,3 +1,8 @@
+### You need to re-run the code without the calculation of relative importance
+### Otherwise, wrong values will appear
+
+
+
 ###########################
 #          Height         #
 ###########################
