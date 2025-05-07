@@ -13,11 +13,10 @@
 library(stats)
 Indices_PCA_Fixed$CWM_PC1<- as.numeric(Indices_PCA_Fixed$CWM_PC1) 
 Indices_PCA_SpecificMinusFixedB$CWM_PC1<- as.numeric(Indices_PCA_SpecificMinusFixedB$CWM_PC1) 
+Indices_PCA_AllsitesB$CWM_PC1<- as.numeric(Indices_PCA_AllsitesB$CWM_PC1) 
 
 Indices_PCA_Fixed$Exposure<- as.factor(Indices_PCA_Fixed$Exposure) 
 Indices_PCA_SpecificMinusFixedB$Exposure<- as.factor(Indices_PCA_SpecificMinusFixedB$Exposure)
-
-Indices_PCA_AllsitesB$CWM_PC1<- as.numeric(Indices_PCA_AllsitesB$CWM_PC1) 
 Indices_PCA_AllsitesB$Exposure<- as.factor(Indices_PCA_AllsitesB$Exposure) 
 
 ##%######################################################%##
@@ -74,11 +73,10 @@ CWMPC1_SpecificB # significant difference at exposure and site level
 ##%######################################################%##
 Indices_PCA_Fixed$CWM_PC2<- as.numeric(Indices_PCA_Fixed$CWM_PC2) 
 Indices_PCA_SpecificMinusFixedB$CWM_PC2<- as.numeric(Indices_PCA_SpecificMinusFixedB$CWM_PC2) 
+Indices_PCA_AllsitesB$CWM_PC2<- as.numeric(Indices_PCA_AllsitesB$CWM_PC2)
 
 Indices_PCA_Fixed$Exposure<- as.factor(Indices_PCA_Fixed$Exposure) 
 Indices_PCA_SpecificMinusFixedB$Exposure<- as.factor(Indices_PCA_SpecificMinusFixedB$Exposure)
-
-Indices_PCA_AllsitesB$CWM_PC2<- as.numeric(Indices_PCA_AllsitesB$CWM_PC2) 
 Indices_PCA_AllsitesB$Exposure<- as.factor(Indices_PCA_AllsitesB$Exposure) 
 
 ##%######################################################%##
