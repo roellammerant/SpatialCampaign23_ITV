@@ -1,5 +1,30 @@
 ##%######################################################%##
 #                                                          #
+####                  Load R packages                   ####
+#                                                          #
+##%######################################################%##
+resetPar <- function() {
+  dev.new()
+  op <- par(no.readonly = TRUE)
+  dev.off()
+  op
+}
+par(resetPar())
+
+ipak <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg)) 
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
+}
+
+# usage
+packages <- c('readxl', 'data.table', 'vegan', 'reshape2', 'moments')
+ipak(packages)
+
+
+##%######################################################%##
+#                                                          #
 ####            Community indices height                ####
 #                                                          #
 ##%######################################################%##
