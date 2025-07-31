@@ -285,7 +285,7 @@ data.scoresB$Site_group <- All_sites_drymass$Site_group
 ##%######################################################%##
 
 png(
-  "output_plot/Figure_Intra1(Sites_Species_traits).jpg",
+  "output_plot/Figure_1.jpg",
   width = 16,
   height = 11,
   units = 'in',
